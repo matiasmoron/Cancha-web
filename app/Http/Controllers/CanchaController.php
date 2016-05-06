@@ -26,8 +26,14 @@ class CanchaController extends Controller
 		dd($establecimientos);
 		*/
 		
+<<<<<<< HEAD
 		$canchas = Cancha::with('establecimiento')->get();
 
 		return view('canchas.todas', ['canchas' => $canchas]);
+=======
+		$canchas = Cancha::get();
+		//dd($canchas);
+		return view('canchas.todas', ['cancha' => $canchas]);
+>>>>>>> origin/master
 	}
 }
