@@ -9922,3 +9922,6 @@ Stack trace:
 [2016-05-05 13:56:37] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'Form' not found' in C:\xampp\htdocs\canchaya\storage\framework\views\e2ecc1eded05e5b2f0d6f5c93b0530055d54580f.php:7
 Stack trace:
 #0 {main}  
+[2016-05-06 18:27:17] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected '<<' (T_SL)' in C:\xampp\htdocs\Cancha-web\app\Http\Controllers\CanchaController.php:29
+Stack trace:
+#0 {main}  
