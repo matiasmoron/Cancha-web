@@ -20,10 +20,11 @@ class Cancha extends Model
 	
 	public function establecimiento()
     {
-<<<<<<< HEAD
         return $this->belongsTo('App\Establecimiento','id_establecimiento');
-=======
-        return $this->belongsTo('App\Establecimiento','id');
->>>>>>> origin/master
+    }
+    
+    public function scopeCanchas($query, $cantjugadores)
+    {
+        $query->where('cant_jugadores', $cantjugadores);
     }
 }

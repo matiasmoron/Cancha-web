@@ -13,8 +13,9 @@ use App\Establecimiento;
 class CanchaController extends Controller
 {
 	
-    public function todas()
+    public function todas(Request $request)
 	{
+        
 		/*
 		$establecimientos = Establecimiento::all();
 		
@@ -26,14 +27,15 @@ class CanchaController extends Controller
 		dd($establecimientos);
 		*/
 		
-<<<<<<< HEAD
 		$canchas = Cancha::with('establecimiento')->get();
 
 		return view('canchas.todas', ['canchas' => $canchas]);
-=======
-		$canchas = Cancha::get();
-		//dd($canchas);
-		return view('canchas.todas', ['cancha' => $canchas]);
->>>>>>> origin/master
 	}
+    
+    public function busqueda(Request $request)
+    {
+        $canchas = Cancha::Canchas($request->get('cantjugadores'))->get();
+        
+        return view('canchas.todas', ['canchas' => $canchas]);
+    }
 }

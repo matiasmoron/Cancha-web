@@ -25,7 +25,24 @@ Route::get('/home', 'HomeController@index');
 
 //administracion de canchas
 
-Route::get('/canchas/todas', [
+Route::get('canchas/todas', [
 	'middleware' => 'auth',
 	'uses' => 'CanchaController@todas']
 	);
+
+Route::get('canchas/busqueda', [
+	'middleware' => 'auth',
+	'uses' => 'CanchaController@busqueda']
+	);
+	
+//Rutas para Facebook
+
+Route::get('auth/facebook', 
+	'Auth\AuthController@redirectToProvider');
+
+Route::get('auth/facebook/callback', 
+	'Auth\AuthController@handleProviderCallback');
+
+//Rutas para Turnos
+Route::get('usuarios/turnos', 
+	'TurnoController@misturnos');

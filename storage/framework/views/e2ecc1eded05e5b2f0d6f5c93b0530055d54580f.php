@@ -4,7 +4,7 @@
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default" style="padding: 20px;">
 				<h2 style="padding-bottom:20px;">Canchas</h2>
-				<?php echo Form::open(['route' => 'admin.users.index', 'method' => 'GET', 'class' => 'navbar-form navbar-left pull-right', 'role'=> 'search']); ?>
+				<?php echo Form::open(['url' => 'canchas/todas', 'method' => 'GET', 'class' => 'navbar-form navbar-left pull-right', 'role'=> 'search']); ?>
 
 					<div class="form-group">
 						<?php echo Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Nombre Establecimiento']); ?>
