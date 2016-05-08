@@ -20,4 +20,10 @@ class TurnoController extends Controller
         
         return view('usuarios.turnos', ['turnos' => $turnos]);
     }
+    
+    public function turnoscancha($id)
+    {
+        $turnos = Turno::where('id_cancha',$id)->get();
+        return view('turnos.cancha', ['turnos' => $turnos]);
+    }
 }

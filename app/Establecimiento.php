@@ -12,4 +12,9 @@ class Establecimiento extends Model
     {
         return $this->hasMany('App\Cancha','id_establecimiento');
     }
+    
+    public function ciudad()
+    {
+        return $this->belongsTo('App\Ciudad','id_ciudad');
+    }
 }

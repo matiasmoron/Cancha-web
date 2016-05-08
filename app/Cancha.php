@@ -13,9 +13,9 @@ class Cancha extends Model
         return $this->hasMany('App\Turno');
     }
 	
-	public function tipo_canchas()
+	public function superficie()
     {
-        return $this->hasMany('App\Tipo_Cancha');
+        return $this->belongsTo('App\Superficie', 'id_superficie');
     }
 	
 	public function establecimiento()
@@ -23,8 +23,8 @@ class Cancha extends Model
         return $this->belongsTo('App\Establecimiento','id_establecimiento');
     }
     
-    public function scopeCanchas($query, $cantjugadores)
+    public function scopeCanchas($query, $cantjugadores, $superficie)
     {
-        $query->where('cant_jugadores', $cantjugadores);
+        $query->where('cant_jugadores', $cantjugadores)->where('id_superficie',$superficie);
     }
 }

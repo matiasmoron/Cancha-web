@@ -60,14 +60,14 @@
                                 $arr = array();
                                 foreach($ciudades as $ciudad)
                                 {
-                                    $arr[$ciudad->ciudad_nombre] = $ciudad->ciudad_nombre;
+                                    $arr[$ciudad->id] = $ciudad->ciudad_nombre;
                                 }
                         
                                 $superficie = DB::table('superficie')->get();
                                 $arr2 = array();
                                 foreach($superficie as $sup)
                                 {
-                                    $arr2[$sup->superficie] = $sup->superficie;
+                                    $arr2[$sup->id] = $sup->superficie;
                                 }
                         ?>
                         
