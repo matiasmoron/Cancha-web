@@ -71,6 +71,10 @@
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="<?php echo e(url('/logout')); ?>"><i class="fa fa-btn fa-sign-out"></i>Salir</a></li>
                                 <li><a href="<?php echo e(url('usuarios/turnos')); ?>"><i class="fa fa-btn glyphicon glyphicon-calendar"></i>Mis Turnos</a></li>
+                                <?php if( Auth::user()->admin == 1): ?>
+                                    <li><a href="<?php echo e(url('admin/home')); ?>"><i class="fa fa-btn 
+glyphicon glyphicon-th-list"></i>Administrar</a></li>
+                                <?php endif; ?>
                             </ul>
                         </li>
                     <?php endif; ?>

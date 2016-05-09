@@ -24,14 +24,12 @@ Route::get('/home', 'HomeController@index');
 
 
 //administracion de canchas
-
 Route::get('canchas/busqueda', [
 	'middleware' => 'auth',
 	'uses' => 'CanchaController@busqueda']
 	);
 	
 //Rutas para Facebook
-
 Route::get('auth/facebook', 
 	'Auth\AuthController@redirectToProvider');
 
@@ -46,3 +44,36 @@ Route::get('turnos/cancha/{id}',
     ['as' => 'turnos.cancha', 
      'uses' => 'TurnoController@turnoscancha']       
 	);
+
+//Ruta de admin
+Route::get('admin/home', 
+	'UserController@adminhome');
+
+    //Rutas Admin/Establecimiento
+    Route::get('admin/establecimiento', 
+        'UserController@verestablecimiento');
+
+    Route::get('admin/establecimiento/nuevo', 
+        'UserController@establecimientocrear');
+
+    Route::post('admin/establecimiento/nuevo',
+        ['as' => 'admin.establecimiento.nuevo',
+         'uses' => 'UserController@establecimientoalmacenar']
+        );
+
+    //Rutas Admin/Cancha
+    Route::get('admin/cancha', 
+        'UserController@verCancha');
+
+    Route::get('admin/cancha/nueva', 
+        'UserController@canchaCrear');
+
+    Route::post('admin/cancha/nueva',
+        ['as' => 'admin.cancha.nueva',
+         'uses' => 'UserController@canchaAlmacenar']
+        );
+
+    //Rutas Admin/Datos
+    Route::get('admin/datos', 
+        'UserController@verDatos');
+    

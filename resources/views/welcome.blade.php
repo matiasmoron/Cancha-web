@@ -69,12 +69,24 @@
                                 {
                                     $arr2[$sup->id] = $sup->superficie;
                                 }
+                        
+                                $arr3 = array('3' => '3', '4' => '4', '5' => '5', '6' => '6', '7' => '7', '8' => '8', '9' => '9', '10' => '10', '11' => '11', '12' => '12');
+                        
+                                $deportes = DB::table('deporte')->get();
+                                $arr4 = array();
+                                foreach($deportes as $deporte)
+                                {
+                                    $arr4[$deporte->id] = $deporte->deporte;
+                                }
                         ?>
                         
                         {{Form::select('ciudad', $arr , null, ['class' => 'form-control'])}}
                         
-                        {!!Form::text('cantjugadores', null, ['class' => 'form-control', 'style' =>'width: 30%;', 'placeholder' => 'Cantidad Jugadores']) !!}
+                        {!! Form::select('cantjugadores', $arr3 , null, ['class' => 'form-control']) !!}
+                        
                         {!!Form::select('superficie', $arr2 , null, ['class' => 'form-control']) !!}
+                        
+                        {!! Form::select('deporte', $arr4 , null, ['class' => 'form-control']) !!}                
                         
 					</div>
 					<button type="submit" class="btn btn-default">Buscar</button>

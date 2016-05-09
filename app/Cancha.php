@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Cancha extends Model
 {
 	protected $table = 'cancha';
+    public $timestamps = false;
+    protected $fillable = ['id_establecimiento','nombre_cancha', 'cant_jugadores', 'tiene_luz', 'techada', 'id_deporte', 'id_superficie'];
 	
     public function turnos()
     {
@@ -23,8 +25,13 @@ class Cancha extends Model
         return $this->belongsTo('App\Establecimiento','id_establecimiento');
     }
     
-    public function scopeCanchas($query, $cantjugadores, $superficie)
+    public function deporte()
     {
-        $query->where('cant_jugadores', $cantjugadores)->where('id_superficie',$superficie);
+        return $this->belongsTo('App\Deporte', 'id_deporte');
+    }
+    
+    public function scopeCanchas($query, $cantjugadores, $superficie, $deporte)
+    {
+        $query->where('cant_jugadores', $cantjugadores)->where('id_superficie',$superficie)->where('id_deporte', $deporte);
     }
 }

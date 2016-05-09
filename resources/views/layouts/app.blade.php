@@ -71,6 +71,10 @@
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Salir</a></li>
                                 <li><a href="{{ url('usuarios/turnos') }}"><i class="fa fa-btn glyphicon glyphicon-calendar"></i>Mis Turnos</a></li>
+                                @if( Auth::user()->admin == 1)
+                                    <li><a href="{{ url('admin/home') }}"><i class="fa fa-btn 
+glyphicon glyphicon-th-list"></i>Administrar</a></li>
+                                @endif
                             </ul>
                         </li>
                     @endif
