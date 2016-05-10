@@ -21627,3 +21627,12 @@ Stack trace:
 #52 C:\xampp\htdocs\Cancha-web\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(99): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
 #53 C:\xampp\htdocs\Cancha-web\public\index.php(54): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
 #54 {main}  
+[2016-05-09 21:13:25] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected end of file' in C:\xampp\htdocs\Cancha-web\app\Http\routes.php:83
+Stack trace:
+#0 {main}  
+[2016-05-09 21:13:42] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected end of file' in C:\xampp\htdocs\Cancha-web\app\Http\routes.php:83
+Stack trace:
+#0 {main}  
+[2016-05-09 21:30:33] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'Controller' not found' in C:\xampp\htdocs\Cancha-web\app\Http\Controllers\InicioController.php:9
+Stack trace:
+#0 {main}  

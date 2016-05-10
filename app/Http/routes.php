@@ -24,9 +24,11 @@ Route::get('/home', 'HomeController@index');
 
 
 //administracion de canchas
-Route::get('canchas/busqueda', [
+Route::get('canchas/busqueda', 
+    [
 	'middleware' => 'auth',
-	'uses' => 'CanchaController@busqueda']
+	'uses' => 'CanchaController@busqueda'
+    ]
 	);
 	
 //Rutas para Facebook
@@ -76,4 +78,5 @@ Route::get('admin/home',
     //Rutas Admin/Datos
     Route::get('admin/datos', 
         'UserController@verDatos');
-    
+
+Route::get('inicio','InicioController@inicio');
