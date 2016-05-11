@@ -2,10 +2,17 @@
 
 @section('content')
 
-<link rel="stylesheet" type="text/css" href="/css/index.">
-<script type="text/javascript" src="/js/index.js"></script>
 
-<div class="container">
+<link rel="stylesheet" href="{{ URL::asset('css/inicio.css') }}">
+<script type="text/javascript" src="{{ URL::asset('js/inicio.js') }}"></script>
+
+<select id="id_ciudad">
+@foreach ($ciudades as $ciudad)
+  <option value="{{ $ciudad->id}}">{{ $ciudad->ciudad_nombre}}</option>
+  
+@endforeach
+</select>
+<!-- div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
@@ -53,5 +60,5 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 @endsection
