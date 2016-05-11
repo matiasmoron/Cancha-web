@@ -13,9 +13,9 @@ class InicioController extends Controller
     
     public function inicio(){
 
-        $ciudades = Ciudad::all();  
+        $ciudades = Ciudad::all();
         
-      
+        
        return view('inicio', ['ciudades'=> $ciudades]);
     }
 }

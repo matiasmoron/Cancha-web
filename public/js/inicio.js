@@ -1,12 +1,3 @@
-
-$( document ).ready(function() {
-    console.log( "ready!" );
+jQuery(document).ready(function(){
+   console.log("hola");
 });
-
-function probando(){
-
-console.log("llegue");
-console.log(ocument.getElementById('id_ciudad'));
-}
-
- 

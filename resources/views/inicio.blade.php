@@ -3,62 +3,67 @@
 @section('content')
 
 
-<link rel="stylesheet" href="{{ URL::asset('css/inicio.css') }}">
-<script type="text/javascript" src="{{ URL::asset('js/inicio.js') }}"></script>
+<!-- <link rel="stylesheet" href="{{ URL::asset('css/inicio.css') }}"> -->
+<!-- <script type="text/javascript" src="{{ URL::asset('js/inicio.js') }}"></script>
+ -->
+<link rel="stylesheet" href="{{ URL::asset('css/inicio/form-elements.css') }}">
+<link rel="stylesheet" href="{{ URL::asset('css/inicio/style.css')}}">
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
 
-<select id="id_ciudad">
-@foreach ($ciudades as $ciudad)
-  <option value="{{ $ciudad->id}}">{{ $ciudad->ciudad_nombre}}</option>
-  
-@endforeach
-</select>
-<!-- div class="container">
-    <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-            <div class="panel panel-default">
-                <div class="panel-heading">este es el inicio</div>
-                <div class="panel-body">
-                    {!! Form::open(['url' => 'canchas/busqueda', 'method' => 'GET', 'role'=> 'search'])!!}
-                    <div class="form-group">
-                        
-                        <?php 
-                                $ciudades = DB::table('ciudad')->get();
-                                $arr = array();
-                                foreach($ciudades as $ciudad)
-                                {
-                                    $arr[$ciudad->id] = $ciudad->ciudad_nombre;
-                                }
-                        
-                                $superficie = DB::table('superficie')->get();
-                                $arr2 = array();
-                                foreach($superficie as $sup)
-                                {
-                                    $arr2[$sup->id] = $sup->superficie;
-                                }
-                        
-                                $arr3 = array('3' => '3', '4' => '4', '5' => '5', '6' => '6', '7' => '7', '8' => '8', '9' => '9', '10' => '10', '11' => '11', '12' => '12');
-                        
-                                $deportes = DB::table('deporte')->get();
-                                $arr4 = array();
-                                foreach($deportes as $deporte)
-                                {
-                                    $arr4[$deporte->id] = $deporte->deporte;
-                                }
-                        ?>
-                        
-                        {{Form::select('ciudad', $arr , null, ['class' => 'form-control'])}}
-                        
-                        {!! Form::select('cantjugadores', $arr3 , null, ['class' => 'form-control']) !!}
-                        
-                        {!!Form::select('superficie', $arr2 , null, ['class' => 'form-control']) !!}
-                        
-                        {!! Form::select('deporte', $arr4 , null, ['class' => 'form-control']) !!}                
-                        
+    <div class="top-content">
+        <div class="inner-bg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8 col-sm-offset-2 text">
+                        <h1><strong>Reservá</strong> tu cancha de forma <strong>online</strong></h1>
+                        <div class="description">
+                            <p>
+                                El sitio pensado por alguien como vos, para gente como nosotros.
+                            </p>
+                        </div>
                     </div>
-                    <button type="submit" class="btn btn-default">Buscar</button>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 col-sm-offset-3 form-box">
+                        <div class="form-top">
+                            <div class="form-top-left">
+                                <h3>Reservá tu cancha ya</h3>
+                                <p>Ingresá que día querés jugar, y listo:</p>
+                            </div>
+                            <div class="form-top-right">
+                            <i class="fa fa-futbol-o"></i>
+                            </div>
+                        </div>
+                        <div class="form-bottom">
+                            <form role="form" action="" method="post" class="login-form">
+                                <div class="form-group">
+                                    <label class="sr-only" for="form-password">Fecha</label>
+                                    <input class=" form-control" id="form-password">
+                                </div>
+                                <button type="submit" class="btn">Conseguir turno</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 col-sm-offset-3 social-login">
+                        <h3>Ingresá por..</h3>
+                        <div class="social-login-buttons">
+                            <a class="btn btn-link-1" href="#">
+                                <i class="fa fa-facebook"></i> Facebook
+                            </a>
+                            <a class="btn btn-link-2" href="#">
+                                <i class="fa fa-twitter"></i> Twitter
+                            </a>
+                            <a class="btn btn-link-3" href="#">
+                                <i class="fa fa-google-plus"></i> Google Plus
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+        </div> 
     </div>
-</div> -->
+
+
 @endsection
