@@ -37,7 +37,7 @@
             <div id="collapse3" class="panel-collapse collapse">
                 <div class="panel-body">
                    <li><a href="{{ url('admin/turnos') }}"><i class="fa fa-btn glyphicon glyphicon-home"></i>Administrar Turnos</a></li>
-                    <li><a href="{{ url('admin/turnos/nuevo') }}"><i class="fa fa-btn glyphicon glyphicon-plus"></i>Nuevo Turno</a></li> 
+                    <li><a href="{{ url('admin/turno/nuevo') }}"><i class="fa fa-btn glyphicon glyphicon-plus"></i>Nuevo Turno</a></li> 
                 </div>
             </div>
             

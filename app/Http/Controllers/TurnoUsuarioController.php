@@ -10,7 +10,7 @@ use Auth;
 
 use App\Turno;
 
-class TurnoController extends Controller
+class TurnoUsuarioController extends Controller
 {
     public function misturnos()
     {

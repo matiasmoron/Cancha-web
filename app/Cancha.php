@@ -12,7 +12,7 @@ class Cancha extends Model
 	
     public function turnos()
     {
-        return $this->hasMany('App\Turno');
+        return $this->hasMany('App\TurnoAdmin');
     }
 	
 	public function superficie()

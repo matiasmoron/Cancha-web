@@ -40,11 +40,11 @@ Route::get('auth/facebook/callback',
 
 //Rutas para Turnos
 Route::get('usuarios/turnos', 
-	'TurnoController@misturnos');
+	'TurnoUsuarioController@misturnos');
 
 Route::get('turnos/cancha/{id}',
     ['as' => 'turnos.cancha', 
-     'uses' => 'TurnoController@turnoscancha']       
+     'uses' => 'TurnoUsuarioController@turnoscancha']       
 	);
 
 //Ruta de admin
@@ -78,5 +78,26 @@ Route::get('admin/home',
     //Rutas Admin/Datos
     Route::get('admin/datos', 
         'UserController@verDatos');
+
+    //Rutas Admin/Turnos
+    Route::get('admin/turnos', 
+        'UserController@verTurnosAdmin');
+
+    Route::get('admin/turno/nuevo', 
+        'UserController@turnoAdminCrear');
+
+    Route::post('admin/turno/nuevo',
+        'UserController@turnoAdminAlmacenar');
+
+    Route::get('admin/turno/{id}',
+    ['as' => 'admin.turno', 
+     'uses' => 'UserController@editarTurnoAdmin']       
+    );
+
+    Route::post('admin/turno/{id}',
+    ['as' => 'admin.turno', 
+     'uses' => 'UserController@modificarTurnoAdmin']       
+    );
+
 
 Route::get('inicio','InicioController@inicio');

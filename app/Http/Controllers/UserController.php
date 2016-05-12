@@ -10,15 +10,22 @@ use Auth;
 
 use App\Establecimiento;
 use App\Cancha;
+use App\TurnoAdmin;
+use App\Dia;
+use DB;
 
 class UserController extends Controller
 {
+
+    //Seccion HOME
     public function adminhome()
     
     {
         return view('admin.adminhome');
     }
     
+
+    //Seccion Establecimiento
     public function verestablecimiento()
     {
         $establecimiento = Establecimiento::get()->where('id_usuario',Auth::user()->id);
@@ -49,6 +56,8 @@ class UserController extends Controller
     }
     
     
+
+    //Seccion Canchas
     public function verCancha()
     {
         $establecimientos = Establecimiento::where('id_usuario', Auth::user()->id)->get();
@@ -73,19 +82,95 @@ class UserController extends Controller
         'id_superficie' => 'required'
         ]);
         
-        /*$arr = $request->all();
-        
-        unset($arr['_token']);*/
-        
         Cancha::create($request->all());
          
         return redirect('admin/cancha');
     }
+
+
+    //Seccion Turnos Administrador
+    public function verTurnosAdmin()
+    {
+        $turnosAdmin = TurnoAdmin::where('id_usuario_admin', Auth::user()->id)->get();
+
+        return view('admin.turnosAdmin', ['turnosAdmin' => $turnosAdmin]);
+    }
+
+    public function turnoAdminCrear()
+    {
+        return view('admin.nuevoTurno', ['arrCanchas' => $this->getCanchas(), 'arrDias' => $this->getDias()]);
+    }
     
+    public function turnoAdminAlmacenar(Request $request)
+    {
+         
+        $this->validate($request, [
+        'id_cancha' => 'required',
+        'id_dia' => 'required',
+        'horaInicio' => 'required',
+        'horaFin' => 'required',
+        'id_usuario_admin' => 'required'
+        ]);
+        
+        TurnoAdmin::create($request->all());
+         
+        return redirect('admin/turnos');
+    }
+
+    public function editarTurnoAdmin($id)
+    {
+        $turnoAdmin = TurnoAdmin::find($id);
+
+        return view('admin.editarTurno', ['turnoAdmin' => $turnoAdmin, 'arrCanchas' => $this->getCanchas(), 'arrDias' => $this->getDias()]);
+    }
+
+    public function modificarTurnoAdmin(Request $request, $id)
+    {
+        $turnoAdmin = TurnoAdmin::find($id);
+        
+        //dd($request);
+
+        $turnoAdmin->id_cancha = $request->get('id_cancha');
+        $turnoAdmin->id_dia = $request->get('id_dia');
+        $turnoAdmin->horaInicio = $request->get('horaInicio'); 
+        $turnoAdmin->horaFin = $request->get('horaFin');
+
+        $turnoAdmin->save();     
+
+        return redirect('admin/turnos');
+    }
+
+    //Seccion Datos Personales
     public function verDatos()
     {
         $usuario = Auth::user();
         
         return view('admin.datos',['usuario' => $usuario]);
+    }
+
+    //Funciones Auxiliares
+
+    public function getDias()
+    {
+        $dias = Dia::get();
+        $arrDias = array();
+        foreach($dias as $dia)
+        {
+            $arrDias[$dia->id] = $dia->dia;
+        }
+
+        return $arrDias;
+    }
+
+    public function getCanchas()
+    {
+        $canchas = Cancha::get();
+        $arrCanchas = array();
+        foreach($canchas as $cancha)
+        {
+            $arrCanchas[$cancha->id] = $cancha->nombre_cancha;
+        }
+
+        return $arrCanchas;
     }
 }
