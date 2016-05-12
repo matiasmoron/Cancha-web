@@ -23,7 +23,7 @@ class TurnoAdmin extends Model
 
      public function dia()
     {
-        return $this->hasOne('App\Dia','id','id_dia');
+        return $this->belongsTo('App\Dia','id_dia');
     }
     
 }

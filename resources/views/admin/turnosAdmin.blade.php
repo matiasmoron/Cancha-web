@@ -13,7 +13,15 @@
                         <p>Día del Turno: {{$turno->dia->dia}}</p>
                         <p>Hora de Inicio: {{$turno->horaInicio}}</p>                       
                         <p>Hora de Fin: {{$turno->horaFin}}</p>
-                                            
+                        <p>Precio Turno: {{$turno->precio_cancha}}</p>
+
+                         @if($turno->adic_luz == 1)
+                            <p>Adicional Luz: Si</p>
+                            <p>Precio Adicional: {{$turno->precio_adicional}}</p>
+                        @else
+                            <p>Adicional Luz: No</p>
+                        @endif
+                
                         {!! Form::open(['route' => ['admin.turno' , $turno->id], 'method' => 'GET', 'class' => 'btn btn-default pull-right'])!!}
                             {!! Form::submit('Editar Turno') !!}
                         {!!Form::close()!!}

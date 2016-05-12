@@ -127,13 +127,14 @@ class UserController extends Controller
     public function modificarTurnoAdmin(Request $request, $id)
     {
         $turnoAdmin = TurnoAdmin::find($id);
-        
-        //dd($request);
 
         $turnoAdmin->id_cancha = $request->get('id_cancha');
         $turnoAdmin->id_dia = $request->get('id_dia');
         $turnoAdmin->horaInicio = $request->get('horaInicio'); 
         $turnoAdmin->horaFin = $request->get('horaFin');
+        $turnoAdmin->precio_cancha = $request->get('precio_cancha');
+        $turnoAdmin->adic_luz = $request->get('adic_luz');
+        $turnoAdmin->precio_adicional = $request->get('precio_adicional');
 
         $turnoAdmin->save();     
 

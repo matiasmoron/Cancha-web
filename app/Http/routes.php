@@ -47,6 +47,16 @@ Route::get('turnos/cancha/{id}',
      'uses' => 'TurnoUsuarioController@turnoscancha']       
 	);
 
+Route::get('turno/reserva/{id_turnoAdmin}/{dia}/{horaInicio}/{horaFin}', 
+    ['as' => 'turnos.reserva',
+    'uses' => 'TurnoUsuarioController@buscarTurno']
+    );
+
+Route::post('turno/reserva/{id_turnoAdmin}/{dia}/{horaInicio}/{horaFin}', 
+    ['as' => 'turnos.reserva',
+    'uses' => 'TurnoUsuarioController@guardarTurno']
+    );
+
 //Ruta de admin
 Route::get('admin/home', 
 	'UserController@adminhome');

@@ -14,6 +14,9 @@
                             {!! Form::select('id_dia', $arrDias , null, ['class' => 'form-control']) !!}
                             {!!Form::time('horaInicio', \Carbon\Carbon::now(), ['class' => 'form-control']) !!}
                             {!!Form::time('horaFin', \Carbon\Carbon::now(), ['class' => 'form-control']) !!}
+                            {!!Form::number('precio_cancha', null , ['class' => 'form-control']) !!}
+                            {!! Form::select('adic_luz', ['0' => 'No', '1' => 'Si'] , null , ['class' => 'form-control']) !!}
+                            {!!Form::number('precio_adicional', null , ['class' => 'form-control']) !!}
                             {!! Form::hidden('id_usuario_admin', Auth::user()->id) !!}
                         </div>
 					   

@@ -8,22 +8,28 @@ use App\Http\Requests;
 
 use Auth;
 
-use App\Turno;
+use App\TurnoUsuario;
+use App\TurnoAdmin;
+use Carbon\Carbon;
 
 class TurnoUsuarioController extends Controller
 {
     public function misturnos()
     {
-        $user = Auth::user();
+        $turnosUser = TurnoUsuario::get()->where('id_usuario', Auth::user()->id);
         
-        $turnos = Turno::get()->where('id_usuario',$user->id);
-        
-        return view('usuarios.turnos', ['turnos' => $turnos]);
+        return view('usuarios.turnos', ['turnosUser' => $turnosUser]);
     }
     
     public function turnoscancha($id)
     {
-        $turnos = Turno::where('id_cancha',$id)->get();
+        $turnos = TurnoAdmin::where('id_cancha',$id)->get();
         return view('turnos.cancha', ['turnos' => $turnos]);
+    }
+
+    public function buscarTurno($id_turnoAdmin, $dia, $horaInicio, $horaFin)
+    {
+        echo new Carbon('this thursday')->next();
+
     }
 }

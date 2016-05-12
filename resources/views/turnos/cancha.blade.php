@@ -8,9 +8,10 @@
                 <h2 style="padding-bottom:20px;">Turnos para {{$turnos[0]->cancha->establecimiento->nombre}}: {{$turnos[0]->cancha->nombre_cancha}} </h2>
                 @foreach($turnos as $turno)
                     <div class="panel-body">
-                        <p>Fecha Inicio: {{$turno->fecha_inicio}}</p>
-                        <p>Fecha Fin: {{$turno->fecha_inicio}}</p>
-                        <p>Precio: {{$turno->precio_cancha}}</p>
+                        <p>Dia: {{$turno->dia->dia}}</p>
+                        <p>Hora Inicio: {{$turno->horaInicio}}</p>
+                        <p>Hora Fin: {{$turno->horaFin}}</p>
+                        <p>Precio Turno: {{$turno->precio_cancha}}</p>
                         
                         @if($turno->adic_luz == 1)
                             <p>Adicional Luz: Si</p>
@@ -19,15 +20,9 @@
                             <p>Adicional Luz: No</p>
                         @endif
                         
-                        @if($turno->estado == 1)
-                            <p>Disponible: Si</p>
-                            {!! Form::open(['route' => ['turnos.cancha' , $turno->id], 'method' => 'GET', 'class' => 'btn btn-default pull-right'])!!}
+                        {!! Form::open(['route' => ['turnos.reserva' , $turno->id, $turno->dia->dia, $turno->horaInicio, $turno->horaFin], 'method' => 'GET', 'class' => 'btn btn-default pull-right'])!!}
                                 {!! Form::submit('Reservar Turno') !!}
-                                {!!Form::close()!!}
-                        @else
-                            <p>Disponible: No</p>
-                        @endif
-                        
+                        {!!Form::close()!!}
                     </div>
                 @endforeach
             </div>
