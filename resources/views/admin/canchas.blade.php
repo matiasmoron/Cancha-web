@@ -28,7 +28,7 @@
                         <p>Deporte: {{$cancha->deporte->deporte}}</p>
                         <p>Superficie: {{$cancha->superficie->superficie}}</p>
                                             
-                        {!! Form::open(['route' => ['turnos.cancha' , $cancha->id], 'method' => 'GET', 'class' => 'btn btn-default pull-right'])!!}
+                        {!! Form::open(['route' => ['admin.cancha.editar' , $cancha->id], 'method' => 'GET', 'class' => 'btn btn-default pull-right'])!!}
                             {!! Form::submit('Editar Cancha') !!}
                         {!!Form::close()!!}
                     </div>

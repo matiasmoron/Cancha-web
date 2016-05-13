@@ -11,6 +11,7 @@ use Auth;
 use App\TurnoUsuario;
 use App\TurnoAdmin;
 use Carbon\Carbon;
+use DB;
 
 class TurnoUsuarioController extends Controller
 {
@@ -29,7 +30,9 @@ class TurnoUsuarioController extends Controller
 
     public function buscarTurno($id_turnoAdmin, $dia, $horaInicio, $horaFin)
     {
-        echo new Carbon('this thursday')->next();
+        $dia_turno1 = new Carbon('this '.$dia);
+
+        dd(TurnoUsuario::whereDate('fecha_inicio','=',$dia_turno1->toDateString()));      
 
     }
 }

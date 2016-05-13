@@ -19,7 +19,7 @@
                         
                         <p>Ciudad: {{$establec->ciudad->ciudad_nombre}}</p>
                         <p>Provincia: {{$establec->ciudad->provincia->provincia_nombre}}</p>
-                        {!! Form::open(['route' => ['turnos.cancha' , $establec->id], 'method' => 'GET', 'class' => 'btn btn-default pull-right'])!!}
+                        {!! Form::open(['route' => ['admin.establecimiento.editar' , $establec->id], 'method' => 'GET', 'class' => 'btn btn-default pull-right'])!!}
                             {!! Form::submit('Editar Establecimiento') !!}
                         {!!Form::close()!!}
                     </div>

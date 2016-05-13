@@ -73,6 +73,18 @@ Route::get('admin/home',
          'uses' => 'UserController@establecimientoalmacenar']
         );
 
+    Route::get('admin/establecimiento/{id}',
+        ['as' => 'admin.establecimiento.editar', 
+        'uses' => 'UserController@editarEstablecimiento']       
+        );
+
+    Route::post('admin/establecimiento/{id}',
+        ['as' => 'admin.establecimiento.modificar', 
+        'uses' => 'UserController@modificarEstablecimiento']       
+        );
+
+
+
     //Rutas Admin/Cancha
     Route::get('admin/cancha', 
         'UserController@verCancha');
@@ -83,6 +95,16 @@ Route::get('admin/home',
     Route::post('admin/cancha/nueva',
         ['as' => 'admin.cancha.nueva',
          'uses' => 'UserController@canchaAlmacenar']
+        );
+
+    Route::get('admin/cancha/{id}',
+        ['as' => 'admin.cancha.editar', 
+        'uses' => 'UserController@editarCancha']       
+        );
+
+    Route::post('admin/cancha/{id}',
+        ['as' => 'admin.cancha.modificar', 
+        'uses' => 'UserController@modificarCancha']       
         );
 
     //Rutas Admin/Datos

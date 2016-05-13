@@ -12,7 +12,10 @@ use App\Establecimiento;
 use App\Cancha;
 use App\TurnoAdmin;
 use App\Dia;
-use DB;
+use App\Ciudad;
+use App\Deporte;
+use App\Superficie;
+
 
 class UserController extends Controller
 {
@@ -54,8 +57,33 @@ class UserController extends Controller
          
         return redirect('admin/establecimiento');
     }
+
+    public function editarEstablecimiento($id)
+    {
+        $establecimiento = Establecimiento::find($id);
+
+        return view('admin.editarEstablecimiento', ['establecimiento' => $establecimiento, 'arrCiudades' => $this->getCiudades()]);
+    }
+
+    public function modificarEstablecimiento(Request $request, $id)
+    {
+        $establecimiento = Establecimiento::find($id);
+
+        $establecimiento->nombre = $request->get('nombre');
+        $establecimiento->direccion = $request->get('direccion');
+        $establecimiento->tienevestuario = $request->get('tienevestuario'); 
+        $establecimiento->id_ciudad = $request->get('id_ciudad');
+
+        $establecimiento->save();     
+
+        return redirect('admin/establecimiento');
+    }
     
     
+
+
+
+
 
     //Seccion Canchas
     public function verCancha()
@@ -86,6 +114,34 @@ class UserController extends Controller
          
         return redirect('admin/cancha');
     }
+
+    public function editarCancha($id)
+    {
+        $cancha = Cancha::find($id);
+
+        return view('admin.editarCancha', ['cancha' => $cancha, 'arrDeportes' => $this->getDeportes(), 'arrSuperficies' => $this->getSuperficies(), 'arrCantJugad' => $this->getCantJugadores(), 'arrEstablecimientos' => $this->getEstablecimientos()]);
+    }
+
+    public function modificarCancha(Request $request, $id)
+    {
+        $cancha = Cancha::find($id);
+
+        $cancha->nombre_cancha = $request->get('nombre_cancha');
+        $cancha->id_establecimiento = $request->get('id_establecimiento');
+        $cancha->cant_jugadores = $request->get('cant_jugadores');
+        $cancha->tiene_luz = $request->get('tiene_luz'); 
+        $cancha->techada = $request->get('techada');  
+        $cancha->id_deporte = $request->get('id_deporte');
+        $cancha->id_superficie = $request->get('id_superficie');
+        
+        $cancha->save();     
+
+        return redirect('admin/cancha');
+    }
+
+
+
+
 
 
     //Seccion Turnos Administrador
@@ -173,5 +229,58 @@ class UserController extends Controller
         }
 
         return $arrCanchas;
+    }
+
+    public function getCiudades()
+    {
+        $ciudades = Ciudad::get();
+        $arrCiudades = array();
+        foreach($ciudades as $ciudad)
+        {
+            $arrCiudades[$ciudad->id] = $ciudad->ciudad_nombre;
+        }
+
+        return $arrCiudades;
+    }
+
+    public function getDeportes()
+    {
+        $deportes = Deporte::get();
+        $arrDeportes = array();
+        foreach($deportes as $deporte)
+        {
+            $arrDeportes[$deporte->id] = $deporte->deporte;
+        }
+
+        return $arrDeportes;
+    }
+
+    public function getSuperficies()
+    {
+        $superficies = Superficie::get();
+        $arrSuperficies = array();
+        foreach($superficies as $superficie)
+        {
+            $arrSuperficies[$superficie->id] = $superficie->superficie;
+        }
+
+        return $arrSuperficies;
+    }
+
+    public function getEstablecimientos()
+    {
+        $establecimientos = Establecimiento::get();
+        $arrEstablecimientos = array();
+        foreach($establecimientos as $establecimiento)
+        {
+            $arrEstablecimientos[$establecimiento->id] = $establecimiento->nombre;
+        }
+
+        return $arrEstablecimientos;
+    }
+
+    public function getCantJugadores()
+    {
+        return array('3' => '3', '4' => '4', '5' => '5', '6' => '6', '7' => '7', '8' => '8', '9' => '9', '10' => '10', '11' => '11', '12' => '12');;
     }
 }

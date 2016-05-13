@@ -20,7 +20,7 @@
                             <p>Adicional Luz: No</p>
                         @endif
                         
-                        {!! Form::open(['route' => ['turnos.reserva' , $turno->id, $turno->dia->dia, $turno->horaInicio, $turno->horaFin], 'method' => 'GET', 'class' => 'btn btn-default pull-right'])!!}
+                        {!! Form::open(['route' => ['turnos.reserva' , $turno->id, $turno->dia->dia_ingles, $turno->horaInicio, $turno->horaFin], 'method' => 'GET', 'class' => 'btn btn-default pull-right'])!!}
                                 {!! Form::submit('Reservar Turno') !!}
                         {!!Form::close()!!}
                     </div>
