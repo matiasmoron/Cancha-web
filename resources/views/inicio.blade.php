@@ -4,8 +4,8 @@
 
 
 <!-- <link rel="stylesheet" href="{{ URL::asset('css/inicio.css') }}"> -->
-<!-- <script type="text/javascript" src="{{ URL::asset('js/inicio.js') }}"></script>
- -->
+ <script type="text/javascript" src="{{ URL::asset('js/inicio.js') }}"></script>
+ 
 <link rel="stylesheet" href="{{ URL::asset('css/inicio/form-elements.css') }}">
 <link rel="stylesheet" href="{{ URL::asset('css/inicio/style.css')}}">
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
@@ -38,9 +38,9 @@
                             <form role="form" action="" method="post" class="login-form">
                                 <div class="form-group">
                                     <label class="sr-only" for="form-password">Fecha</label>
-                                    <input class=" form-control" id="form-password">
+                                    <input type="date" class=" form-control" id="fecha-turno">
                                 </div>
-                                <button type="submit" class="btn">Conseguir turno</button>
+                                <button id="btn-turno" type="submit" class="btn">Conseguir turno</button>
                             </form>
                         </div>
                     </div>
