@@ -32,14 +32,4 @@ class CanchaController extends Controller
 		return view('canchas.todas', ['canchas' => $canchas]);
 	}
     
-    public function busqueda(Request $request)
-    {
-        $canchas = Cancha::Canchas(
-            $request->get('cantjugadores'), 
-            $request->get('superficie'), 
-            $request->get('deporte')
-            )->get();
-        
-        return view('canchas.todas', ['canchas' => $canchas, 'ciudad' => $request->get('ciudad')]);
-    }
 }

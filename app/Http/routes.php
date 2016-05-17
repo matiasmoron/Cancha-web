@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('inicio');
 });
 
 Route::auth();
@@ -24,7 +24,7 @@ Route::get('/home', 'HomeController@index');
 
 
 //administracion de canchas
-Route::get('canchas/busqueda', 
+Route::get('turnos/todos', 
     [
 	'middleware' => 'auth',
 	'uses' => 'CanchaController@busqueda'

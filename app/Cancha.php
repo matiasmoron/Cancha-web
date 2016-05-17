@@ -29,9 +29,4 @@ class Cancha extends Model
     {
         return $this->belongsTo('App\Deporte', 'id_deporte');
     }
-    
-    public function scopeCanchas($query, $cantjugadores, $superficie, $deporte)
-    {
-        $query->where('cant_jugadores', $cantjugadores)->where('id_superficie',$superficie)->where('id_deporte', $deporte);
-    }
 }

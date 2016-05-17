@@ -35,13 +35,13 @@
                             </div>
                         </div>
                         <div class="form-bottom">
-                            <form role="form" action="" method="post" class="login-form">
+                            {!! Form::open(['url' => 'turnos/todos', 'method' => 'GET', 'role'=> 'search'])!!}
                                 <div class="form-group">
                                     <label class="sr-only" for="form-password">Fecha</label>
-                                    <input type="date" class=" form-control" id="fecha-turno">
+                                    {!!Form::date('fecha_turno', \Carbon\Carbon::now(), ['class' => 'form-control']) !!}
                                 </div>
-                                <button id="btn-turno" type="submit" class="btn">Conseguir turno</button>
-                            </form>
+                                <button type="submit" class="btn">Conseguir turno</button>
+                            {!! Form::close() !!}
                         </div>
                     </div>
                 </div>

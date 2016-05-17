@@ -26,4 +26,8 @@ class TurnoAdmin extends Model
         return $this->belongsTo('App\Dia','id_dia');
     }
     
+    public function scopeTurnos($query, $fecha_turno)
+    {
+        $query->where('fecha_inicio','=',$fecha_turno);
+    }
 }

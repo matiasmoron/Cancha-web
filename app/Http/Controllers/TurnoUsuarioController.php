@@ -32,7 +32,7 @@ class TurnoUsuarioController extends Controller
     {
         $dia_turno1 = new Carbon('this '.$dia);
 
-        dd(TurnoUsuario::whereDate('fecha_inicio','=',$dia_turno1->toDateString()));      
+        dd(TurnoUsuario::where('fecha_inicio','=', $dia_turno1->toDateString())->get());      
 
     }
 }
