@@ -27,7 +27,7 @@ Route::get('/home', 'HomeController@index');
 Route::get('turnos/todos', 
     [
 	'middleware' => 'auth',
-	'uses' => 'CanchaController@busqueda'
+	'uses' => 'TurnoAdminController@turnosBusqueda'
     ]
 	);
 	
