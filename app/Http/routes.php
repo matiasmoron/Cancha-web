@@ -27,8 +27,7 @@ Route::get('/home', 'HomeController@index');
 Route::get('turnos/todos', 
     [
 	'middleware' => 'auth',
-	'uses' => 'TurnoAdminController@turnosBusqueda'
-    ]
+	'uses' => 'TurnoAdminController@turnosBusqueda']
 	);
 	
 //Rutas para Facebook
@@ -52,9 +51,9 @@ Route::get('turno/reserva/{id_turnoAdmin}/{dia}/{horaInicio}/{horaFin}',
     'uses' => 'TurnoUsuarioController@buscarTurno']
     );
 
-Route::post('turno/reserva/{id_turnoAdmin}/{dia}/{horaInicio}/{horaFin}', 
-    ['as' => 'turnos.reserva',
-    'uses' => 'TurnoUsuarioController@guardarTurno']
+Route::post('turno/reservar', 
+    ['as' => 'turno.reservar',
+    'uses' => 'TurnoUsuarioController@reservarTurno']
     );
 
 //Ruta de admin
@@ -133,3 +132,6 @@ Route::get('admin/home',
 
 
 Route::get('inicio','InicioController@inicio');
+
+//Ruta para Email
+    Route::post('send', ['as' => 'send', 'uses' => 'MailController@send'] );

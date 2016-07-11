@@ -166,6 +166,11 @@ return [
         */
         
         Collective\Html\HtmlServiceProvider::class,
+		
+		/*
+        * Email
+        */
+		UxWeb\SweetAlert\SweetAlertServiceProvider::class,
     ],
 
     /*
@@ -214,6 +219,7 @@ return [
 		'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+		'Alert' => UxWeb\SweetAlert\SweetAlert::class,
 
     ],
 

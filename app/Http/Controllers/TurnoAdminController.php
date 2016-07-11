@@ -19,51 +19,36 @@ class TurnoAdminController extends Controller
     public function turnosBusqueda(Request $request)
     {
 
-        $datos = DB::raw(
-        SELECT e.id AS id_est,e.nombre,e.direccion,
-c.id as id_can,c.nombre_cancha,c.cant_jugadores,
-ta.horaInicio,ta.horaFin,ta.precio_cancha
-FROM turnoadmin as ta 
-LEFT JOIN turnousuario as tu ON tu.id_turnoAdmin = ta.id
-INNER JOIN cancha as c ON ta.id_cancha = c.id
-INNER JOIN establecimiento as e ON c.id_establecimiento = e.id
-WHERE id_dia = 1  AND tu.id_turnoAdmin IS NULL)->get();
+        $fechaR = $request->get('fecha_turno');
 
-        dd($datos);
-
-
-        /*$fecha = $request->get('fecha_turno');
-
-        $dia = Carbon::createFromDate(substr($fecha,0,4),substr($fecha,5,2),substr($fecha,8,10));
+        $dia = Carbon::createFromDate(substr($fechaR,0,4),substr($fechaR,5,2),substr($fechaR,8,10));
 
         $dia = $dia->format('l');
 
-        $datos = DB::table('establecimiento')
-                    ->join('cancha','cancha.id_establecimiento','=','establecimiento.id')
-                    ->join('turnoadmin', 'turnoadmin.id_cancha','=', 'cancha.id')
-                    ->join('dia', 'dia.id','=','turnoadmin.id_dia')
-                    ->where('dia_ingles', '=', $dia)
-                    ->get();
+        $fecha = substr($fechaR,0,4)."-".substr($fechaR,5,2)."-".substr($fechaR,8,10);
 
+        $canchas = DB::select("select 
+        e.id as id_est,
+        e.nombre,
+        e.direccion,
+        c.id as id_can,
+        c.nombre_cancha,
+        c.cant_jugadores,
+        GROUP_CONCAT(ta.horaInicio SEPARATOR ',') as horaIni,
+        GROUP_CONCAT(ta.horaFin SEPARATOR ',') as horaFin,
+        ta.precio_cancha 
+        FROM turnoadmin as ta 
+        LEFT JOIN turnousuario as tu ON tu.id_turnoAdmin = ta.id 
+        INNER JOIN cancha as c ON ta.id_cancha = c.id 
+        INNER JOIN establecimiento as e ON c.id_establecimiento = e.id
+        INNER JOIN dia as d ON d.dia_ingles = '".$dia."' 
+        WHERE ta.id_dia = d.id AND (tu.id_turnoAdmin IS NULL OR tu.fecha_inicio != '".$fecha."') 
+        GROUP BY (c.id)
+        ORDER BY e.id,c.id DESC");
 
-        $array = collect($datos);
+        //dd($canchas);
 
-        $array = $array->groupBy('id');
+        return view('canchas.turnoBusqueda', ['canchas' => $canchas, 'fecha' => $fecha, 'dia' => $dia]);
 
-        dd($array);
-
-        foreach ($array as $key => $value) 
-        {
-            $value = collect($value);
-        }
-
-        dd($array);
-
-
-        $id_ciudad = Ciudad::select('id')->where('ciudad_nombre','=','Bahia Blanca')->first()->id;
-
-		$establecimientos = Establecimiento::where('id_ciudad', '=', $id_ciudad)->get();
-       
-        return view('turnos.todos', ['establecimientos' => $establecimientos, 'fecha' => $request->get('fecha_turno')]);*/
     }
 }

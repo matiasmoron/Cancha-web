@@ -28,6 +28,7 @@
     24 => 'App\\Providers\\RouteServiceProvider',
     25 => 'Laravel\\Socialite\\SocialiteServiceProvider',
     26 => 'Collective\\Html\\HtmlServiceProvider',
+    27 => 'UxWeb\\SweetAlert\\SweetAlertServiceProvider',
   ),
   'eager' => 
   array (
@@ -44,6 +45,7 @@
     10 => 'App\\Providers\\AuthServiceProvider',
     11 => 'App\\Providers\\EventServiceProvider',
     12 => 'App\\Providers\\RouteServiceProvider',
+    13 => 'UxWeb\\SweetAlert\\SweetAlertServiceProvider',
   ),
   'deferred' => 
   array (

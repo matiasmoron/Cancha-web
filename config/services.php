@@ -16,7 +16,7 @@ return [
 
     'mailgun' => [
         'domain' => env('MAILGUN_DOMAIN'),
-        'secret' => env('MAILGUN_SECRET'),
+        'secret' => env('MAILGUN_PASS'),
     ],
 
     'ses' => [
@@ -27,7 +27,7 @@ return [
 
     'sparkpost' => [
         'secret' => env('SPARKPOST_SECRET'),
-    ],
+		],
 
     'stripe' => [
         'model' => App\User::class,

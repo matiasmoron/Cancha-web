@@ -1,7 +1,1 @@
-{
-"version": 3,
-"mappings": "AAAA,EAAE,CACE,KAAK,CAAC,IAAI,CACV,UAAU,CAAE,GAAG",
-"sources": ["inicio.scss"],
-"names": [],
-"file": "inicio.css"
-}
+{"version":3,"sources":["inicio.scss"],"names":[],"mappings":"AACA;EAEI,WAAW,EACd","file":"inicio.css","sourcesContent":["\r\nbody{\r\n\r\n    color: red;\r\n}"],"sourceRoot":"/source/"}

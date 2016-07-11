@@ -15,10 +15,15 @@
     <!-- Styles -->
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
 	<link href="{{asset('css/app.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('css/sweetalert.css')}}">
 
     <!--JS-->
      <script type="text/javascript" src="{{asset('js/jquery-1.12.3.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/bootstrap.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/sweetalert.min.js')}}"></script>
+
+    <!-- Include this after the sweet alert js file -->
+    @include('sweet::alert')
 
     <style>
         body {
@@ -58,7 +63,7 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/home') }}">Home</a></li>
+                    <li><a href="{{ url('/') }}">Home</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
