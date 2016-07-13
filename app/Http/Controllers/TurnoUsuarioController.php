@@ -8,6 +8,8 @@ use App\Http\Requests;
 
 use Auth;
 
+use App\Establecimiento;
+use App\Cancha;
 use App\TurnoUsuario;
 use App\TurnoAdmin;
 use App\Dia;
@@ -38,15 +40,26 @@ class TurnoUsuarioController extends Controller
 
     }
 
-    public function reservarTurno(Request $request)
+    public function previsualizarTurno(Request $request)
     {
-        alert('Hello World!')->persistent("Close this");
+        $establecimiento = Establecimiento::find($request->get('id_establecimiento'));
+        $cancha = Cancha::find($request->get('id_cancha'));
 
         $id_dia = Dia::where('dia_ingles','=',$request->get('dia'))->get();      
 
-        $id_turnoAdmin = TurnoAdmin::where('id_dia','=', $id_dia[0]->id)->where('horaInicio','=',$request->get('horaInicio'))->where('horaFin','=',$request->get('horaFin'))->get();
+        $turnoAdmin = TurnoAdmin::where('id_dia','=', $id_dia[0]->id)->where('horaInicio','=',$request->get('horaInicio'))->where('horaFin','=',$request->get('horaFin'))->get();
 
-        TurnoUsuario::create(['id_turnoAdmin' => $id_turnoAdmin[0]->id, 'fecha_inicio' => $request->get('fecha'), 'confirmado' => '0', 'pagado' => '0', 'estado' => '0', 'id_usuario' =>  Auth::user()->id]);
+        $establecimientosUser = Establecimiento::where('id_usuario', Auth::user()->id)->get();
+
+        return view('turnos.previsualizar2', ['cancha' => $cancha, 'establecimiento' => $establecimiento, 'turnoAdmin' => $turnoAdmin[0], 'arrayHoraIni' => $request->get('arrayHoraIni'), 'arrayHoraFin' => $request->get('arrayHoraFin'), 'fecha' => $request->get('fecha'), 'establecUser' => $establecimientosUser]);
+
+    }
+
+    public function reservarTurno(Request $request)
+    {
+        alert('Hello World!')->persistent("Close this");      
+
+        TurnoUsuario::create(['id_turnoAdmin' => $request->get('id_turnoAdmin'), 'fecha_inicio' => $request->get('fecha'), 'confirmado' => '0', 'pagado' => '0', 'estado' => '0', 'id_usuario' =>  Auth::user()->id]);
          
         return redirect('usuarios/turnos');
     }

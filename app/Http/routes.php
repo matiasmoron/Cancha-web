@@ -56,6 +56,11 @@ Route::post('turno/reservar',
     'uses' => 'TurnoUsuarioController@reservarTurno']
     );
 
+Route::post('turno/reservar/previsualizar', 
+    ['as' => 'turno.reservar',
+    'uses' => 'TurnoUsuarioController@previsualizarTurno']
+    );
+
 //Ruta de admin
 Route::get('admin/home', 
 	'UserController@adminhome');

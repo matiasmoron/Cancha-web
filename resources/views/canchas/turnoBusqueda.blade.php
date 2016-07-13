@@ -73,11 +73,16 @@
 										      					<p>Hora Fin: {{$horaFin[$indice]}}</p>
 										      				</div>
 										      				<div class="col-md-4 col-sm-4 col-xs-4">
-										      					{!! Form::open(['url' => 'turno/reservar' , 'method' => 'post']) !!}
-										      						{!!Form::hidden('fecha', $fecha)!!}
+										      					{!! Form::open(['url' => 'turno/reservar/previsualizar' , 'method' => 'post']) !!}
+										      						{!!Form::hidden('id_establecimiento', $cancha->id_est)!!}
+										      						{!!Form::hidden('id_cancha', $cancha->id_can)!!}
 										      						{!!Form::hidden('horaInicio', $HI)!!}
 										      						{!!Form::hidden('horaFin', $horaFin[$indice])!!}
-										      						{!!Form::hidden('dia', $dia)!!}					{!! Form::submit('Reservar Turno', ['class' => 'btn btn-default boton']) !!}
+										      						{!!Form::hidden('dia', $dia)!!}
+										      						{!!Form::hidden('arrayHoraIni', $cancha->horaIni)!!}
+										      						{!!Form::hidden('arrayHoraFin', $cancha->horaFin)!!}
+										      						{!!Form::hidden('fecha', $fecha)!!}					
+										      						{!! Form::submit('Información Turno', ['class' => 'btn btn-default boton']) !!}
 																{!! Form::close() !!}
 										      				</div>
 										      				<?php $indice++;?>
