@@ -1,12 +1,10 @@
 .foto
 {
-	width: 100%;
-	box-shadow: 3px 3px 3px #aaa;
-   -webkit-box-shadow: 3px 3px 3px #aaa;
-   -moz-box-shadow: 3px 3px 3px #aaa;
+	width: 150px;
+	height: 125px;
 }
 
-.personaData
+.TurnoData
 {
 	width:80%;
 	float:right;
@@ -21,15 +19,14 @@
     margin-bottom: 1em;
     margin-left: 0;
     margin-right: 0;
-    padding: 5%;
-    background-color: #0AC64F;
-    box-shadow: 0px 12px 12px #aaa;
-   -webkit-box-shadow: 0px 12px 12px #aaa;
-   -moz-box-shadow: 0px 12px 12px #aaa;
+    padding: 2%;
+    background-color: #F5F5F5;
+    box-shadow: 0px 2px 2px #aaa;
+   -webkit-box-shadow: 0px 2px 2px #aaa;
+   -moz-box-shadow: 0px 2px 2px #aaa;
 }
 
 .listaTurnos {
-    display: block;
     list-style-type: none;
 }
 
@@ -46,7 +43,7 @@
 	height: 100%;
 	background-color: #FEFEFF;
 	padding: 1%;
-	border-radius: 15px;
+	border: 1px solid #828282;
 	/*box-shadow: 0px 10px 10px #202020;
    -webkit-box-shadow: 0px 10px 10px #202020;
    -moz-box-shadow: 0px 10px 10px #202020;*/
@@ -54,21 +51,18 @@
 
 .info1
 {
-	font-size: 17px;
+	font-size: 15px;
 	display: inline;
 }
 
 .info2
 {
-	padding-right: 2%;
 	font-size: 16px;
-	display: block;
 }
 
-.datosDesap1
+.datosFila1
 {
-	width: 100%;
-	padding-top: 2%;
+	padding: 0%;
 }
 
 .datosDesap2
@@ -84,15 +78,15 @@
 	padding-right: 3%;
 }
 
-.nombre
+.nombreEstabl
 {
-	font-size: 26px;
+	font-size: 20px;
 }
 
 .acomodar
 {
 	position: relative;
-	top: -50px;
+	top: 30px;
 }
 
 .boton
@@ -113,4 +107,10 @@
 	padding-bottom: 2%;
 	position: relative;
 	top: -10px;
+}
+
+.menuIzq
+{
+	border: 1px solid;
+	background-color: #828282;
 }

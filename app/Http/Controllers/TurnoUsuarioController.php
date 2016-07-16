@@ -21,7 +21,20 @@ class TurnoUsuarioController extends Controller
 {
     public function misturnos()
     {
-        $turnosUser = TurnoUsuario::get()->where('id_usuario', Auth::user()->id);
+        $turnosUser = DB::select("select 
+                d.dia,
+                GROUP_CONCAT(ta.precio_cancha SEPARATOR ',') as precios,
+                GROUP_CONCAT(tu.confirmado SEPARATOR ',') as confirmados,
+                GROUP_CONCAT(ta.horaInicio SEPARATOR ',') as horaIni,
+                GROUP_CONCAT(ta.horaFin SEPARATOR ',') as horaFin
+                FROM turnoadmin as ta 
+                LEFT JOIN turnousuario as tu ON tu.id_turnoAdmin = ta.id
+                LEFT JOIN dia as d ON ta.id_dia = d.id 
+                WHERE tu.id_usuario = ".Auth::user()->id."
+                GROUP BY (ta.id_dia)
+                ORDER BY ta.id_dia ASC");
+
+        //dd($turnosUser);
         
         return view('usuarios.turnos', ['turnosUser' => $turnosUser]);
     }

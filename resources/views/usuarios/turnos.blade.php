@@ -3,45 +3,49 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-            <div class="panel panel-default" style="padding: 20px;">
-                <h2 style="padding-bottom:20px;">Turnos</h2>
-                @foreach($turnosUser as $turno)
-                    <div class="panel-heading">{{$turno->turnoAdmin->cancha->establecimiento->nombre}}: {{$turno->turnoAdmin->cancha->nombre_cancha}}</div>
-                    <div class="panel-body">
-                        <p>Dia: {{$turno->turnoAdmin->dia->dia}}</p>
-                        <p>Fecha Inicio: {{$turno->fecha_inicio}}</p>
-                        <p>Fecha Fin: {{$turno->fecha_inicio}}</p>
-                        <p>Hora Inicio: {{$turno->turnoAdmin->horaInicio}}</p>
-                        <p>Hora Fin: {{$turno->turnoAdmin->horaFin}}</p>
-                        <p>Precio: {{$turno->precio_cancha}}</p>
-                        
-                        @if($turno->adic_luz == 1)
-                            <p>Adicional Luz: Si</p>
-                            <p>Precio Adicional: {{$turno->precio_adicional}}</p>
-                        @else
-                            <p>Fecha Inicio: No</p>
-                        @endif
-                        
-                        @if($turno->pagado == 1)
-                            <p>Pago: Si</p>
-                        @else
-                            <p>Pago: No</p>
-                            {!! Form::open(['route' => ['turnos.cancha' , $turno->id], 'method' => 'GET', 'class' => 'btn btn-default pull-right'])!!}
-                                {!! Form::submit('Pagar') !!}
-                            {!!Form::close()!!}
-                        @endif
-                        
-                        @if($turno->confirmado == 1)
-                            <p>Confirmado: Si</p>
-                        @else
-                            <p>Confirmado: No</p>
-                            {!! Form::open(['route' => ['turnos.cancha' , $turno->id], 'method' => 'GET', 'class' => 'btn btn-default pull-right'])!!}
-                                {!! Form::submit('Confirmar') !!}
-                            {!!Form::close()!!}
-                        @endif
-                        
+        <!--                                  TURNOS ALTERNATIVOS                                  -->
+
+        <div class="col-md-12 col-sm-12 col-xs-12 centrarTitulo" style="padding-top: 5%;">
+            <h3>Tu Lista de Turnos</h3>
+        </div>
+        <div class="col-md-12 col-sm-12 col-xs-12 subtitulo">
+                <i class="fa fa-btn glyphicon glyphicon-calendar"></i>¡Que no te quedes con ningún partido sin jugar!
+        </div>
+
+        <div class="col-md-12 col-sm-12 col-xs-12" style="padding:5%;"> 
+            <div class="col-md-12 col-sm-12 col-xs-12 TurnosAdic">
+                <div class="col-md-12 col-sm-12 col-xs-12" style="padding: 1%;">
+                    <div class="col-md-3 col-sm-3 col-xs 3" style="text-align: center;">
+                        <p>Dia</p>
                     </div>
+                    <div class="col-md-4 col-sm-4 col-xs 4" style="text-align: center;">
+                        <p>Horario de Inicio</p>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs 4" style="text-align: center;">
+                        <p>Horario de Finalización</p>
+                    </div>
+                </div>
+                @foreach($turnosUser as $TU) 
+                    <?php   $horaIni = explode(",", $TU->horaIni);
+                            $horaFin = explode(",", $TU->horaFin);
+                            $indice = 0; ?>      
+                    @foreach($horaIni as $HI)
+                        <div class="col-md-12 col-sm-12 col-xs-12" style="padding: 1%;">
+                            <div class="col-md-3 col-sm-3 col-xs-3" style="text-align: center;">
+                                <p>{{$TU->dia}}</p>
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-xs-4" style="text-align: center;">
+                                <p>{{substr($HI,0,5)}} Hs</p>
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-xs 4" style="text-align: center;">
+                                <p>{{substr($horaFin[$indice],0,5)}} Hs</p>
+                            </div>
+                            <div class="col-md-1 col-sm-1 col-xs-1" style="text-align: right;">
+                                <i class="fa fa-btn glyphicon glyphicon-share-alt"></i>
+                            </div>
+                        </div>
+                    <?php $indice++; ?>
+                    @endforeach
                 @endforeach
             </div>
         </div>

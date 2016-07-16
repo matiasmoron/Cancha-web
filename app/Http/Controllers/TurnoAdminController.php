@@ -34,14 +34,17 @@ class TurnoAdminController extends Controller
         c.id as id_can,
         c.nombre_cancha,
         c.cant_jugadores,
+        s.superficie,
+        GROUP_CONCAT(ta.precio_cancha SEPARATOR ',') as precios,
         GROUP_CONCAT(ta.horaInicio SEPARATOR ',') as horaIni,
         GROUP_CONCAT(ta.horaFin SEPARATOR ',') as horaFin,
         ta.precio_cancha 
         FROM turnoadmin as ta 
         LEFT JOIN turnousuario as tu ON tu.id_turnoAdmin = ta.id 
-        INNER JOIN cancha as c ON ta.id_cancha = c.id 
+        INNER JOIN cancha as c ON ta.id_cancha = c.id
         INNER JOIN establecimiento as e ON c.id_establecimiento = e.id
-        INNER JOIN dia as d ON d.dia_ingles = '".$dia."' 
+        INNER JOIN dia as d ON d.dia_ingles = '".$dia."'
+        INNER JOIN superficie as s ON c.id_superficie = s.id
         WHERE ta.id_dia = d.id AND (tu.id_turnoAdmin IS NULL OR tu.fecha_inicio != '".$fecha."') 
         GROUP BY (c.id)
         ORDER BY e.id,c.id DESC");
