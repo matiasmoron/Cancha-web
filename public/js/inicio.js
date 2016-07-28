@@ -8,11 +8,15 @@ $(document).ready(function(){
 function oyentes(){
 
 
-    $('#btn-turno').click(function(e){
+    $('#fecha').on('change',function(e){
         e.preventDefault();
 
-        var turno = $('#fecha-turno').val();
-        console.log(turno);
+        console.log( $(this).val());
+
+        $(document).css("background-color", "yellow");
+        $('body').css("background-image","url('../../fotos/img/futbol-turnos.jpg')");
     });
+
+
 }
 

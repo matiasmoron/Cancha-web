@@ -27,7 +27,7 @@ class TurnoAdminController extends Controller
 
         $fecha = substr($fechaR,0,4)."-".substr($fechaR,5,2)."-".substr($fechaR,8,10);
 
-        $canchas = DB::select("select 
+        $estab = DB::select("select 
         e.id as id_est,
         e.nombre,
         e.direccion,
@@ -37,21 +37,23 @@ class TurnoAdminController extends Controller
         s.superficie,
         GROUP_CONCAT(ta.precio_cancha SEPARATOR ',') as precios,
         GROUP_CONCAT(ta.horaInicio SEPARATOR ',') as horaIni,
-        GROUP_CONCAT(ta.horaFin SEPARATOR ',') as horaFin,
-        ta.precio_cancha 
+        GROUP_CONCAT(ta.horaFin SEPARATOR ',') as horaFin
         FROM turnoadmin as ta 
         LEFT JOIN turnousuario as tu ON tu.id_turnoAdmin = ta.id 
         INNER JOIN cancha as c ON ta.id_cancha = c.id
         INNER JOIN establecimiento as e ON c.id_establecimiento = e.id
         INNER JOIN dia as d ON d.dia_ingles = '".$dia."'
         INNER JOIN superficie as s ON c.id_superficie = s.id
-        WHERE ta.id_dia = d.id AND (tu.id_turnoAdmin IS NULL OR tu.fecha_inicio != '".$fecha."') 
+        WHERE ta.id_dia = d.id AND (tu.id_turnoAdmin IS NULL OR tu.fecha != '".$fecha."') 
         GROUP BY (c.id)
         ORDER BY e.id,c.id DESC");
 
-        //dd($canchas);
+        $estab = collect($estab);
+        $estab = $estab->groupBy('id_est');
 
-        return view('canchas.turnoBusqueda', ['canchas' => $canchas, 'fecha' => $fecha, 'dia' => $dia]);
+        //dd($estab);
+
+        return view('canchas.turnoBusqueda', ['estab' => $estab, 'fecha' => $fecha, 'dia' => $dia]);
 
     }
 }
