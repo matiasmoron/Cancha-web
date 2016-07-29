@@ -13,8 +13,8 @@
 	<link rel="stylesheet" href="{{asset('fonts/glyphicons-halflings-regular.eot')}}">
 
     <!-- Styles -->
-    <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
-	<link href="{{asset('css/app.css')}}" rel="stylesheet">
+    <link href="{{asset('css/bootstrap/bootstrap.min.css')}}" rel="stylesheet">
+	<link href="{{asset('css/commons/app.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('css/sweetalert.css')}}">
 
     <!--JS-->
@@ -42,7 +42,7 @@
     </style>
 </head>
 <body id="app-layout">
-    <nav class="navbar navbar-default navbar-static-top">
+    <{{-- nav class="navbar navbar-default navbar-static-top">
         <div class="container">
             <div class="navbar-header">
 
@@ -58,13 +58,58 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                     CanchaYa
                 </a>
-            </div>
+            </div> --}}
 
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{ url('/') }}">
+                    {{-- <img src="images/logoelpaseo.png" alt="" /> --}}
+                    CanchaYa
+                </a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                {{-- <ul class="nav navbar-nav navbar-right custom-menu">
+                </ul> --}}
+                 <ul class="nav navbar-nav navbar-right">
+                    <!-- Authentication Links -->
+                    @if (Auth::guest())
+                        <li><a href="{{ url('/login') }}">Ingresar</a></li>
+                        <li><a href="{{ url('/register') }}">Registrarse</a></li>
+                    @else
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                {{ Auth::user()->name }} <span class="caret"></span>
+                            </a>
+
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Salir</a></li>
+                                <li><a href="{{ url('usuarios/turnos') }}"><i class="fa fa-btn glyphicon glyphicon-calendar"></i>Mis Turnos</a></li>
+                                @if( Auth::user()->admin == 1)
+                                    <li><a href="{{ url('admin/home') }}">
+                                    <i class="fa fa-btn glyphicon glyphicon-th-list">
+                                    </i>Administrar</a></li>
+                                @endif
+                            </ul>
+                        </li>
+                    @endif
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+
+{{-- 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
-                <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/') }}">Home</a></li>
-                </ul>
 
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
@@ -91,7 +136,7 @@ glyphicon glyphicon-th-list"></i>Administrar</a></li>
                 </ul>
             </div>
         </div>
-    </nav>
+    </nav> --}}
 
     @yield('content')
 

@@ -1,0 +1,116 @@
+.foto
+{
+	width: 150px;
+	height: 125px;
+}
+
+.TurnoData
+{
+	width:80%;
+	float:right;
+	position: relative;
+	padding-left: .6em;
+}
+
+.lista {
+    display: block;
+    list-style-type: none;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 2%;
+   // background-color: #F5F5F5;
+   //box-shadow: 0px 0px 2px #aaa;
+   //-webkit-box-shadow: 0px 2px 2px #aaa;
+   //-moz-box-shadow: 0px 2px 2px #aaa;
+}
+
+.listaTurnos {
+    list-style-type: none;
+}
+
+
+.recuadro
+{
+	padding-top: 1%;
+	padding-bottom: 1%;
+}
+
+.cont
+{
+	width: 100%;
+	height: 100%;
+	background-color: #FEFEFF;
+	padding: 1%;
+	border: 1px solid #828282;
+	/*box-shadow: 0px 10px 10px #202020;
+   -webkit-box-shadow: 0px 10px 10px #202020;
+   -moz-box-shadow: 0px 10px 10px #202020;*/
+}
+
+.info1
+{
+	font-size: 15px;
+	display: inline;
+}
+
+.info2
+{
+	font-size: 16px;
+}
+
+.datosFila1
+{
+	padding: 0%;
+}
+
+.datosDesap2
+{
+	width: 100%;
+	padding-top: 4%;
+}
+
+.dato
+{
+	position: relative;
+	float: left;
+	padding-right: 3%;
+}
+
+.nombreEstabl
+{
+	font-size: 20px;
+}
+
+.acomodar
+{
+	position: relative;
+	top: 30px;
+}
+
+.boton
+{
+	position: relative;
+	float: right;
+}
+
+.decorar
+{
+	text-decoration: none;
+}
+
+.acomodarTitulo
+{
+	font-size: 30px;
+	text-align: center;
+	padding-bottom: 2%;
+	position: relative;
+	top: -10px;
+}
+
+.menuIzq
+{
+	border: 1px solid;
+	background-color: #828282;
+}

@@ -1,0 +1,100 @@
+$verde: rgb(28, 184, 65);
+
+.acomodar-submenu
+{
+	padding-bottom: 3%;
+	padding-top: 2%;
+}
+
+.TurnosAdic
+{
+	background-color: #E7E7E7;
+	box-shadow: 0px 2px 2px #aaa;
+   -webkit-box-shadow: 0px 2px 2px #aaa;
+   -moz-box-shadow: 0px 2px 2px #aaa;
+}
+
+.centrarTitulo
+{
+	text-align: center;
+}
+
+.subtitulo
+{
+	text-align: center;
+	color: gray;
+}
+
+.posCont1
+{
+	padding-top: 4%;
+}
+
+.posContSlide
+{
+	left: -70px;
+	top: 50px; 
+}
+
+.contIcon
+{
+	text-align:left; 
+	padding-left:0px; 
+}
+
+.contInfo
+{
+	border-left: 1px solid;
+}
+
+.contInfoDer
+{
+	border-right: 1px solid;
+	padding-top: 3%; 
+	text-align:right;
+}
+
+.postContInfo
+{
+	position: relative;
+	top: 10px;
+}
+
+.postCont2Info
+{
+	position: relative;
+	top: 20px;
+}
+
+.postContBoton
+{
+	padding-top: 7%;
+}
+
+.listaCanchas 
+{
+    display:inline;
+    list-style-type: none;
+}
+
+.elemCancha
+{
+	background-color: grey;
+}
+
+.btn-reserva{
+
+	background:$verde;
+	border-radius: 4px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.btn-reserva:hover{
+	background: darken($verde,10%);
+}
+
+.establec{
+	background-color:green; 
+	margin-bottom:15px;
+	box-shadow: 0px 7px 7px grey;
+}
