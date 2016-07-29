@@ -53,7 +53,7 @@ class TurnoAdminController extends Controller
 
         //dd($estab);
 
-        return view('canchas.turnoBusqueda', ['estab' => $estab, 'fecha' => $fecha, 'dia' => $dia]);
+        return view('canchas.turnoBusqueda', ['estab' => $estab, 'fecha' => $fecha, 'dia' => $dia, 'deportes' => $this->getDeportes(), 'ciudad' => $this->getCiudades(), 'superficie' => $this->getSuperficies(), 'jugadores' => $this->getCantJugadores()]);
 
     }
 }
