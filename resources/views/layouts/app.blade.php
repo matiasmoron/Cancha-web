@@ -14,7 +14,7 @@
 
     <!-- Styles -->
     <link href="{{asset('css/bootstrap/bootstrap.min.css')}}" rel="stylesheet">
-	<link href="{{asset('css/commons/app.css')}}" rel="stylesheet">
+	<link href="{{asset('css/commons/commons.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('css/sweetalert.css')}}">
 
     <!--JS-->

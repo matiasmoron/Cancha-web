@@ -7,7 +7,7 @@
  <script type="text/javascript" src="{{ URL::asset('js/inicio.js') }}"></script>
  
 <link rel="stylesheet" href="{{ URL::asset('css/inicio/form-elements.css') }}">
-<link rel="stylesheet" href="{{ URL::asset('css/inicio/style.css')}}">
+<link rel="stylesheet" href="{{ URL::asset('css/inicio/inicio.css')}}">
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
 
     <div class="top-content">
