@@ -72,7 +72,7 @@ class TurnoUsuarioController extends Controller
     {
         alert('Hello World!')->persistent("Close this");      
 
-        TurnoUsuario::create(['id_turnoAdmin' => $request->get('id_turnoAdmin'), 'fecha_inicio' => $request->get('fecha'), 'confirmado' => '0', 'pagado' => '0', 'estado' => '0', 'id_usuario' =>  Auth::user()->id]);
+        TurnoUsuario::create(['id_turnoAdmin' => $request->get('id_turnoAdmin'), 'fecha' => $request->get('fecha'), 'confirmado' => '0', 'pagado' => '0', 'estado' => '0', 'id_usuario' =>  Auth::user()->id]);
          
         return redirect('usuarios/turnos');
     }

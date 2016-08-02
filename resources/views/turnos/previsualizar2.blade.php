@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+
+<link rel="stylesheet" href="{{ URL::asset('css/turnos/turnos.css') }}">
+
 <div class="container">
     <div class="row">
     	
@@ -103,7 +106,7 @@
       					{!! Form::open(['url' => 'turno/reservar' , 'method' => 'post']) !!}
       						{!!Form::hidden('id_turnoAdmin', $turnoAdmin->id)!!}
       						{!!Form::hidden('fecha', $fecha)!!}			
-      						{!!Form::submit('Reservar Turno', ['class' => 'btn btn-default boton'])!!}
+      						{!!Form::submit('Reservar Turno', ['class' => 'btn btn-default boton', 'style' => 'float:right;'])!!}
 						{!! Form::close() !!}
 					</div>
 				</div>

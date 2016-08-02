@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+
+<link rel="stylesheet" href="{{ URL::asset('css/canchas/todas.css') }}">
+
 <div class="container">
     <div class="row">
 
