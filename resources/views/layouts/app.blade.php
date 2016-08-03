@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="{{asset('css/sweetalert.css')}}">
 
     <!--JS-->
-     <script type="text/javascript" src="{{asset('js/jquery-1.12.3.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/jquery-1.12.3.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/bootstrap.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/sweetalert.min.js')}}"></script>
 
