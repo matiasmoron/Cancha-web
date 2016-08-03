@@ -4,7 +4,7 @@
 
 
 
- <script type="text/javascript" src="{{ URL::asset('js/inicio.js') }}"></script>
+<script type="text/javascript" src="{{ URL::asset('js/inicio.js') }}"></script>
  
 <link rel="stylesheet" href="{{ URL::asset('css/inicio/form-elements.css') }}">
 <link rel="stylesheet" href="{{ URL::asset('css/inicio/inicio.css')}}">
