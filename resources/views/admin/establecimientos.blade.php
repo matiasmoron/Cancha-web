@@ -1,11 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
+<link rel="stylesheet" href="{{ URL::asset('css/admin/admin.css') }}">
+
 <div class="container">
-    <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-            <div class="panel panel-default" style="padding: 20px;">
-                <h2 style="padding-bottom:20px;">Tus Establecimientos</h2>
+    <div class="row container-body">
+     <h2 style="text-align: center;">Tus establecimientos</h2>
+        <div class="col-md-6 col-md-offset-3">
+            <div class="panel panel-default" >
+               
                 @foreach($establecimiento as $establec)
                     <div class="panel-heading">{{$establec->nombre}}</div>
                     <div class="panel-body">
@@ -20,7 +23,9 @@
                         <p>Ciudad: {{$establec->ciudad->ciudad_nombre}}</p>
                         <p>Provincia: {{$establec->ciudad->provincia->provincia_nombre}}</p>
                         {!! Form::open(['route' => ['admin.establecimiento.editar' , $establec->id], 'method' => 'GET', 'class' => 'btn btn-default pull-right'])!!}
-                            {!! Form::submit('Editar Establecimiento') !!}
+                            {{-- {!! Form::submit('Editar Establecimiento') !!} --}}
+                        
+                        <button class="btn2">Editar establecimiento</button>
                         {!!Form::close()!!}
                     </div>
                 @endforeach
@@ -28,4 +33,5 @@
         </div>
     </div>
 </div>
+
 @endsection

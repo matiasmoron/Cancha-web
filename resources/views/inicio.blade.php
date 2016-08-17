@@ -36,11 +36,12 @@
                         </div>
                         <div class="form-bottom">
                             {!! Form::open(['url' => 'turnos/todos', 'method' => 'GET', 'role'=> 'search'])!!}
-                                <div class="form-group">
-                                    <div id="deportes">
-                                        
+                                <div class="row form-group">
+                                    <div class="col-md-6">
+                                    
+                                        <select id="deportes"></select>
                                     </div>
-                                    <div>
+                                    <div class="col-md-6">
                                         <label class="sr-only" for="form-password">Fecha</label>
                                         {!!Form::date('fecha_turno', \Carbon\Carbon::now(), ['class' => 'form-control','id'=>'fecha']) !!}
                                     </div>

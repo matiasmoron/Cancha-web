@@ -1,22 +1,28 @@
 $( document ).ready(function() {
-   console.log("hola");
-
-
    oyentes();
 });
 
 function oyentes(){
 
 
-    $('#fecha').on('change',function(e){
+    $('#deportes').on('change',function(e){
         e.preventDefault();
+        if($(this).val()==1){
+            console.log("FUTBOL");
+        // $(document).css("background-color", "yellow");
+        // $('body').css("background-image","url('../../fotos/img/futbol-turnos.jpg')");
+        }
+        if($(this).val()==2){
+            console.log("basket");
+        }
+        if($(this).val()==3){
+            console.log("otro");
+        }
 
-        console.log( $(this).val());
-
-        $(document).css("background-color", "yellow");
-        $('body').css("background-image","url('../../fotos/img/futbol-turnos.jpg')");
     });
 
-
+    $("#deportes").append('<option value=1>Fútbol</option>')
+    $("#deportes").append('<option value=2>Basket</option>')
+    $("#deportes").append('<option value=3>que se yo</option>')
 }
 

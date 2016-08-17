@@ -1,7 +1,7 @@
  @import 'commons.css';
 
-$color-gral: darken(#3b5998,10%);;
-
+$color-gral:#3b5998;
+// $color-gral:#ed6f70;
 
 body{
    
@@ -109,10 +109,10 @@ button{
     background: white;
     width: 100%;
 
-    }
+}
 .btn2{
     background:$color-gral;
-    width: 20%;
+    width: 50%;
     height: 35px;
 }
 
