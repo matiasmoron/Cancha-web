@@ -8,7 +8,7 @@ class TurnoUsuario extends Model
 {
     protected $table = 'turnousuario';
     public $timestamps = false;
-    protected $fillable = ['id_turnoAdmin','fecha_inicio', 'precio_cancha', 'adic_luz', 'precio_adicional', 'confirmado', 'pagado', 'id_usuario', 'estado'];
+    protected $fillable = ['id_turnoAdmin','fecha', 'precio_cancha', 'adic_luz', 'precio_adicional', 'confirmado', 'pagado', 'id_usuario', 'estado'];
 
     public function usuario()
     {

@@ -20,17 +20,18 @@
 
     	<div class="col-md-12 col-sm-12 col-xs-12 acomodar buscadorTop">
     		<div class="col-md-9 col-sm-9 col-xs-9">
-	        	{!! Form::select('id_deporte', $deportes , '1' , ['class' => 'form-control', 'style' => 'width:25%; float:right;']) !!}
+	        	{!! Form::select('id_rank', $rank , '0' , ['class' => 'form-control', 'style' => 'width:25%; float:right;']) !!}
 	        </div>
     		<div class="col-md-3 col-sm-3 col-xs-3">
-	    		<form class="navbar-form" role="search" style="margin:0;">
+    			{!!Form::open(['url' => 'turnos/todos', 'method' => 'GET', 'class' => 'navbar-form', 'style' => 'margin:0', 'role' => 'search'])!!}
 			        <div class="input-group" style="float:right;">
-			            <input type="text" class="form-control" placeholder="Cancha/Establecimiento" name="srch-term" id="srch-term">
+			        	{!!Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Establecimiento'])!!}
+			        	{!!Form::hidden('fecha_turno', $fecha)!!}
 			            <div class="input-group-btn">
 			                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
 			            </div>
 			        </div>
-	        	</form>
+	        	{!!Form::close()!!}
 	        </div>
     	</div>
 
@@ -41,41 +42,44 @@
 	    		<div class="col-md-12 col-sm-12 col-xs-12">
 	    			<h4>Filtrar Por:</h4>
 	    		</div>
-    			<div class="col-md-12 col-sm-12 col-xs-12 elem-menu">
-	    			<div class="col-md-12 col-sm-12 col-xs-12">
-	    				<p>Deporte</p>
-	    			</div>
-	    			<div class="col-md-12 col-sm-12 col-xs-12">
-	    				{!! Form::select('id_deporte', $deportes , '1' , ['class' => 'form-control']) !!}
-	    			</div>
-	    		</div>
-	    		<div class="col-md-12 col-sm-12 col-xs-12 elem-menu">
-	    			<div class="col-md-12 col-sm-12 col-xs-12">
-	    				<p>Ciudad</p>
-	    			</div>
-	    			<div class="col-md-12 col-sm-12 col-xs-12">
-	    				{!! Form::select('id_ciudad', $ciudad , '1' , ['class' => 'form-control']) !!}
-	    			</div>
-	    		</div>
-	    		<div class="col-md-12 col-sm-12 col-xs-12 elem-menu">
-	    			<div class="col-md-12 col-sm-12 col-xs-12">
-	    				<p>Superficie</p>
-	    			</div>
-	    			<div class="col-md-12 col-sm-12 col-xs-12">
-	    				{!! Form::select('id_superficie', $superficie , '1' , ['class' => 'form-control']) !!}
-	    			</div>
-	    		</div>
-	    		<div class="col-md-12 col-sm-12 col-xs-12 elem-menu">
-	    			<div class="col-md-12 col-sm-12 col-xs-12">
-	    				<p>Jugadores</p>
-	    			</div>
-	    			<div class="col-md-12 col-sm-12 col-xs-12">
-	    				{!! Form::select('cantJugadores', $jugadores , '5' , ['class' => 'form-control']) !!}
-	    			</div>
-	    		</div>
-	    		<div class="col-md-12 col-sm-12 col-xs-12">
-	    			{!!Form::submit('Filtrar', ['class' => 'btn btn-default boton btn-reserva']) !!}
-	    		</div>
+	    		{!!Form::open(['url' => 'turnos/todos', 'method' => 'GET'])!!}
+	    			<div class="col-md-12 col-sm-12 col-xs-12 elem-menu">
+		    			<div class="col-md-12 col-sm-12 col-xs-12">
+		    				<p>Deporte</p>
+		    			</div>
+		    			<div class="col-md-12 col-sm-12 col-xs-12">
+		    				{!! Form::select('id_deporte', $deportes , '0' , ['class' => 'form-control']) !!}
+		    			</div>
+		    		</div>
+		    		<div class="col-md-12 col-sm-12 col-xs-12 elem-menu">
+		    			<div class="col-md-12 col-sm-12 col-xs-12">
+		    				<p>Ciudad</p>
+		    			</div>
+		    			<div class="col-md-12 col-sm-12 col-xs-12">
+		    				{!! Form::select('id_ciudad', $ciudad , '0' , ['class' => 'form-control']) !!}
+		    			</div>
+		    		</div>
+		    		<div class="col-md-12 col-sm-12 col-xs-12 elem-menu">
+		    			<div class="col-md-12 col-sm-12 col-xs-12">
+		    				<p>Superficie</p>
+		    			</div>
+		    			<div class="col-md-12 col-sm-12 col-xs-12">
+		    				{!! Form::select('id_superficie', $superficie , '0' , ['class' => 'form-control']) !!}
+		    			</div>
+		    		</div>
+		    		<div class="col-md-12 col-sm-12 col-xs-12 elem-menu">
+		    			<div class="col-md-12 col-sm-12 col-xs-12">
+		    				<p>Jugadores</p>
+		    			</div>
+		    			<div class="col-md-12 col-sm-12 col-xs-12">
+		    				{!! Form::select('cantJugadores', $jugadores , '0' , ['class' => 'form-control']) !!}
+		    			</div>
+		    		</div>
+		    		<div class="col-md-12 col-sm-12 col-xs-12">
+		    			{!!Form::submit('Filtrar', ['class' => 'btn btn-default boton btn-reserva']) !!}
+		    		</div>
+		    		{!!Form::hidden('fecha_turno', $fecha)!!}
+		    	{!!Form::close()!!}
 	    	</div>
 	        <div class="col-md-10 col-sm-10 col-xs-10" style="margin:0;">
 				<ol class="lista col-md-12 col-sm-12 col-xs-12">

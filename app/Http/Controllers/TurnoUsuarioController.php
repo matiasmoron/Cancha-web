@@ -21,6 +21,7 @@ class TurnoUsuarioController extends Controller
 {
     public function misturnos()
     {
+
         $turnosUser = DB::select("select 
                 d.dia,
                 GROUP_CONCAT(ta.precio_cancha SEPARATOR ',') as precios,
@@ -70,9 +71,14 @@ class TurnoUsuarioController extends Controller
 
     public function reservarTurno(Request $request)
     {
-        alert('Hello World!')->persistent("Close this");      
+        //alert('Hello World!')->persistent("Close this");      
 
-        TurnoUsuario::create(['id_turnoAdmin' => $request->get('id_turnoAdmin'), 'fecha' => $request->get('fecha'), 'confirmado' => '0', 'pagado' => '0', 'estado' => '0', 'id_usuario' =>  Auth::user()->id]);
+
+        $fecha = Carbon::createFromFormat('Y-m-d', $request->get('fecha'))->toDateString();
+
+        //dd($fecha);
+
+        $turno = TurnoUsuario::create(['id_turnoAdmin' => $request->get('id_turnoAdmin'), 'fecha' => $fecha, 'confirmado' => '0', 'pagado' => '0', 'estado' => '0', 'id_usuario' =>  Auth::user()->id]);
          
         return redirect('usuarios/turnos');
     }

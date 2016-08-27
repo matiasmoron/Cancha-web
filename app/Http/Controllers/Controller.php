@@ -45,7 +45,7 @@ class Controller extends BaseController
         return $arrCanchas;
     }
 
-    public function getCiudades()
+    public function getCiudades($flag)
     {
         $ciudades = Ciudad::get();
         $arrCiudades = array();
@@ -54,10 +54,16 @@ class Controller extends BaseController
             $arrCiudades[$ciudad->id] = $ciudad->ciudad_nombre;
         }
 
+        if($flag === 1)
+        {
+            array_unshift($arrCiudades, "-");
+        }
+        
+
         return $arrCiudades;
     }
 
-    public function getDeportes()
+    public function getDeportes($flag)
     {
         $deportes = Deporte::get();
         $arrDeportes = array();
@@ -66,16 +72,26 @@ class Controller extends BaseController
             $arrDeportes[$deporte->id] = $deporte->deporte;
         }
 
+        if($flag === 1)
+        {
+            array_unshift($arrDeportes, "-");
+        }
+
         return $arrDeportes;
     }
 
-    public function getSuperficies()
+    public function getSuperficies($flag)
     {
         $superficies = Superficie::get();
         $arrSuperficies = array();
         foreach($superficies as $superficie)
         {
             $arrSuperficies[$superficie->id] = $superficie->superficie;
+        }
+
+        if($flag === 1)
+        {
+            array_unshift($arrSuperficies, "-");
         }
 
         return $arrSuperficies;
@@ -93,8 +109,20 @@ class Controller extends BaseController
         return $arrEstablecimientos;
     }
 
-    public function getCantJugadores()
+    public function getCantJugadores($flag)
     {
-        return array('3' => '3', '4' => '4', '5' => '5', '6' => '6', '7' => '7', '8' => '8', '9' => '9', '10' => '10', '11' => '11', '12' => '12');;
+        $arr = array('3' => '3', '4' => '4', '5' => '5', '6' => '6', '7' => '7', '8' => '8', '9' => '9', '10' => '10', '11' => '11', '12' => '12');;
+        
+        if($flag === 1)
+        {
+            array_unshift($arr, "-");
+        }
+
+        return $arr;
+    }
+
+    public function getRank()
+    {
+        return array('0' => 'Mayor Estrellas', '1' => 'Mas Relevantes', '2' => 'Mas Buscadas');
     }
 }
