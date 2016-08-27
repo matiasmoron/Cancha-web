@@ -4,8 +4,15 @@
 
 <link rel="stylesheet" href="{{ URL::asset('css/admin/admin.css') }}">
 
-<div class="container col-md-8 col-md-offset-2 " >
-    <div class="panel panel-default container-body" >
+<div class="container " style="padding-top: 5%;">
+    <div class="col-md-2">
+        <button class="btn2" onclick="go_back()">Volver&nbsp;
+            <i class="fa fa-undo" aria-hidden="true"></i>
+        </button>
+    </div>
+    
+<div class="col-md-8 " style="padding-top: 5%;">
+    <div class="panel panel-default">
         <div class="panel-heading">Nueva cancha</div>
         <div class="panel-body">
             {!! Form::open(['url' => 'admin/cancha/nueva' , 'method' => 'post']) !!}
@@ -70,7 +77,6 @@
                     {!! Form::select('id_superficie', $arr2 , null, ['class' => 'form-control']) !!}
                 </div>
               <div style="text-align: center;">
-                {{-- {!! Form::submit('Modificar') !!} --}}
                 <button class="btn2">Agregar</button>
               </div>
             {!! Form::close() !!}

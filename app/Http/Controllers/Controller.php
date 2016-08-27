@@ -11,6 +11,9 @@ use Illuminate\Foundation\Auth\Access\AuthorizesResources;
 use App\Deporte;
 use App\Ciudad;
 use App\Superficie;
+use App\Establecimiento;
+use App\Cancha;
+use App\Dia;
 
 class Controller extends BaseController
 {

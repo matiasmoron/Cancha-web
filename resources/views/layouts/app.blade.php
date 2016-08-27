@@ -21,6 +21,7 @@
     <script type="text/javascript" src="{{asset('js/jquery-1.12.3.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/bootstrap.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/sweetalert.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/commons.js')}}"></script>
 
     <!-- Include this after the sweet alert js file -->
     @include('sweet::alert')

@@ -3,8 +3,16 @@
 @section('content')
 
 <link rel="stylesheet" href="{{ URL::asset('css/admin/admin.css') }}">
+
+
 <div class="container" style="padding-top: 5%;">
-    <div>
+    <div class="col-md-2">
+        <button class="btn2" onclick="go_back()">Volver&nbsp;
+            <i class="fa fa-undo" aria-hidden="true"></i>
+        </button>
+    </div>
+    <div class="row" style="padding-top: 5%;">
+ 
         <div class="col-md-6 bloque-exterior">
             <div class="bloque tipo-1">
                 <div class="col-md-10 update-left">
