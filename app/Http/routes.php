@@ -11,13 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('inicio');
-});
+
 
 Route::auth();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/', 'HomeController@index');
 
 //administracion de establecimiento
 

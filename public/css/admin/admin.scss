@@ -1,7 +1,6 @@
  @import 'commons.css';
 
 $color-gral:#3b5998;
-// $color-gral:#ed6f70;
 
 body{
    
@@ -9,7 +8,10 @@ body{
    font-family: 'Roboto', sans-serif;
 }
 
-
+.panel-heading{
+    padding-left:0px; 
+    background-color: $color-gral;
+}
 .bloque-exterior{
     padding-bottom: 30px;
 }

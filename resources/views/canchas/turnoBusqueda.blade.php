@@ -126,7 +126,7 @@
 											</div>
 											<div class="panel-group col-md-12 col-sm-12 col-xs-12" id="accordion" role="tablist" aria-multiselectable="true">
 												<div class="panel">
-					    							<div class="panel-heading" role="tab" id=<?php echo $panel?> style="padding-left:0px; background-color: #11C623;">
+					    							<div class="panel-heading" role="tab" id=<?php echo $panel?> style="padding-left:0px; background-color: #3b5998;">
 												      <h4 class="panel-title">
 												        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href=<?php echo "#collapse".$panel?> aria-expanded="false" aria-controls=<?php echo "collapse".$panel?>><span class="linkTurno">Ver Turnos</span>
 												        <i class="fa fa-btn glyphicon glyphicon-chevron-down" style="float: right;"></i></a>

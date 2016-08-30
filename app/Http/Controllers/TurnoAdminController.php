@@ -19,6 +19,8 @@ class TurnoAdminController extends Controller
     public function turnosBusqueda(Request $request)
     {
         $fechaR = $request->get('fecha_turno');
+        $deporte = $request->get('id_deporte');
+
 
         $dia = Carbon::createFromDate(substr($fechaR,0,4),substr($fechaR,5,2),substr($fechaR,8,10));
 
@@ -45,7 +47,7 @@ class TurnoAdminController extends Controller
                 INNER JOIN dia as d ON d.dia_ingles = '".$dia."'
                 INNER JOIN superficie as s ON c.id_superficie = s.id
                 INNER JOIN deporte as dp ON c.id_deporte = dp.id
-                WHERE ta.id_dia = d.id AND (tu.id_turnoAdmin IS NULL OR tu.fecha != '".$fecha."')";
+                WHERE ta.id_dia = d.id AND c.id_deporte='".$deporte."' AND  (tu.id_turnoAdmin IS NULL OR tu.fecha != '".$fecha."')";
 
 
         if(strcmp($request->get('name'),"") !== 0)

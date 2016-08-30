@@ -5,10 +5,11 @@
 
 
 <script type="text/javascript" src="{{ URL::asset('js/inicio.js') }}"></script>
+
+
  
 <link rel="stylesheet" href="{{ URL::asset('css/inicio/form-elements.css') }}">
 <link rel="stylesheet" href="{{ URL::asset('css/inicio/inicio.css')}}">
-<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
 
     <div class="top-content">
         <div class="inner-bg">
@@ -38,28 +39,11 @@
                             {!! Form::open(['url' => 'turnos/todos', 'method' => 'GET', 'role'=> 'search'])!!}
                                 <div class="row form-group">
                                     <div class="col-md-6">
-                                    
-                                        <select id="deportes"></select>
+                                        {!! Form::select('id_deporte',$deportes , '0' , ['class' => 'form-control']) !!}
                                     </div>
-                                  {{--   <div class="col-md-6">
-                                        <label class="sr-only" for="form-password">Fecha</label>
-                                       
-                                    </div> --}}
                                     <div class='col-md-6'>
-                                       <div class="form-group">
-                                          {{--  <div class='input-group date' id='datetimepicker'> --}}
-                                                
-                                              {{--     <input size="16" type="text" value="2012-06-15 14:45" readonly class="form_datetime">
-                                               <span class="input-group-addon">
-                                                   <span class="glyphicon glyphicon-calendar"></span>
-                                               </span>
-                                           </div> --}}
-                                           <div class="input-append date form_datetime">
-                                              {!!Form::text('fecha_turno', \Carbon\Carbon::now(), ['class' => 'form-control','id'=>'fecha']) !!}
-                                               <span class="add-on"><i class="fa fa-calendar" aria-hidden="true"></i>
-                                                </span>
-                                           </div>
-                                       </div>
+                                           
+                                        {!!Form::date('fecha_turno', \Carbon\Carbon::now(), ['class' => 'form-control','id'=>'fecha']) !!}
                                     </div>
                                 </div>
                                 <button type="submit" class="btn">Conseguir turno</button>
