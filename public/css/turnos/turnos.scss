@@ -1,3 +1,6 @@
+@import 'commons.css';
+$color-gral:#3b5998;
+
 .acomodar-submenu
 {
 	padding-bottom: 3%;
@@ -12,7 +15,7 @@
    -moz-box-shadow: 0px 2px 2px #aaa;
 }
 
-.centrarTitulo
+.centrarSubTitulo
 {
 	text-align: center;
 }
@@ -31,7 +34,7 @@
 .posContSlide
 {
 	left: -70px;
-	top: 50px; 
+	top: 110px;
 }
 
 .contIcon
@@ -80,5 +83,35 @@
 	background-color: grey;
 }
 
+.btn-reserva
+{
+	background:$color-gral;
+	border-radius: 4px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    color: white;
+}
 
+.btn-reserva:hover{
+	background: darken($color-gral,10%);
+	color: white;
+}
 
+.color-blue
+{
+	color:$color-gral;
+}
+
+.encabTabla
+{
+	font-size: 18px;
+}
+
+.table td th{
+   text-align: center;   
+}
+
+.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th 
+{
+   background-color: $color-gral;
+   color: white;
+}

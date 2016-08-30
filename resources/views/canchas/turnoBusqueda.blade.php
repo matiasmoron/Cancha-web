@@ -175,7 +175,8 @@
 														      						{!!Form::hidden('dia', $dia)!!}
 														      						{!!Form::hidden('arrayHoraIni', $cancha->horaIni)!!}
 														      						{!!Form::hidden('arrayHoraFin', $cancha->horaFin)!!}
-														      						{!!Form::hidden('fecha', $fecha)!!}					
+														      						{!!Form::hidden('fecha', $fecha)!!}
+														      						{!!Form::hidden('arrayPrecios', $cancha->precios)!!}
 														      						{!!Form::submit('Ir', ['class' => 'btn btn-default boton btn-reserva']) !!}
 																				{!! Form::close() !!}
 														      				</div>
