@@ -14,6 +14,7 @@
 
     <!-- Styles -->
     <link href="{{asset('css/bootstrap/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{asset('css/bootstrap/bootstrap-datetimepicker.min.css')}}" rel="stylesheet">
 	<link href="{{asset('css/commons/commons.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('css/sweetalert.css')}}">
 
@@ -22,6 +23,7 @@
     <script type="text/javascript" src="{{asset('js/bootstrap.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/sweetalert.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/commons.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/bootstrap-datetimepicker.min.js')}}"></script>
 
     <!-- Include this after the sweet alert js file -->
     @include('sweet::alert')

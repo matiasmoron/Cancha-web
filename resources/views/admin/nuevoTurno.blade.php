@@ -33,25 +33,25 @@
               <div class="form-group col-md-12">
                     <div class="col-md-6 ">
                         <label>Hora de inicio</label>
-                        {!!Form::time('horaInicio', \Carbon\Carbon::now(), ['class' => 'form-control']) !!}
+                        {!!Form::time('horaInicio', \Carbon\Carbon::now(), ['class' => 'form-control','required']) !!}
                     </div>
                     <div class="col-md-6">
                         <label>Hora de fin</label>
-                       {!!Form::time('horaFin', \Carbon\Carbon::now(), ['class' => 'form-control']) !!}
+                       {!!Form::time('horaFin', \Carbon\Carbon::now(), ['class' => 'form-control','required']) !!}
                     </div>
                 </div>
                 <div class="form-group col-md-12">
                     <div class="col-md-4">
                         <label>Precio del turno</label>
-                       {!!Form::number('precio_cancha', null , ['class' => 'form-control']) !!}
+                       {!!Form::number('precio_cancha', null , ['class' => 'form-control','required']) !!}
                     </div>
                     <div class="col-md-4">
                         <label>¿Precio adicional por luz?</label>
-                       {!! Form::select('adic_luz', ['0' => 'No', '1' => 'Si'] , null , ['class' => 'form-control','id'=>'adic_luz']) !!}
+                        {!! Form::select('adic_luz', ['0' => 'No', '1' => 'Si'] , null , ['class' => 'form-control','id'=>'adic_luz']) !!}
                     </div>
-                    <div class="col-md-4" disabled>
+                    <div class="col-md-4" >
                         <label>Precio adicional</label>
-                        {!!Form::number('precio_adicional', null , ['class' => 'form-control', disabled]) !!}
+                        {!!Form::number('precio_adicional', null , ['class' => 'form-control','disabled','id'=>'precio_adic']) !!}
                     </div>
                 </div>
                 {!! Form::hidden('id_usuario_admin', Auth::user()->id) !!}
@@ -65,10 +65,15 @@
 </div>
 
 <script type="text/javascript">
-    
     $("#adic_luz").change(function(){
-        if($(this).val())
-
+        if($(this).val()==1){
+            console.log("true");
+            $("#precio_adic").prop('disabled', false);
+        }
+        else{
+            console.log("false");
+            $("#precio_adic").prop('disabled', true);
+        }
     });
 
 </script>

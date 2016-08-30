@@ -41,9 +41,25 @@
                                     
                                         <select id="deportes"></select>
                                     </div>
-                                    <div class="col-md-6">
+                                  {{--   <div class="col-md-6">
                                         <label class="sr-only" for="form-password">Fecha</label>
-                                        {!!Form::date('fecha_turno', \Carbon\Carbon::now(), ['class' => 'form-control','id'=>'fecha']) !!}
+                                       
+                                    </div> --}}
+                                    <div class='col-md-6'>
+                                       <div class="form-group">
+                                          {{--  <div class='input-group date' id='datetimepicker'> --}}
+                                                
+                                              {{--     <input size="16" type="text" value="2012-06-15 14:45" readonly class="form_datetime">
+                                               <span class="input-group-addon">
+                                                   <span class="glyphicon glyphicon-calendar"></span>
+                                               </span>
+                                           </div> --}}
+                                           <div class="input-append date form_datetime">
+                                              {!!Form::text('fecha_turno', \Carbon\Carbon::now(), ['class' => 'form-control','id'=>'fecha']) !!}
+                                               <span class="add-on"><i class="fa fa-calendar" aria-hidden="true"></i>
+                                                </span>
+                                           </div>
+                                       </div>
                                     </div>
                                 </div>
                                 <button type="submit" class="btn">Conseguir turno</button>
@@ -71,5 +87,7 @@
         </div> 
     </div>
 
-
+<script type="text/javascript">
+   
+</script> 
 @endsection
