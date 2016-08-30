@@ -17,9 +17,13 @@
     			<i class="fa fa-btn glyphicon glyphicon-flag"></i> 3 Canchas
     	</div>
 
+    	<div class="col-md-12 col-sm-12 col-xs-12">
+    		<hr style="background-color:grey; color: grey;" width="80%">
+    	</div>
+
     	<!--                                  INFO TURNO                                  -->
 
-    	<div class="col-md-12 col-sm-12 col-xs-12 posCont1">
+    	<div class="col-md-12 col-sm-12 col-xs-12">
 
     	<!--                                  SLIDER                                  -->
 
@@ -192,6 +196,7 @@
 		</div>
 
 		<!--                                  OTRAS CANCHAS                                  -->
+
 		<div class="col-md-12 col-sm-12 col-xs-12 centrarTitulo" style="padding-top: 5%;">
     		<h3>Otras Canchas en {{$establecimiento->nombre}}</h3>
     	</div>

@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-{{-- <script type="text/javascript" src="{{ URL::asset('js/login/login.js') }}"></script> --}}
-{{-- <link rel="stylesheet" href="{{ URL::asset('css/login/login.css')}}"> --}}
+<script type="text/javascript" src="{{ URL::asset('js/login/login.js') }}"></script>
+<link rel="stylesheet" href="{{ URL::asset('css/login/login.css')}}">
 
 <div class="container">
      <div class="row">
@@ -66,91 +66,5 @@
         </div>
     </div>
 </div> 
-
-
-{{--  <h1>Ingresá y reservá tu cancha!</h1> --}}
-
-    {{-- <div class="container w3l">
-        <span title="Registrate" class="button"> +</span>
-        <div class="content">
-            <div class="head">
-                <h3>Registrarse</h3>
-            </div>
-            <div class="body">
-                <div class="login-top sign-top w3-agile">
-                    <form action="{{ url('/login') }}" method="post">
-                     
-                        <input type="text" name="Name" class="name active " placeholder="Your Name" required="">
-                        <input type="text" name="Email" class="email" placeholder="Email" required>
-                        <input type="password" name="Password" class="password" placeholder="Contraseña" required="">
-                        <input type="checkbox" id="brand1" value="">
-                        <label for="brand1"><span></span> Recordarme</label>
-                        <div class="login-bottom">
-                            <div class="forgot">
-                                <a href="{{ url('/password/reset') }}">Olvidaste tu contraseña?</a>
-                            </div>
-                            <div class="sub">
-
-                                <input type="submit" value="SIGN UP">
-
-                            </div>
-
-                            <div class="clear"></div>
-                        </div>
-                    </form>
-
-                </div>
-            </div>
-        </div>
-    </div>
-
-   
-    <div class="login-inner">
-        <div class="log-head">
-            <h2>Ingresar</h2>
-        </div>
-        <div class="login-top">
-            <form action="{{ url('/login') }}" method="post">
-            {!! csrf_field() !!}
-                <input type="text" name="Email" class="email " placeholder="Email"  />
-                <input type="password" name="Password" class="password " placeholder="Contraseña"  />
-                <input type="checkbox" id="brand" value="">
-                <label for="brand"><span></span> Recordarme</label>
-                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif 
-                <div class="login-bottom">
-                    <ul>
-                        <li>
-                            <a href="{{ url('/password/reset') }}">Olvidaste tu contraseña?</a>
-                        </li>
-                        <li>
-                            <form>
-                                <input type="submit" value="Ingresar" />
-                            </form>
-                        </li>
-                        <ul>
-                            <div class="clearfix"></div>
-                </div>
-            </form>
-
-            <div class="clearfix"></div>
-
-        </div>
-        <div class="social-icons">
-            <ul>
-                <li><a href="#"><span class="icons"></span><span class="text">Facebook</span></a></li>
-                <li class="twt"><a href="#"><span class="icons"></span><span class="text">Twitter</span></a></li>
-                <li class="ggp"><a href="#"><span class="icons"></span><span class="text">Google+</span></a></li>
-
-                <div class="clearfix"> </div>
-            </ul>
-        </div>
-    </div>
-    
-    <div class="clearfix"> </div>  --}}
-
 
 @endsection
