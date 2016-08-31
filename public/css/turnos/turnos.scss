@@ -33,7 +33,6 @@ $color-gral:#3b5998;
 
 .posContSlide
 {
-	left: -70px;
 	top: 110px;
 }
 
@@ -114,4 +113,17 @@ $color-gral:#3b5998;
 {
    background-color: $color-gral;
    color: white;
+}
+
+p
+{
+	font-size: 16px;
+}
+
+hr
+{
+	width: 90%; 
+	color: $color-gral;
+	background-color: $color-gral;
+	border-color:$color-gral;
 }

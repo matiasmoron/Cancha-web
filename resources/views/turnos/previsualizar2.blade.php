@@ -34,12 +34,12 @@
     	<div class="col-md-12 col-sm-12 col-xs-12">
 
     	<!--                                  SLIDER                                  -->
-    		<div id="carousel-example-generic" class="col-md-6 col-sm-6 col-xs-6 carousel slide posContSlide" data-ride="carousel">
-			  <!-- Indicators -->
+    		<div id="carousel-example-generic" class="col-md-7 col-sm-7 col-xs-7 carousel slide posContSlide" data-ride="carousel">
+			  <!-- Indicators 
 			  <ol class="carousel-indicators">
 			    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
 			    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-			  </ol>
+			  </ol>-->
 
 			  <!-- Wrapper for slides -->
 			  <div class="carousel-inner" role="listbox">
@@ -70,8 +70,8 @@
 			  </a>
 			</div>
 
-			<div class="col-md-6 col-sm-6 col-xs-6">
-				<div class="col-md-16 col-sm-16 col-xs-16">
+			<div class="col-md-5 col-sm-5 col-xs-5">
+				<div class="col-md-12 col-sm-12 col-xs-12">
 					<div class="col-md-12 col-sm-12 col-xs-12">
 						<div class="col-md-6 col-sm-6 col-xs-6">
 							<h1>${{$turnoAdmin->precio_cancha}}</h1>
@@ -93,23 +93,23 @@
 						<i class="fa fa-btn glyphicon glyphicon-time color-blue" style="font-size: 25px;"></i> 
 					</div>
 					<div class="col-md-10 col-sm-1 col-xs-10 contInfo">
-						<p>Día: {{$turnoAdmin->dia->dia}} {{date('d/m/Y', strtotime($fecha))}}</p>
-						<p>Horario de Inicio: {{substr($turnoAdmin->horaInicio,0,5)}} Hs</p>
-						<p>Horario de Finalización: {{substr($turnoAdmin->horaFin,0,5)}} Hs</p>
-						<p>Duración del Turno: 2 Horas.</p>
+						<p><strong>Día:</strong> {{$turnoAdmin->dia->dia}} {{date('d/m/Y', strtotime($fecha))}}</p>
+						<p><strong>Horario de Inicio:</strong> {{substr($turnoAdmin->horaInicio,0,5)}} Hs</p>
+						<p><strong>Horario de Finalización:</strong> {{substr($turnoAdmin->horaFin,0,5)}} Hs</p>
+						<p><strong>Duración del Turno:</strong> 2 Horas.</p>
 					</div>
 
 					<div class="col-md-2 col-sm-2 col-xs-2 contIcon postContInfo">
 						<img src={{asset('/fotos/icono-cancha.png')}}> 
 					</div>
 					<div class="col-md-10 col-sm-1 col-xs-10 contInfo postContInfo">
-						<p>Deporte: {{$cancha->deporte->deporte}}</p>
-						<p>Numero de Jugadores: {{$cancha->cant_jugadores}} por Equipo</p>
-						<p>Superficie: {{$cancha->superficie->superficie}}</p>
+						<p><strong>Deporte:</strong> {{$cancha->deporte->deporte}}</p>
+						<p><strong>Numero de Jugadores:</strong> {{$cancha->cant_jugadores}} por Equipo</p>
+						<p><strong>Superficie:</strong> {{$cancha->superficie->superficie}}</p>
 						@if($establecimiento->tienevestuario == 0)
-							<p>Vestuarios: No</p>
+							<p><strong>Vestuarios:</strong> No</p>
 						@else
-							<p>Vestuarios: Si</p>
+							<p><strong>Vestuarios:</strong> Si</p>
 						@endif
 					</div>
 
@@ -118,12 +118,12 @@
 					</div>
 					<div class="col-md-10 col-sm-10 col-xs-10 contInfo postCont2Info">
 						@if($turnoAdmin->adic_luz == 1)
-							<p>Adicional Luz: Si</p>
-							<p>Precio Adicional: ${{$turnoAdmin->precio_adicional}}</p>
+							<p style="color:red"><strong>Adicional Luz:</strong> Si</p>
+							<p style="color:red"><strong>Precio Adicional:</strong> ${{$turnoAdmin->precio_adicional}}</p>
 						@else
-							<p>Adicional Luz: No</p>
+							<p style="color:green"><strong>Adicional Luz:</strong> No</p>
 						@endif
-						<p>Metodo de Pago: Efectivo - Tarjeta de Credito</p>
+						<p><strong>Metodo de Pago:</strong> Efectivo - Tarjeta de Credito</p>
 					</div>
 
 					<div class="col-md-10 col-sm-10 col-xs-10 postContBoton">
@@ -139,7 +139,7 @@
     	</div>
 
     	<div class="col-md-12 col-sm-12 col-xs-12">
-    		<hr width="80%">
+    		<hr>
     	</div>
 
     	<!--                                  TURNOS ALTERNATIVOS                                  -->
@@ -182,7 +182,7 @@
     	</div>
 
     	<div class="col-md-12 col-sm-12 col-xs-12">
-    		<hr width="80%">
+    		<hr>
     	</div>
 
 	    <!--                                  UBICACION                                  -->
@@ -191,35 +191,35 @@
     		<h3>Ubicación de {{$establecimiento->nombre}}</h3>
     	</div>
     	<div class="col-md-12 col-sm-12 col-xs-12 subtitulo">
-    			<i class="fa fa-btn glyphicon glyphicon-globe"></i>Conocé mejor hacia donde vas a ir.
+    			<i class="fa fa-btn glyphicon glyphicon-globe color-blue"></i>Conocé mejor hacia donde vas a ir.
     	</div>
 
     	<div class="col-md-12 col-sm-12 col-xs-12 centrarTitulo" style="position: relative; left:-70px;">
 	    	<div class="col-md-6 col-sm-6 col-xs-6">
 				<div class="col-md-10 col-sm-10 col-xs-10 contInfoDer" style="position: relative; top:60px;">
-					<p>Ciudad: {{$establecimiento->ciudad->ciudad_nombre}}</p>
-					<p>Provincia: {{$establecimiento->ciudad->provincia->provincia_nombre}}</p>
-					<p>Dirección: {{$establecimiento->direccion}}</p>
+					<p><strong>Ciudad:</strong> {{$establecimiento->ciudad->ciudad_nombre}}</p>
+					<p><strong>Provincia:</strong> {{$establecimiento->ciudad->provincia->provincia_nombre}}</p>
+					<p><strong>Dirección:</strong> {{$establecimiento->direccion}}</p>
 				</div>
 				<div class="col-md-2 col-sm-2 col-xs-2 contIcon" style="padding-top: 3%; padding-left:10%; position: relative; top:60px;">
-					<i class="fa fa-btn glyphicon glyphicon-pushpin" style="font-size: 25px;"></i> 
+					<i class="fa fa-btn glyphicon glyphicon-pushpin color-blue" style="font-size: 25px;"></i> 
 				</div>
 				<div class="col-md-10 col-sm-10 col-xs-10 contInfoDer" style="position: relative; top:70px;">
-					<p>Nombre Dueño: {{$establecimiento->usuario->name}}</p>
-					<p>Usuario: {{$establecimiento->usuario->email}}</p>
+					<p><strong>Nombre Dueño:</strong> {{$establecimiento->usuario->name}}</p>
+					<p><strong>Usuario:</strong> {{$establecimiento->usuario->email}}</p>
 				</div>
 				<div class="col-md-2 col-sm-2 col-xs-2 contIcon" style="padding-top: 3%; padding-left:10%; position: relative; top:70px;">
-					<i class="fa fa-btn glyphicon glyphicon-user" style="font-size: 25px;"></i> 
+					<i class="fa fa-btn glyphicon glyphicon-user color-blue" style="font-size: 25px;"></i> 
 				</div>
 	    	</div>
 
 	    	<div class="col-md-6 col-sm-6 col-xs-6">
-			    <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d12451.760119559092!2d-62.265823533312975!3d-38.71918581685748!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2sar!4v1468334101841" width="100%" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+			    <iframe src={{"https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d12451.760119559092!2d".$coord[1]."!3d".$coord[0]."!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2sar!4v1468334101841"}} width="100%" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
 			</div>
 		</div>
 
 		<div class="col-md-12 col-sm-12 col-xs-12">
-    		<hr width="80%">
+    		<hr>
     	</div>
 
 		<!--                                  OTRAS CANCHAS                                  -->
@@ -228,7 +228,7 @@
     		<h3>Otras Canchas en {{$establecimiento->nombre}}</h3>
     	</div>
     	<div class="col-md-12 col-sm-12 col-xs-12 subtitulo">
-    			<i class="fa fa-btn glyphicon glyphicon-thumbs-up"></i>¡Porque las canchas son lo que nos sobra!
+    			<i class="fa fa-btn glyphicon glyphicon-thumbs-up color-blue"></i>¡Porque las canchas son lo que nos sobra!
     	</div>
 
     	<div class="col-md-12 col-sm-12 col-xs-12" style="padding-top:2%;">

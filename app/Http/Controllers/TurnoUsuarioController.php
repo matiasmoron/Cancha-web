@@ -65,7 +65,9 @@ class TurnoUsuarioController extends Controller
 
         $establecimientosUser = Establecimiento::where('id_usuario', Auth::user()->id)->get();
 
-        return view('turnos.previsualizar2', ['cancha' => $cancha, 'establecimiento' => $establecimiento, 'turnoAdmin' => $turnoAdmin[0], 'arrayHoraIni' => $request->get('arrayHoraIni'), 'arrayHoraFin' => $request->get('arrayHoraFin'), 'arrayPrecios' => $request->get('arrayPrecios'), 'fecha' => $request->get('fecha'), 'establecUser' => $establecimientosUser]);
+        $coord = $this->getCoordenadas($establecimiento->direccion . "," .$establecimiento->ciudad->ciudad_nombre . "," .$establecimiento->provincia_nombre);
+
+        return view('turnos.previsualizar2', ['cancha' => $cancha, 'establecimiento' => $establecimiento, 'turnoAdmin' => $turnoAdmin[0], 'arrayHoraIni' => $request->get('arrayHoraIni'), 'arrayHoraFin' => $request->get('arrayHoraFin'), 'arrayPrecios' => $request->get('arrayPrecios'), 'fecha' => $request->get('fecha'), 'establecUser' => $establecimientosUser, 'coord' => $coord]);
 
     }
 
