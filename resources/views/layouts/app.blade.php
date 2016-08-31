@@ -22,6 +22,7 @@
 
     <!--JS-->
     <script type="text/javascript" src="{{asset('js/jquery-1.12.3.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/jquery-ui.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/bootstrap.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/sweetalert.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/commons.js')}}"></script>
@@ -71,7 +72,7 @@
                     <!-- Authentication Links -->
                     @if (Auth::guest())
                         <li><a href="{{ url('/login') }}">Ingresar</a></li>
-                        <li><a href="{{ url('/register') }}">Registrarse</a></li>
+                        <li><a href="{{ url('/login') }}">Registrarse</a></li>
                     @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">

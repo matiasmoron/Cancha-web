@@ -77,15 +77,15 @@ select{
 .navbar-inverse .navbar-nav>li>a:hover {
     color: #FFF;
     border-bottom: 3px solid #FFF;
-    -webkit-transition: 0.5s;
-    transition: 0.5s;
+    -webkit-transition: 0.1s;
+    transition: 0.1s;
     transition-timing-function: ease;
 }
 
 .navbar-inverse .navbar-nav>li>a:active {
     border-bottom: 3px solid #FFF;
-    -webkit-transition: 0.5s;
-    transition: 0.5s;
+    -webkit-transition: 0.1s;
+    transition: 0.1s;
     transition-timing-function: ease;
 }
 
@@ -126,7 +126,7 @@ select{
     }
 }
 
-//footer
+
 
 .footer-distributed{
     background-color: #292c2f;
