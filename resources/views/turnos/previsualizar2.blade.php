@@ -3,6 +3,7 @@
 @section('content')
 
 <link rel="stylesheet" href="{{ URL::asset('css/turnos/turnos.css') }}">
+<script type="text/javascript" src="{{ URL::asset('js/turnos/turnos.js') }}"></script>
 
 <div class="container">
     <div class="row">
@@ -172,7 +173,20 @@
 						        <td>{{substr($HI,0,5)}} Hs</td>
 						        <td>{{substr($horaFin[$indice],0,5)}} Hs</td>
 						        <td>{{$precios[$indice]}}$</td>
-						        <td><i class="fa fa-btn glyphicon glyphicon-share-alt"></i></td>
+						        <td>	
+						        	{!! Form::open(['url' => 'turno/reservar/previsualizar' , 'method' => 'post']) !!}
+			      						{!!Form::hidden('id_establecimiento', $cancha->id_est)!!}
+			      						{!!Form::hidden('id_cancha', $cancha->id)!!}
+			      						{!!Form::hidden('horaInicio', $HI)!!}
+			      						{!!Form::hidden('horaFin', $horaFin[$indice])!!}
+			      						{!!Form::hidden('dia', $dia)!!}
+			      						{!!Form::hidden('arrayHoraIni', $horaIni)!!}
+			      						{!!Form::hidden('arrayHoraFin', $horaFin)!!}
+			      						{!!Form::hidden('fecha', $fecha)!!}
+			      						{!!Form::hidden('arrayPrecios', $precios)!!}
+			      						{!!Form::submit('Ir', ['class' => 'btn btn-default boton btn-reserva']) !!}
+									{!! Form::close() !!}
+						        </td>
 						    @endif
 							<?php $indice++; ?>
 				        @endforeach
@@ -222,6 +236,7 @@
     		<hr>
     	</div>
 
+
 		<!--                                  OTRAS CANCHAS                                  -->
 
 		<div class="col-md-12 col-sm-12 col-xs-12 centrarSubTitulo">
@@ -231,25 +246,57 @@
     			<i class="fa fa-btn glyphicon glyphicon-thumbs-up color-blue"></i>¡Porque las canchas son lo que nos sobra!
     	</div>
 
-    	<div class="col-md-12 col-sm-12 col-xs-12" style="padding-top:2%;">
-    		<ol class="listaCanchas">
-    		@foreach($establecUser as $EU)
-    			@foreach($EU->canchas as $C)
-	    			<li>
-	    				<div class="col-md-4 col-sm-4 col-xs-4">
-	    					<div class="col-md-10 col-sm-10 col-xs-10" style="text-align:center">
-	    						<img src={{asset('/fotos/futbol.jpg')}} width="100" height="100">
-	    					</div>
-	    					<div class="col-md-10 col-sm-10 col-xs-10" style="padding-top: 2%;">
-	    						<p style="text-align: center;">{{$C->nombre_cancha}}</p>
-	    						<p style="text-align: center;">{{$C->cant_jugadores}} jugadores por equipo</p>
-	    						<p style="text-align: center;">Superficie de {{$C->superficie->superficie}}</p>
-	    					</div>
-	    				</div>	
-	    			</li>
-	    		@endforeach	
-    		@endforeach
-    		</ol>
+    	<div class="col-md-12 col-sm-12 col-xs-12" style="padding:2%;">
+    		<div class="carousel slide multi-item-carousel" id="theCarousel">
+	            <div class="carousel-inner">
+	            <?php $indice = 0;?>
+		    		@foreach($establecUser as $EU)
+		    			@foreach($EU->canchas as $C)
+		    				@if($C->id !== $cancha->id)
+			    				@if($indice === 0)
+				    				<div class="item active">
+			    						<div class="col-md-4 col-sm-4 col-xs-4">
+			    							<a href="/" class="linkCancha">
+					    					<div class="col-md-12 col-sm-12 col-xs-12" style="text-align:center">
+					    						<img src={{asset('/fotos/futbol.jpg')}} class="foto" width="100" height="100">
+					    					</div>
+					    					<div class="col-md-12 col-sm-12 col-xs-12" style="padding-top: 2%;">
+					    						<p style="text-align: center;"><strong>{{$C->nombre_cancha}}</strong></p>
+					    						<p style="text-align: center;"><i class="fa fa-btn glyphicon glyphicon-user color-blue"></i>{{$C->cant_jugadores}} jugadores por equipo</p>
+					    						<p style="text-align: center;"><i class="fa fa-btn glyphicon glyphicon-leaf color-blue"></i>{{$C->superficie->superficie}}</p>
+					    					</div>
+					    					</a>
+						    			</div>
+				    				</div>
+					    			@else
+					    				<div class="item">
+							    			<div class="col-md-4 col-sm-4 col-xs-4">
+							    				<a href="/" class="linkCancha">
+						    					<div class="col-md-12 col-sm-12 col-xs-12" style="text-align:center">
+						    						<img src={{asset('/fotos/futbol.jpg')}} class="foto" width="100" height="100">
+						    					</div>
+						    					<div class="col-md-12 col-sm-12 col-xs-12" style="padding-top: 2%;">
+						    						<p style="text-align: center;"><strong>{{$C->nombre_cancha}}</strong></p>
+						    						<p style="text-align: center;"><i class="fa fa-btn glyphicon glyphicon-user color-blue"></i>{{$C->cant_jugadores}} jugadores por equipo</p>
+						    						<p style="text-align: center;"><i class="fa fa-btn glyphicon glyphicon-leaf color-blue"></i>{{$C->superficie->superficie}}</p>
+						    					</div>
+						    					</a>
+							    			</div>
+						    			</div>
+				    				@endif
+				    			<?php $indice++;?>
+				    		@endif
+			    		@endforeach	
+		    		@endforeach
+	            </div>
+	            <a class="left carousel-control" href="#theCarousel" role="button" data-slide="prev">
+			    	<span class="glyphicon glyphicon-chevron-left color-blue" aria-hidden="true"></span>
+		    	</a>
+				<a class="right carousel-control" href="#theCarousel" role="button" data-slide="next">
+					<span class="glyphicon glyphicon-chevron-right color-blue" aria-hidden="true"></span>
+				    <span class="sr-only">Siguiente</span>
+				</a>
+          	</div>
     	</div>
 
 	</div>

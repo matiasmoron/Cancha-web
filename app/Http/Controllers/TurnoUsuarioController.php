@@ -56,6 +56,8 @@ class TurnoUsuarioController extends Controller
 
     public function previsualizarTurno(Request $request)
     {
+        dd($request);
+
         $establecimiento = Establecimiento::find($request->get('id_establecimiento'));
         $cancha = Cancha::find($request->get('id_cancha'));
 
@@ -67,7 +69,7 @@ class TurnoUsuarioController extends Controller
 
         $coord = $this->getCoordenadas($establecimiento->direccion . "," .$establecimiento->ciudad->ciudad_nombre . "," .$establecimiento->provincia_nombre);
 
-        return view('turnos.previsualizar2', ['cancha' => $cancha, 'establecimiento' => $establecimiento, 'turnoAdmin' => $turnoAdmin[0], 'arrayHoraIni' => $request->get('arrayHoraIni'), 'arrayHoraFin' => $request->get('arrayHoraFin'), 'arrayPrecios' => $request->get('arrayPrecios'), 'fecha' => $request->get('fecha'), 'establecUser' => $establecimientosUser, 'coord' => $coord]);
+        return view('turnos.previsualizar2', ['cancha' => $cancha, 'establecimiento' => $establecimiento, 'turnoAdmin' => $turnoAdmin[0], 'arrayHoraIni' => $request->get('arrayHoraIni'), 'arrayHoraFin' => $request->get('arrayHoraFin'), 'arrayPrecios' => $request->get('arrayPrecios'), 'fecha' => $request->get('fecha'), 'establecUser' => $establecimientosUser, 'coord' => $coord, 'dia' => $request->get('dia')]);
 
     }
 
