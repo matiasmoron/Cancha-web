@@ -119,7 +119,7 @@ class UserController extends Controller
     {
         $cancha = Cancha::find($id);
 
-        return view('admin.editarCancha', ['cancha' => $cancha, 'arrDeportes' => $this->getDeportes(), 'arrSuperficies' => $this->getSuperficies(), 'arrCantJugad' => $this->getCantJugadores(), 'arrEstablecimientos' => $this->getEstablecimientos()]);
+        return view('admin.editarCancha', ['cancha' => $cancha, 'arrDeportes' => $this->getDeportes(1), 'arrSuperficies' => $this->getSuperficies(1), 'arrCantJugad' => $this->getCantJugadores(1), 'arrEstablecimientos' => $this->getEstablecimientos()]);
     }
 
     public function modificarCancha(Request $request, $id)

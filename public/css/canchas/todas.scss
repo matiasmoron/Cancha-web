@@ -1,9 +1,9 @@
-@import 'commons.css';
+
 $color-gral:#3b5998;
 
 body
 {
-	background: url("../../fotos/img/deportes.jpg") center center no-repeat; 
+	background: url("../../fotos/img/deportes.png") center center no-repeat; 
 	background-attachment:fixed; 
 }
 
@@ -197,9 +197,6 @@ hr
 .establec{
 	background-color:#FCFCFC; 
 	margin-bottom:15px;
-	/*box-shadow: 0px 4px 4px #EBEBEB;
-	-webkit-box-shadow: 0px 4px 4px #EBEBEB;
-    -moz-box-shadow: 0px 4px 4px #EBEBEB;*/
     border: 1px solid #DBDBDB;
 	padding-bottom: 2%;
 	opacity: 0.94;
