@@ -4,14 +4,30 @@
 @section('content')
 <link rel="stylesheet" href="{{ URL::asset('css/admin/admin.css') }}">
 
-<div class="container" style="padding-top: 5%;">
-    <div class="col-md-2">
+<div class="col-md-2" style="padding-top: 5%;">
         <button class="btn2" onclick="go_back()">Volver&nbsp;
             <i class="fa fa-undo" aria-hidden="true"></i>
         </button>
     </div>
-    <div class="row" style="padding-top: 5%;">
-        <h2 style="text-align: center;">Tus turnos</h2>
+<div class="container" >
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12 centrarTitulo">
+            <h2>Administración de turnos</h2>
+        </div>
+        <div class="col-md-12 col-sm-12 col-xs-12 subtitulo" style="padding-bottom:2%;">
+            <div class="col-md-4 col-sm-4 col-xs-4">
+                <hr width="100%">
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-4">
+               Administrá tus turnos&nbsp;&nbsp; <i class="fa fa-pencil"></i>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-4">
+                <hr width="100%">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+    
         @foreach($turnosAdmin as $turno)
             <div class="col-md-6 col-md-offset-3"> 
                 <div class="panel panel-default" >

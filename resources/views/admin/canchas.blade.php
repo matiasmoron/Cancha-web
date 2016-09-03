@@ -3,12 +3,12 @@
 @section('content')
 <link rel="stylesheet" href="{{ URL::asset('css/admin/admin.css') }}">
 
-<div class="container" style="padding-top: 5%;">
-    <div class="col-md-2">
-        <button class="btn2" onclick="go_back()">Volver&nbsp;
-            <i class="fa fa-undo" aria-hidden="true"></i>
-        </button>
-    </div>
+<div class="col-md-2" style="padding-top: 5%;">
+    <button class="btn2" onclick="go_back()">Volver&nbsp;
+        <i class="fa fa-undo" aria-hidden="true"></i>
+    </button>
+</div>
+<div class="container" style="padding-top: 10%;">
     <div class="row" >
         <div class="col-md-12 col-sm-12 col-xs-12 centrarTitulo">
             <h3>Tus canchas</h3>

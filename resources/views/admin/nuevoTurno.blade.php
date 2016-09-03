@@ -16,10 +16,8 @@
     <div class="panel panel-default">
         <div class="panel-heading">Nueva turno</div>
         <div class="panel-body">
-             {!! Form::open(['url' => 'admin/turno/nuevo' , 'method' => 'post']) !!}    
-                    
-                                    
-          <form>
+            {!! Form::open(['url' => 'admin/turno/nuevo' , 'method' => 'post']) !!}    
+            <form>
               <div class="form-group col-md-12">
                 <div class="col-md-6 ">
                     <label>Cancha</label>

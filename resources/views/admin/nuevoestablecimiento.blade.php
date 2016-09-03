@@ -5,7 +5,7 @@
 
 <div class="container col-md-8 col-md-offset-2 " style="padding-top: 10%;">
     <div class="panel panel-default">
-        <div class="panel-heading">Nuevo Establecimiento</div>
+        <div class="panel-heading">&nbsp;Nuevo establecimiento</div>
         <div class="panel-body">
             {!! Form::open(['url' => 'admin/establecimiento/nuevo' , 'method' => 'post']) !!}
             <?php 
@@ -40,7 +40,6 @@
                 {!!Form::hidden('id_usuario', Auth::user()->id) !!}
               </div>
               <div style="text-align: center;">
-              
                 <button class="btn2">Agregar</button>
               </div>
             {!! Form::close() !!} 
