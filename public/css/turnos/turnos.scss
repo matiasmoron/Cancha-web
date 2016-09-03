@@ -82,18 +82,7 @@ $color-gral:#3b5998;
 	background-color: grey;
 }
 
-.btn-reserva
-{
-	background:$color-gral;
-	border-radius: 4px;
-    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-    color: white;
-}
 
-.btn-reserva:hover{
-	background: darken($color-gral,10%);
-	color: white;
-}
 
 .color-blue
 {
