@@ -23,7 +23,11 @@ class TurnoUsuarioController extends Controller
     {
 
         $turnosUser = DB::select("select 
-                d.dia,
+                c.id_establecimiento as id_estab,
+                c.id as id_canc,
+                d.dia as dia,
+                d.dia_ingles as dia_ingles,
+                tu.fecha as fecha,
                 GROUP_CONCAT(ta.precio_cancha SEPARATOR ',') as precios,
                 GROUP_CONCAT(tu.confirmado SEPARATOR ',') as confirmados,
                 GROUP_CONCAT(ta.horaInicio SEPARATOR ',') as horaIni,
@@ -31,6 +35,7 @@ class TurnoUsuarioController extends Controller
                 FROM turnoadmin as ta 
                 LEFT JOIN turnousuario as tu ON tu.id_turnoAdmin = ta.id
                 LEFT JOIN dia as d ON ta.id_dia = d.id 
+                LEFT JOIN cancha as c ON ta.id_cancha = c.id 
                 WHERE tu.id_usuario = ".Auth::user()->id."
                 GROUP BY (ta.id_dia)
                 ORDER BY ta.id_dia ASC");

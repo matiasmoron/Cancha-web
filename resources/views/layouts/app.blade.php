@@ -92,9 +92,10 @@
             </div>
         </div>
     </nav>
+
     @yield('content')
 
-    <footer class="footer-distributed">
+    <div class="footer-distributed">
 
         <div class="footer-right">
 
@@ -106,7 +107,7 @@
         <div class="footer-left">
             <p>Matías Moron - Patricio Sartore &copy; 2016</p>
         </div>
-    </footer>
+    </div>
     
    
 </body>

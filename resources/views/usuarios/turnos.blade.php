@@ -45,19 +45,19 @@
                                 <td class="t-center">{{substr($horaFin[$indice],0,5)}} Hs</td>
                                 <td class="t-center"> 
                                     {!! Form::open(['url' => 'turno/reservar/previsualizar' , 'method' => 'post']) !!}
-                                        {{--{!!Form::hidden('id_establecimiento', $establecimiento->id)!!}
-                                        {!!Form::hidden('id_cancha', $cancha->id)!!}
+                                        {!!Form::hidden('id_establecimiento', $TU->id_estab)!!}
+                                        {!!Form::hidden('id_cancha', $TU->id_canc)!!}
                                         {!!Form::hidden('horaInicio', $HI)!!}
                                         {!!Form::hidden('horaFin', $horaFin[$indice])!!}
-                                        {!!Form::hidden('dia', $dia)!!}
-                                        {!!Form::hidden('arrayHoraIni', $arrayHoraIni)!!}
-                                        {!!Form::hidden('arrayHoraFin', $arrayHoraFin)!!}
-                                        {!!Form::hidden('fecha', $fecha)!!}
-                                        {!!Form::hidden('arrayPrecios', $arrayPrecios)!!}--}}
+                                        {!!Form::hidden('dia', $TU->dia_ingles)!!}
+                                        {!!Form::hidden('arrayHoraIni', $TU->horaIni)!!}
+                                        {!!Form::hidden('arrayHoraFin', $TU->horaFin)!!}
+                                        {!!Form::hidden('fecha', $TU->fecha)!!}
+                                        {!!Form::hidden('arrayPrecios', $TU->precios)!!}
                                         {!!Form::submit('Ir', ['class' => 'btn btn-default boton btn-reserva']) !!}
                                     {!! Form::close() !!}
                                 </td>
-                            <?php $indice++; ?>
+                                <?php $indice++; ?>
                             </tr>
                         @endforeach
                     @endforeach
