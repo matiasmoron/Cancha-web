@@ -35,12 +35,11 @@
                 </thead>
                 <tbody>
                     @foreach($turnosUser as $TU)
-                        
-                            <?php   $horaIni = explode(",", $TU->horaIni);
-                                    $horaFin = explode(",", $TU->horaFin);
-                                    $indice = 0; ?>
-                            @foreach($horaIni as $HI)
-                             <tr>
+                        <?php   $horaIni = explode(",", $TU->horaIni);
+                                $horaFin = explode(",", $TU->horaFin);
+                                $indice = 0; ?>
+                        @foreach($horaIni as $HI)
+                            <tr>
                                 <td class="t-center">{{$TU->dia}}</td>
                                 <td class="t-center">{{substr($HI,0,5)}} Hs</td>
                                 <td class="t-center">{{substr($horaFin[$indice],0,5)}} Hs</td>
@@ -55,17 +54,16 @@
                                         {!!Form::hidden('arrayHoraFin', $arrayHoraFin)!!}
                                         {!!Form::hidden('fecha', $fecha)!!}
                                         {!!Form::hidden('arrayPrecios', $arrayPrecios)!!}--}}
-                                        {!!Form::submit('Ir', ['class' => 'btn btn-default boton btn-turno']) !!}
+                                        {!!Form::submit('Ir', ['class' => 'btn btn-default boton btn-reserva']) !!}
                                     {!! Form::close() !!}
                                 </td>
                             <?php $indice++; ?>
                             </tr>
-                            @endforeach
+                        @endforeach
                     @endforeach
                 </tbody>
             </table>
         </div>
-
     </div>
 </div>
 @endsection
