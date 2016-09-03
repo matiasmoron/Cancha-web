@@ -110,14 +110,6 @@ p
 	font-size: 16px;
 }
 
-hr
-{
-	width: 90%; 
-	color: $color-gral;
-	background-color: $color-gral;
-	border-color:$color-gral;
-}
-
 .multi-item-carousel{
   .carousel-inner{
     > .item{
@@ -168,11 +160,6 @@ a:-webkit-any-link
 {
 	border-radius: 70%;
 }
-
- .mid
- {
-    vertical-align:middle;
- }
 
 .btn-turno
 {

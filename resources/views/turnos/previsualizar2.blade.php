@@ -170,9 +170,9 @@
 				        		$indice = 0; ?>
 				        @foreach($horaIni as $HI)
 				        	@if(strcmp(substr($HI,0,8), $turnoAdmin->horaInicio) !== 0)
-						        <td class="t-center" style="vertical-align:middle;">{{substr($HI,0,5)}} Hs</td>
-						        <td class="t-center" style="vertical-align:middle;">{{substr($horaFin[$indice],0,5)}} Hs</td>
-						        <td class="t-center" style="vertical-align:middle;">${{$precios[$indice]}}</td>
+						        <td class="t-center">{{substr($HI,0,5)}} Hs</td>
+						        <td class="t-center">{{substr($horaFin[$indice],0,5)}} Hs</td>
+						        <td class="t-center">${{$precios[$indice]}}</td>
 						        <td class="t-center">	
 						        	{!! Form::open(['url' => 'turno/reservar/previsualizar' , 'method' => 'post']) !!}
 			      						{!!Form::hidden('id_establecimiento', $establecimiento->id)!!}
@@ -184,7 +184,7 @@
 			      						{!!Form::hidden('arrayHoraFin', $arrayHoraFin)!!}
 			      						{!!Form::hidden('fecha', $fecha)!!}
 			      						{!!Form::hidden('arrayPrecios', $arrayPrecios)!!}
-			      						{!!Form::submit('Ir', ['class' => 'btn btn-default boton btn-turno']) !!}
+			      						{!!Form::submit('Ir', ['class' => 'btn btn-default boton btn-reserva']) !!}
 									{!! Form::close() !!}
 						        </td>
 						    @endif
