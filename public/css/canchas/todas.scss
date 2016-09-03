@@ -3,7 +3,7 @@ $color-gral:#3b5998;
 
 body
 {
-	background: url("../../fotos/img/deportes.png") center center no-repeat; 
+	//background: url("../../fotos/img/deporte2.png") center center no-repeat; 
 	background-attachment:fixed; 
 }
 
@@ -124,8 +124,8 @@ body
 
 .menuIzq
 {
-	background-color:#FCFCFC; 
-    border: 1px solid #DBDBDB;
+	background-color:rgba(63, 92, 154, 0.79); 
+    //border: 1px solid #DBDBDB;
 	opacity: 0.94;
 }
 
@@ -195,9 +195,26 @@ hr
 }
 
 .establec{
-	background-color:#FCFCFC; 
+	background-color:rgba(0,0,0,0.08); 
 	margin-bottom:15px;
-    border: 1px solid #DBDBDB;
 	padding-bottom: 2%;
-	opacity: 0.94;
+	opacity: 0.97;
+}
+
+.texto_menuIzq
+{
+	color:white;
+}
+
+hr
+{
+	width: 90%; 
+	color: $color-gral;
+	background-color: $color-gral;
+	border-color:$color-gral;
+}
+
+.color-blue
+{
+	color:$color-gral;
 }

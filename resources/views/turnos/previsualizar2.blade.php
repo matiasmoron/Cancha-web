@@ -156,10 +156,10 @@
     		<table class="table table-striped">
 			    <thead>
 			      <tr>
-			        <th>Hora de Inicio</th>
-			        <th>Hora de Fin</th>
-			        <th>Precio</th>
-			        <th><i class="fa fa-btn glyphicon glyphicon-share-alt encabTabla"></i></th>
+			        <th class="t-center">Hora de Inicio</th>
+			        <th class="t-center">Hora de Fin</th>
+			        <th class="t-center">Precio</th>
+			        <th class="t-center"><i class="fa fa-btn glyphicon glyphicon-share-alt encabTabla"></i></th>
 			      </tr>
 			    </thead>
 			    <tbody>
@@ -170,21 +170,21 @@
 				        		$indice = 0; ?>
 				        @foreach($horaIni as $HI)
 				        	@if(strcmp(substr($HI,0,8), $turnoAdmin->horaInicio) !== 0)
-						        <td>{{substr($HI,0,5)}} Hs</td>
-						        <td>{{substr($horaFin[$indice],0,5)}} Hs</td>
-						        <td>{{$precios[$indice]}}$</td>
-						        <td>	
+						        <td class="t-center" style="vertical-align:middle;">{{substr($HI,0,5)}} Hs</td>
+						        <td class="t-center" style="vertical-align:middle;">{{substr($horaFin[$indice],0,5)}} Hs</td>
+						        <td class="t-center" style="vertical-align:middle;">${{$precios[$indice]}}</td>
+						        <td class="t-center">	
 						        	{!! Form::open(['url' => 'turno/reservar/previsualizar' , 'method' => 'post']) !!}
-			      						{!!Form::hidden('id_establecimiento', $cancha->id_est)!!}
+			      						{!!Form::hidden('id_establecimiento', $establecimiento->id)!!}
 			      						{!!Form::hidden('id_cancha', $cancha->id)!!}
 			      						{!!Form::hidden('horaInicio', $HI)!!}
 			      						{!!Form::hidden('horaFin', $horaFin[$indice])!!}
 			      						{!!Form::hidden('dia', $dia)!!}
-			      						{!!Form::hidden('arrayHoraIni', $horaIni)!!}
-			      						{!!Form::hidden('arrayHoraFin', $horaFin)!!}
+			      						{!!Form::hidden('arrayHoraIni', $arrayHoraIni)!!}
+			      						{!!Form::hidden('arrayHoraFin', $arrayHoraFin)!!}
 			      						{!!Form::hidden('fecha', $fecha)!!}
-			      						{!!Form::hidden('arrayPrecios', $precios)!!}
-			      						{!!Form::submit('Ir', ['class' => 'btn btn-default boton btn-reserva']) !!}
+			      						{!!Form::hidden('arrayPrecios', $arrayPrecios)!!}
+			      						{!!Form::submit('Ir', ['class' => 'btn btn-default boton btn-turno']) !!}
 									{!! Form::close() !!}
 						        </td>
 						    @endif

@@ -1,4 +1,4 @@
-@import 'commons.css';
+//@import 'commons.css';
 $color-gral:#3b5998;
 
 .acomodar-submenu
@@ -105,16 +105,6 @@ $color-gral:#3b5998;
 	font-size: 18px;
 }
 
-.table td th{
-   text-align: center;   
-}
-
-.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th 
-{
-   background-color: $color-gral;
-   color: white;
-}
-
 p
 {
 	font-size: 16px;
@@ -177,4 +167,22 @@ a:-webkit-any-link
 .foto
 {
 	border-radius: 70%;
+}
+
+ .mid
+ {
+    vertical-align:middle;
+ }
+
+.btn-turno
+{
+  border-radius: 4px;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  background-color: white;
+  color:black;
+}
+
+.btn-turno:hover{
+  background: darken(white,50%);
+  color: white;
 }

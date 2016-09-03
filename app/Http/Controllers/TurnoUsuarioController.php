@@ -56,7 +56,7 @@ class TurnoUsuarioController extends Controller
 
     public function previsualizarTurno(Request $request)
     {
-        dd($request);
+        //dd($request);
 
         $establecimiento = Establecimiento::find($request->get('id_establecimiento'));
         $cancha = Cancha::find($request->get('id_cancha'));

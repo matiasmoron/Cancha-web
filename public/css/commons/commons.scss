@@ -217,3 +217,13 @@ select{
 .t-right{
     text-align: right;
 }
+
+.table td th{
+   text-align: center;   
+}
+
+.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th 
+{
+   background-color: $color-gral;
+   color: white;
+}

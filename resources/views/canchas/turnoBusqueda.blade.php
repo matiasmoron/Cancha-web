@@ -13,8 +13,17 @@
     		<h3>Nuestras Canchas Disponibles</h3>
     	</div>
     	<div class="col-md-12 col-sm-12 col-xs-12 subtitulo">
-    			<i class="fa fa-btn glyphicon glyphicon-calendar"></i>¡Estas son las canchas que tenemos disponible para el {{date('d/m/Y', strtotime($fecha))}}!
+    			<div class="col-md-3 col-sm-3 col-xs-3">
+					<hr width="100%">
+				</div>
+				<div class="col-md-6 col-sm-6 col-xs-6">
+					<i class="fa fa-btn glyphicon glyphicon-calendar color-blue"></i>¡Estas son las canchas que tenemos disponible para el {{date('d/m/Y', strtotime($fecha))}}!
+				</div>
+    			<div class="col-md-3 col-sm-3 col-xs-3">
+					<hr width="100%">
+				</div>
     	</div>
+
 
     <!--                               BUSCADOR                             -->
 
@@ -40,12 +49,12 @@
     	<div class="col-md-12 col-sm-12 col-xs-12">
 	    	<div class="col-md-2 col-sm-2 col-xs-2 menuIzq no-margin">
 	    		<div class="col-md-12 col-sm-12 col-xs-12">
-	    			<h4>Filtrar Por:</h4>
+	    			<h4 class="texto_menuIzq">Filtrar Por:</h4>
 	    		</div>
 	    		{!!Form::open(['url' => 'turnos/todos', 'method' => 'GET'])!!}
 	    			<div class="col-md-12 col-sm-12 col-xs-12 elem-menu">
 		    			<div class="col-md-12 col-sm-12 col-xs-12">
-		    				<p>Deporte</p>
+		    				<p class="texto_menuIzq">Deporte</p>
 		    			</div>
 		    			<div class="col-md-12 col-sm-12 col-xs-12">
 		    				{!! Form::select('id_deporte', $deportes , '0' , ['class' => 'form-control']) !!}
@@ -53,7 +62,7 @@
 		    		</div>
 		    		<div class="col-md-12 col-sm-12 col-xs-12 elem-menu">
 		    			<div class="col-md-12 col-sm-12 col-xs-12">
-		    				<p>Ciudad</p>
+		    				<p class="texto_menuIzq">Ciudad</p>
 		    			</div>
 		    			<div class="col-md-12 col-sm-12 col-xs-12">
 		    				{!! Form::select('id_ciudad', $ciudad , '0' , ['class' => 'form-control']) !!}
@@ -61,7 +70,7 @@
 		    		</div>
 		    		<div class="col-md-12 col-sm-12 col-xs-12 elem-menu">
 		    			<div class="col-md-12 col-sm-12 col-xs-12">
-		    				<p>Superficie</p>
+		    				<p class="texto_menuIzq">Superficie</p>
 		    			</div>
 		    			<div class="col-md-12 col-sm-12 col-xs-12">
 		    				{!! Form::select('id_superficie', $superficie , '0' , ['class' => 'form-control']) !!}
@@ -69,7 +78,7 @@
 		    		</div>
 		    		<div class="col-md-12 col-sm-12 col-xs-12 elem-menu">
 		    			<div class="col-md-12 col-sm-12 col-xs-12">
-		    				<p>Jugadores</p>
+		    				<p class="texto_menuIzq">Jugadores</p>
 		    			</div>
 		    			<div class="col-md-12 col-sm-12 col-xs-12">
 		    				{!! Form::select('cantJugadores', $jugadores , '0' , ['class' => 'form-control']) !!}
@@ -129,7 +138,7 @@
 					    							<div class="panel-heading" role="tab" id=<?php echo $panel?> style="padding-left:0px; background-color: #3b5998;">
 												      <h4 class="panel-title">
 												        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href=<?php echo "#collapse".$panel?> aria-expanded="false" aria-controls=<?php echo "collapse".$panel?>><span class="linkTurno">Ver Turnos</span>
-												        <i class="fa fa-btn glyphicon glyphicon-chevron-down" style="float: right;"></i></a>
+												        <i class="fa fa-btn glyphicon glyphicon-chevron-down" style="float: right; color:white;"></i></a>
 												      </h4>
 												    </div>
 												    <div id=<?php echo "collapse".$panel?> class="panel-collapse collapse" role="tabpanel" aria-labelledby=<?php echo $panel?> style="background-color: #F3F3F3;">
