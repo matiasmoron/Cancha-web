@@ -149,6 +149,9 @@ class UserController extends Controller
     {
         $turnosAdmin = TurnoAdmin::where('id_usuario_admin', Auth::user()->id)->get();
 
+        $turnosAdmin = collect($turnosAdmin);
+        $turnosAdmin = $turnosAdmin->groupBy('id_cancha');
+
         return view('admin.turnosAdmin', ['turnosAdmin' => $turnosAdmin]);
     }
 

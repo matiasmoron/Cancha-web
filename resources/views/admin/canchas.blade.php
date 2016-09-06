@@ -8,11 +8,24 @@
         <i class="fa fa-undo" aria-hidden="true"></i>
     </button>
 </div>
-<div class="container" style="padding-top: 10%;">
-    <div class="row" >
+<div class="container">
+      <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12 centrarTitulo">
-            <h3>Tus canchas</h3>
+            <h2>Administración de tus canchas</h2>
         </div>
+        <div class="col-md-12 col-sm-12 col-xs-12 subtitulo" style="padding-bottom:2%;">
+            <div class="col-md-4 col-sm-4 col-xs-4">
+                <hr width="100%">
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-4">
+               Administrá tus canchas&nbsp;&nbsp; <i class="fa fa-pencil"></i>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-4">
+                <hr width="100%">
+            </div>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
             <ol class="lista col-md-12 col-sm-12 col-xs-12">
                 <?php $panel = 1 ?>
@@ -34,7 +47,7 @@
                                           </h4>
                                         </div>
                                         <div id=<?php echo "collapse".$panel?> class="panel-collapse collapse" role="tabpanel" aria-labelledby=<?php echo $panel?> style="background-color: #F3F3F3;">
-                                           <table class="table" class="t-center">
+                                           <table class="table table-striped" class="t-center">
                                                <thead>
                                                  <tr>
                                                    <th class="t-left">Nombre/Nro</th>
