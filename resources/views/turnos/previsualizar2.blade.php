@@ -126,78 +126,81 @@
 						@endif
 						<p><strong>Metodo de Pago:</strong> Efectivo - Tarjeta de Credito</p>
 					</div>
-
-					<div class="col-md-10 col-sm-10 col-xs-10 postContBoton">
-      					{!! Form::open(['url' => 'turno/reservar' , 'method' => 'post']) !!}
-      						{!!Form::hidden('id_turnoAdmin', $turnoAdmin->id)!!}
-      						{!!Form::hidden('fecha', $fecha)!!}			
-      						{!!Form::submit('Reservar Turno', ['class' => 'btn btn-default boton btn-reserva', 'style' => 'float:right;'])!!}
-						{!! Form::close() !!}
-					</div>
+					@if($turnoUser)
+						<div class="col-md-10 col-sm-10 col-xs-10 postContBoton">
+	      					{!! Form::open(['url' => 'turno/reservar' , 'method' => 'post']) !!}
+	      						{!!Form::hidden('id_turnoAdmin', $turnoAdmin->id)!!}
+	      						{!!Form::hidden('fecha', $fecha)!!}			
+	      						{!!Form::submit('Reservar Turno', ['class' => 'btn btn-default boton btn-reserva', 'style' => 'float:right;'])!!}
+							{!! Form::close() !!}
+						</div>
+					@endif
 				</div>
 			</div>
 
     	</div>
 
-    	<div class="col-md-12 col-sm-12 col-xs-12">
+    	<div class="col-md-12 col-sm-12 col-xs-12" style="padding-top: 2%;">
     		<hr>
     	</div>
 
     	<!--                                  TURNOS ALTERNATIVOS                                  -->
 
-		<div class="col-md-12 col-sm-12 col-xs-12 centrarSubTitulo">
-    		<h3>Turnos Alternativos</h3>
-    	</div>
-    	<div class="col-md-12 col-sm-12 col-xs-12 subtitulo">
-    			<i class="fa fa-btn glyphicon glyphicon-calendar color-blue"></i>¡Tenemos muchos mas turnos para ofrecerte!
-    	</div>
+    	@if(!empty($arrayHoraIni))
+			<div class="col-md-12 col-sm-12 col-xs-12 centrarSubTitulo">
+	    		<h3>Turnos Alternativos</h3>
+	    	</div>
+	    	<div class="col-md-12 col-sm-12 col-xs-12 subtitulo">
+	    			<i class="fa fa-btn glyphicon glyphicon-calendar color-blue"></i>¡Tenemos muchos mas turnos para ofrecerte!
+	    	</div>
 
-    	<div class="col-md-10 col-sm-10 col-xs-10 col-md-offset-1 col-sm-offset-1" style="padding-top: 3%;">
-    		<table class="table table-striped">
-			    <thead>
-			      <tr>
-			        <th class="t-center">Hora de Inicio</th>
-			        <th class="t-center">Hora de Fin</th>
-			        <th class="t-center">Precio</th>
-			        <th class="t-center"><i class="fa fa-btn glyphicon glyphicon-share-alt encabTabla"></i></th>
-			      </tr>
-			    </thead>
-			    <tbody>
-			      	<tr>
-				      	<?php 	$horaIni = explode(",", $arrayHoraIni);
-								$horaFin = explode(",", $arrayHoraFin);
-								$precios = explode(",", $arrayPrecios);
-				        		$indice = 0; ?>
-				        @foreach($horaIni as $HI)
-				        	@if(strcmp(substr($HI,0,8), $turnoAdmin->horaInicio) !== 0)
-						        <td class="t-center">{{substr($HI,0,5)}} Hs</td>
-						        <td class="t-center">{{substr($horaFin[$indice],0,5)}} Hs</td>
-						        <td class="t-center">${{$precios[$indice]}}</td>
-						        <td class="t-center">	
-						        	{!! Form::open(['url' => 'turno/reservar/previsualizar' , 'method' => 'post']) !!}
-			      						{!!Form::hidden('id_establecimiento', $establecimiento->id)!!}
-			      						{!!Form::hidden('id_cancha', $cancha->id)!!}
-			      						{!!Form::hidden('horaInicio', $HI)!!}
-			      						{!!Form::hidden('horaFin', $horaFin[$indice])!!}
-			      						{!!Form::hidden('dia', $dia)!!}
-			      						{!!Form::hidden('arrayHoraIni', $arrayHoraIni)!!}
-			      						{!!Form::hidden('arrayHoraFin', $arrayHoraFin)!!}
-			      						{!!Form::hidden('fecha', $fecha)!!}
-			      						{!!Form::hidden('arrayPrecios', $arrayPrecios)!!}
-			      						{!!Form::submit('Ir', ['class' => 'btn btn-default boton btn-reserva']) !!}
-									{!! Form::close() !!}
-						        </td>
-						    @endif
-							<?php $indice++; ?>
-				        @endforeach
-			    	</tr>
-			    </tbody>
-			</table>
-    	</div>
+	    	<div class="col-md-10 col-sm-10 col-xs-10 col-md-offset-1 col-sm-offset-1" style="padding-top: 3%;">
+	    		<table class="table table-striped">
+				    <thead>
+				      <tr>
+				        <th class="t-center">Hora de Inicio</th>
+				        <th class="t-center">Hora de Fin</th>
+				        <th class="t-center">Precio</th>
+				        <th class="t-center"><i class="fa fa-btn glyphicon glyphicon-share-alt encabTabla"></i></th>
+				      </tr>
+				    </thead>
+				    <tbody>
+				      	<tr>
+					      	<?php 	$horaIni = explode(",", $arrayHoraIni);
+									$horaFin = explode(",", $arrayHoraFin);
+									$precios = explode(",", $arrayPrecios);
+					        		$indice = 0; ?>
+					        @foreach($horaIni as $HI)
+					        	@if(strcmp(substr($HI,0,8), $turnoAdmin->horaInicio) !== 0)
+							        <td class="t-center">{{substr($HI,0,5)}} Hs</td>
+							        <td class="t-center">{{substr($horaFin[$indice],0,5)}} Hs</td>
+							        <td class="t-center">${{$precios[$indice]}}</td>
+							        <td class="t-center">	
+							        	{!! Form::open(['url' => 'turno/reservar/previsualizar' , 'method' => 'post']) !!}
+				      						{!!Form::hidden('id_establecimiento', $establecimiento->id)!!}
+				      						{!!Form::hidden('id_cancha', $cancha->id)!!}
+				      						{!!Form::hidden('horaInicio', $HI)!!}
+				      						{!!Form::hidden('horaFin', $horaFin[$indice])!!}
+				      						{!!Form::hidden('dia', $dia)!!}
+				      						{!!Form::hidden('arrayHoraIni', $arrayHoraIni)!!}
+				      						{!!Form::hidden('arrayHoraFin', $arrayHoraFin)!!}
+				      						{!!Form::hidden('fecha', $fecha)!!}
+				      						{!!Form::hidden('arrayPrecios', $arrayPrecios)!!}
+				      						{!!Form::submit('Ir', ['class' => 'btn btn-default boton btn-reserva']) !!}
+										{!! Form::close() !!}
+							        </td>
+							    @endif
+								<?php $indice++; ?>
+					        @endforeach
+				    	</tr>
+				    </tbody>
+				</table>
+	    	</div>
 
-    	<div class="col-md-12 col-sm-12 col-xs-12">
-    		<hr>
-    	</div>
+	    	<div class="col-md-12 col-sm-12 col-xs-12">
+	    		<hr>
+	    	</div>
+    	@endif
 
 	    <!--                                  UBICACION                                  -->
 
