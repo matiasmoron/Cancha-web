@@ -146,7 +146,7 @@
 
     	<!--                                  TURNOS ALTERNATIVOS                                  -->
 
-    	@if(!empty($arrayHoraIni))
+    	@if(!is_null($turnosAlter[0]->horaIni))
 			<div class="col-md-12 col-sm-12 col-xs-12 centrarSubTitulo">
 	    		<h3>Turnos Alternativos</h3>
 	    	</div>
@@ -166,9 +166,10 @@
 				    </thead>
 				    <tbody>
 				      	<tr>
-					      	<?php 	$horaIni = explode(",", $arrayHoraIni);
-									$horaFin = explode(",", $arrayHoraFin);
-									$precios = explode(",", $arrayPrecios);
+					      	<?php 	$horaIni = explode(",", $turnosAlter[0]->horaIni);
+									$horaFin = explode(",", $turnosAlter[0]->horaFin);
+									$precios = explode(",", $turnosAlter[0]->precios);
+									$turnos = explode(",", $turnosAlter[0]->id_turnos);
 					        		$indice = 0; ?>
 					        @foreach($horaIni as $HI)
 					        	@if(strcmp(substr($HI,0,8), $turnoAdmin->horaInicio) !== 0)
@@ -179,13 +180,9 @@
 							        	{!! Form::open(['url' => 'turno/reservar/previsualizar' , 'method' => 'post']) !!}
 				      						{!!Form::hidden('id_establecimiento', $establecimiento->id)!!}
 				      						{!!Form::hidden('id_cancha', $cancha->id)!!}
-				      						{!!Form::hidden('horaInicio', $HI)!!}
-				      						{!!Form::hidden('horaFin', $horaFin[$indice])!!}
+				      						{!!Form::hidden('id_turnoAdmin', $turnos[$indice])!!}
 				      						{!!Form::hidden('dia', $dia)!!}
-				      						{!!Form::hidden('arrayHoraIni', $arrayHoraIni)!!}
-				      						{!!Form::hidden('arrayHoraFin', $arrayHoraFin)!!}
 				      						{!!Form::hidden('fecha', $fecha)!!}
-				      						{!!Form::hidden('arrayPrecios', $arrayPrecios)!!}
 				      						{!!Form::submit('Ir', ['class' => 'btn btn-default boton btn-reserva']) !!}
 										{!! Form::close() !!}
 							        </td>

@@ -27,7 +27,7 @@ class TurnoAdminController extends Controller
         $fecha = substr($fechaR,0,4)."-".substr($fechaR,5,2)."-".substr($fechaR,8,10);
 
 
-        $query = "select 
+        $query = "select
                 e.id as id_est,
                 e.nombre,
                 e.direccion,
@@ -35,6 +35,7 @@ class TurnoAdminController extends Controller
                 c.nombre_cancha,
                 c.cant_jugadores,
                 s.superficie,
+                GROUP_CONCAT(ta.id SEPARATOR ',') as id_turnos,
                 GROUP_CONCAT(ta.precio_cancha SEPARATOR ',') as precios,
                 GROUP_CONCAT(ta.horaInicio SEPARATOR ',') as horaIni,
                 GROUP_CONCAT(ta.horaFin SEPARATOR ',') as horaFin
@@ -81,6 +82,8 @@ class TurnoAdminController extends Controller
 
         $estab = collect($estab);
         $estab = $estab->groupBy('id_est');
+
+        //dd($estab);
 
         return view('canchas.turnoBusqueda', ['estab' => $estab, 'fecha' => $fecha, 'dia' => $dia, 'deportes' => $this->getDeportes(1), 'ciudad' => $this->getCiudades(1), 'superficie' => $this->getSuperficies(1), 'jugadores' => $this->getCantJugadores(1), 'rank' => $this->getRank()]);
 

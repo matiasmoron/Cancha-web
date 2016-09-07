@@ -169,6 +169,7 @@
 														    	<?php 	$horaIni = explode(",", $cancha->horaIni);
 														    			$horaFin = explode(",", $cancha->horaFin);
 														    			$precios = explode(",", $cancha->precios);
+														    			$turnos = explode(",", $cancha->id_turnos);
 														    			$indice = 0;								?>
 														      	<ol class="listaTurnos col-md-12 col-sm-12 col-xs-12">
 														      		<li>
@@ -187,13 +188,9 @@
 															      					{!! Form::open(['url' => 'turno/reservar/previsualizar' , 'method' => 'post']) !!}
 															      						{!!Form::hidden('id_establecimiento', $cancha->id_est)!!}
 															      						{!!Form::hidden('id_cancha', $cancha->id_can)!!}
-															      						{!!Form::hidden('horaInicio', $HI)!!}
-															      						{!!Form::hidden('horaFin', $horaFin[$indice])!!}
 															      						{!!Form::hidden('dia', $dia)!!}
-															      						{!!Form::hidden('arrayHoraIni', $cancha->horaIni)!!}
-															      						{!!Form::hidden('arrayHoraFin', $cancha->horaFin)!!}
 															      						{!!Form::hidden('fecha', $fecha)!!}
-															      						{!!Form::hidden('arrayPrecios', $cancha->precios)!!}
+															      						{!!Form::hidden('id_turnoAdmin', $turnos[$indice])!!}
 															      						{!!Form::submit('Ir', ['class' => 'btn btn-default boton btn-reserva']) !!}
 																					{!! Form::close() !!}
 															      				</div>
