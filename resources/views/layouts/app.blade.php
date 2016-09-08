@@ -50,9 +50,9 @@
 <body id="app-layout">
 
 
-
+<div style="padding-bottom: 10px">
     <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
+        <div class="container" >
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
@@ -84,6 +84,8 @@
                                     <li><a href="{{ url('admin/home') }}">
                                     <i class="fa fa-btn glyphicon glyphicon-th-list">
                                     </i>Administrar</a></li>
+                                @else
+                                    <li><a href="{{ url('/admin/datos') }}"><i class="fa fa-btn fa-user"></i>Mi cuenta</a></li>
                                 @endif
                             </ul>
                         </li>
@@ -92,7 +94,7 @@
             </div>
         </div>
     </nav>
-
+</div>
     @yield('content')
 
     <div class="footer-distributed">

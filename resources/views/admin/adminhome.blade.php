@@ -4,11 +4,11 @@
 
 <link rel="stylesheet" href="{{ URL::asset('css/admin/admin.css') }}">
 
- <div class="col-md-2" style="padding-top: 5%;">
-        <button class="btn2" onclick="go_back()">Volver&nbsp;
-            <i class="fa fa-undo" aria-hidden="true"></i>
-        </button>
-    </div>
+<div class="col-md-2 volver">
+    <button class="btn2" onclick="go_back()">Volver&nbsp;
+        <i class="fa fa-undo" aria-hidden="true"></i>
+    </button>
+</div>
 <div class="container">
     <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12 centrarTitulo">
@@ -26,7 +26,7 @@
             </div>
         </div>
     </div>
-       <div class="row" >
+       <div class="row">
         <div class="col-md-6 bloque-exterior">
             <div class="bloque tipo-1" >
                 <div class="col-md-10 update-left">
@@ -35,7 +35,7 @@
                 <div class="col-md-2 update-right">
                     <i class="fa fa-building"> </i>
                 </div>
-                <div >
+                <div class="row">
                     <div class="col-md-6 cont-btn">
                         <a href="{{ url('admin/establecimiento') }}" class="btn ">
                             Administrar
@@ -116,7 +116,7 @@
                 </div>
                 <div>
                     <div class="col-md-6 cont-btn" style="float: right;">
-                        <a href="{{ url('admin/datos') }}" class="btn">
+                        <a href="{{ url('usuario/datos') }}" class="btn">
                             Ver mis datos personales
                             <i class="fa fa-pencil"></i>
                         </a>

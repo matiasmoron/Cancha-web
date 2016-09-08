@@ -62,7 +62,7 @@ class UserController extends Controller
     {
         $establecimiento = Establecimiento::find($id);
 
-        return view('admin.editarEstablecimiento', ['establecimiento' => $establecimiento, 'arrCiudades' => $this->getCiudades()]);
+        return view('admin.editarEstablecimiento', ['establecimiento' => $establecimiento, 'arrCiudades' => $this->getCiudades(1)]);
     }
 
     public function modificarEstablecimiento(Request $request, $id)

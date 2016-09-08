@@ -3,7 +3,7 @@
 @section('content')
 <link rel="stylesheet" href="{{ URL::asset('css/admin/admin.css') }}">
 
-<div class="col-md-2" style="padding-top: 5%;">
+<div class="col-md-2 volver" >
     <button class="btn2" onclick="go_back()">Volver&nbsp;
         <i class="fa fa-undo" aria-hidden="true"></i>
     </button>
@@ -33,9 +33,9 @@
                     @if(sizeof($establecimiento->canchas) >0)
                         <div class="establec col-md-12 col-sm-12 col-xs-12">
                             <div class="col-md-12 col-sm-12 col-xs-12" style="padding-left:0; padding-top:1%;padding-bottom:2%;">
-                                    <div class="col-md-6 col-sm-6 col-xs-6" style="padding-left:0;">
-                                        <a class="nombreEstabl linkEstabl"> {{$establecimiento->nombre}}</a>
-                                    </div>
+                                <div class="col-md-6 col-sm-6 col-xs-6" style="padding-left:0;">
+                                    <a class="nombreEstabl linkEstabl"> {{$establecimiento->nombre}}</a>
+                                </div>
                             </div>
                             <div class="col-md-12 col-sm-12 col-xs-12" style="float:right; ">
                                 <div class="panel-group col-md-12 col-sm-12 col-xs-12" id="accordion" role="tablist" aria-multiselectable="true">
