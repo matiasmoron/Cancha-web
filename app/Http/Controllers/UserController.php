@@ -204,9 +204,25 @@ class UserController extends Controller
     public function verDatos()
     {
         $usuario = Auth::user();
-        
-        return view('admin.datos',['usuario' => $usuario]);
+        return view('usuarios.datos',['usuario' => $usuario]);
     }
 
-    
+    public function editarDatos()
+    {
+        $usuario = Auth::user();
+        return view('usuarios.editarDatos',['usuario' => $usuario]);
+    }
+
+    public function guardarDatos(Request $request)
+    {
+        $usuario = Auth::user();
+
+        $usuario->nombre = $request->get('nombre');
+        $usuario->nombre = $request->get('email');
+        $usuario->nombre = $request->get('password');
+        
+        $usuario->save();
+
+        return redirect("usuario/datos");
+    }
 }

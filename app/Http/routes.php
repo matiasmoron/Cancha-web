@@ -109,10 +109,6 @@ Route::get('admin/home',
         'uses' => 'UserController@modificarCancha']       
         );
 
-    //Rutas Admin/Datos
-    Route::get('admin/datos', 
-        'UserController@verDatos');
-
     //Rutas Admin/Turnos
     Route::get('admin/turnos', 
         'UserController@verTurnosAdmin');
@@ -137,4 +133,15 @@ Route::get('admin/home',
 Route::get('inicio','InicioController@inicio');
 
 //Ruta para Email
-    Route::post('send', ['as' => 'send', 'uses' => 'MailController@send'] );
+Route::get('send', ['as' => 'send', 'uses' => 'MailController@send'] );
+
+//Rutas User/Datos
+Route::get('usuario/datos', 
+    'UserController@verDatos');
+
+Route::get('usuario/editarDatos',
+    'UserController@editarDatos');
+
+Route::post('usuario/guardarDatos', 
+    'UserController@guardarDatos');
+

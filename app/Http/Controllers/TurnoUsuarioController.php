@@ -61,32 +61,42 @@ class TurnoUsuarioController extends Controller
 
     public function previsualizarTurno(Request $request)
     {
-        //dd($request);
+        
+        $turno = TurnoUsuario::where("id_turnoAdmin", "=", $request->get('id_turnoAdmin'))->where("fecha", "=", $request->get('fecha'))->get();
 
-        $establecimiento = Establecimiento::find($request->get('id_establecimiento'));
-        $cancha = Cancha::find($request->get('id_cancha'));
+        if($turno->isEmpty())
+        {
 
-        $id_dia = Dia::where('dia_ingles','=',$request->get('dia'))->get();      
+            $establecimiento = Establecimiento::find($request->get('id_establecimiento'));
+            $cancha = Cancha::find($request->get('id_cancha'));
 
-        $turnoAdmin = TurnoAdmin::find($request->get('id_turnoAdmin'));
+            $id_dia = Dia::where('dia_ingles','=',$request->get('dia'))->get();      
 
-        $establecimientosUser = Establecimiento::where('id_usuario', Auth::user()->id)->get();
+            $turnoAdmin = TurnoAdmin::find($request->get('id_turnoAdmin'));
 
-        $coord = $this->getCoordenadas($establecimiento->direccion . "," .$establecimiento->ciudad->ciudad_nombre . "," .$establecimiento->provincia_nombre);
+            $establecimientosUser = Establecimiento::where('id_usuario', Auth::user()->id)->get();
 
-        $turnoUser = TurnoUsuario::where('id_turnoAdmin', '=' , $turnoAdmin->id)->where('fecha', '=', $request->get('fecha'))->get()->isEmpty();
+            $coord = $this->getCoordenadas($establecimiento->direccion . "," .$establecimiento->ciudad->ciudad_nombre . "," .$establecimiento->provincia_nombre);
 
-        $turnosAlter = DB::select("select
-                GROUP_CONCAT(ta.id SEPARATOR ',') as id_turnos, 
-                GROUP_CONCAT(ta.precio_cancha SEPARATOR ',') as precios,
-                GROUP_CONCAT(ta.horaInicio SEPARATOR ',') as horaIni,
-                GROUP_CONCAT(ta.horaFin SEPARATOR ',') as horaFin
-                FROM turnoadmin as ta 
-                LEFT JOIN turnousuario as tu ON tu.id_turnoAdmin = ta.id 
-                INNER JOIN cancha as c ON ta.id_cancha = c.id
-                WHERE ta.id_dia = '".$id_dia[0]->id."' AND  (tu.id_turnoAdmin IS NULL OR tu.fecha != '".$request->get('fecha')."') AND c.id = '".$request->get('id_cancha')."' AND ta.horaInicio != '".$turnoAdmin->horaInicio."' AND ta.horaFin != '".$turnoAdmin->horaFin."'");
+            $turnoUser = TurnoUsuario::where('id_turnoAdmin', '=' , $turnoAdmin->id)->where('fecha', '=', $request->get('fecha'))->get()->isEmpty();
 
-        return view('turnos.previsualizar2', ['cancha' => $cancha, 'establecimiento' => $establecimiento, 'turnoAdmin' => $turnoAdmin, 'fecha' => $request->get('fecha'), 'establecUser' => $establecimientosUser, 'coord' => $coord, 'dia' => $request->get('dia'), 'turnoUser' => $turnoUser, 'turnosAlter' => $turnosAlter]);
+            $turnosAlter = DB::select("select
+                    GROUP_CONCAT(ta.id SEPARATOR ',') as id_turnos, 
+                    GROUP_CONCAT(ta.precio_cancha SEPARATOR ',') as precios,
+                    GROUP_CONCAT(ta.horaInicio SEPARATOR ',') as horaIni,
+                    GROUP_CONCAT(ta.horaFin SEPARATOR ',') as horaFin
+                    FROM turnoadmin as ta 
+                    LEFT JOIN turnousuario as tu ON tu.id_turnoAdmin = ta.id 
+                    INNER JOIN cancha as c ON ta.id_cancha = c.id
+                    WHERE ta.id_dia = '".$id_dia[0]->id."' AND  (tu.id_turnoAdmin IS NULL OR tu.fecha != '".$request->get('fecha')."') AND c.id = '".$request->get('id_cancha')."' AND ta.horaInicio != '".$turnoAdmin->horaInicio."' AND ta.horaFin != '".$turnoAdmin->horaFin."'");
+
+            return view('turnos.previsualizar2', ['cancha' => $cancha, 'establecimiento' => $establecimiento, 'turnoAdmin' => $turnoAdmin, 'fecha' => $request->get('fecha'), 'establecUser' => $establecimientosUser, 'coord' => $coord, 'dia' => $request->get('dia'), 'turnoUser' => $turnoUser, 'turnosAlter' => $turnosAlter]);
+        }
+        else
+        {
+            echo '<script language="javascript">alert("Lo Sentimos. El turno se ha reservado anteriormente.");</script>';
+            return redirect('/');
+        }
 
     }
 
@@ -94,13 +104,19 @@ class TurnoUsuarioController extends Controller
     {
         //alert('Hello World!')->persistent("Close this");      
 
+        $turno = TurnoUsuario::where("id_turnoAdmin", "=", $request->get('id_turnoAdmin'))->where("fecha", "=", $request->get('fecha'))->get();
 
-        $fecha = Carbon::createFromFormat('Y-m-d', $request->get('fecha'))->toDateString();
-
-        //dd($fecha);
-
-        $turno = TurnoUsuario::create(['id_turnoAdmin' => $request->get('id_turnoAdmin'), 'fecha' => $fecha, 'confirmado' => '0', 'pagado' => '0', 'estado' => '0', 'id_usuario' =>  Auth::user()->id]);
-         
-        return redirect('usuarios/turnos');
+        if($turno->isEmpty())
+        {
+            $fecha = Carbon::createFromFormat('Y-m-d', $request->get('fecha'))->toDateString();
+            $turno = TurnoUsuario::create(['id_turnoAdmin' => $request->get('id_turnoAdmin'), 'fecha' => $fecha, 'confirmado' => '0', 'pagado' => '0', 'estado' => '0', 'id_usuario' =>  Auth::user()->id]);
+            return redirect('send');
+        }
+        else
+        {
+            echo '<script language="javascript">alert("Lo Sentimos. El turno se ha reservado anteriormente.");</script>';
+            return redirect('/'); 
+        }
+        
     }
 }

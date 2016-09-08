@@ -5,27 +5,29 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Auth;
 
 class MailController extends Controller
 {
-	public function send()
+	public function send(Request $request)
 	{
-    	//guarda el valor de los campos enviados desde el form en un array
-       $data = $request->all();
+
+      $data = $request->all();
+
+      $user = Auth::user();
  
-       //se envia el array y la vista lo recibe en llaves individuales {{ $email }} , {{ $subject }}...
-       \Mail::send('emails.message', $data, function($message) use ($request)
-       {
-           //remitente
-           $message->from($request->email, $request->name);
+      //se envia el array y la vista lo recibe en llaves individuales {{ $email }} , {{ $subject }}...
+      \Mail::send('emails.message', $data,  function($message) use ($request)
+      {
+          $message->from($request->email, $request->name);
+
+          //asunto
+          $message->subject($request->subject);
  
-           //asunto
-           $message->subject($request->subject);
+          //receptor
+          $message->to($user->email, $user->name);
  
-           //receptor
-           $message->to(env('CONTACT_MAIL'), env('CONTACT_NAME'));
- 
-       });
-       return \View::make('success');
-   }
+      });
+      return redirect("usuarios/turno");
+  }
 }
