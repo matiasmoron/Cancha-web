@@ -175,7 +175,7 @@ select{
 }
 
 .footer-distributed .footer-left :hover{
-    color:$color-gral
+    color:lighten($color-gral,10%);
 }
 .footer-distributed .footer-right .fa:hover{
     color:lighten($color-gral,10%);

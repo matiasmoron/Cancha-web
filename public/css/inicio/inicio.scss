@@ -9,7 +9,12 @@ body {
     line-height: 30px;
     text-align: center;
     background-image: url('../../fotos/img/inicio.jpg');
-}
+
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+ }
 
 strong { font-weight: 500; }
 

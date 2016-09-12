@@ -6,6 +6,10 @@
 <link rel="stylesheet" href="{{ URL::asset('css/inicio/form-elements.css') }}">
 <link rel="stylesheet" href="{{ URL::asset('css/inicio/inicio.css')}}">
 
+
+
+
+
     <div class="top-content">
         <div class="inner-bg">
             <div class="container">
@@ -65,6 +69,8 @@
             </div>
         </div> 
     </div>
+
+
 
 <script type="text/javascript">
    

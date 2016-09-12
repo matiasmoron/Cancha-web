@@ -21,6 +21,9 @@ function oyentes(){
 
     });
 
+    sweetAlert("Pato..", "Aprendé a importar y a usar una librería!", "error");
+     
+
     $("#deportes").append('<option value=1>Fútbol</option>')
     $("#deportes").append('<option value=2>Basket</option>')
     $("#deportes").append('<option value=3>que se yo</option>')

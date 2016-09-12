@@ -12,7 +12,7 @@
     <!-- Fonts -->
     <link rel="stylesheet" href="{{asset('css/font-awesome-4.6.3/css/font-awesome.min.css')}}" >
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700">
-	<link rel="stylesheet" href="{{asset('fonts/glyphicons-halflings-regular.eot')}}">
+	{{-- <link rel="stylesheet" href="{{asset('fonts/glyphico|ns-halflings-regular.eot')}}"> --}}
 
     <!-- Styles -->
     <link href="{{asset('css/bootstrap/bootstrap.min.css')}}" rel="stylesheet">
@@ -85,7 +85,7 @@
                                     <i class="fa fa-btn glyphicon glyphicon-th-list">
                                     </i>Administrar</a></li>
                                 @else
-                                    <li><a href="{{ url('/admin/datos') }}"><i class="fa fa-btn fa-user"></i>Mi cuenta</a></li>
+                                    <li><a href="{{ url('usuario/datos') }}"><i class="fa fa-btn fa-user"></i>Mi cuenta</a></li>
                                 @endif
                             </ul>
                         </li>

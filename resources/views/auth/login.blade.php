@@ -109,8 +109,7 @@
             <div style="color:white; padding-top: 10px;">
                 <h4>Ya tenés una cuenta? <a id="ingresar">Ingresá por acá</a></h4>
             </div>
-        </form>
-        
+        </form>     
     </div>
 </div> 
 

@@ -1,28 +1,35 @@
-█ [ C:\xampp\htdocs\Cancha-web ] gulp
-[18:08:08] Using gulpfile C:\xampp\htdocs\Cancha-web\gulpfile.js
-[18:08:08] Starting 'default'...
-[18:08:08] Starting 'sass'...
+ gu█ [ C:\xampp\htdocs\Cancha-web ] gulp
+[22:36:16] Using gulpfile C:\xampp\htdocs\Cancha-web\gulpfile.js
+[22:36:16] Starting 'default'...
+[22:36:16] Starting 'sass'...
 
 Fetching Sass Source Files...
-   - resources\assets\sass\app.scss
+   - resources\assets\sass\todas.scss <-- Not Found
 
 
 Saving To...
-   - public\css\app.css
+   - public\css\todas.css
 
-[18:08:17] Finished 'default' after 8.31 s
-[18:08:17] gulp-notify: [Laravel Elixir] Sass Compiled!
-[18:08:17] Finished 'sass' after 8.82 s
-[18:08:17] Starting 'sass'...
+[22:36:18] Finished 'default' after 2.21 s
+[22:36:18] Finished 'sass' after 2.22 s
+[22:36:18] Starting 'sass'...
 
 Fetching Sass Source Files...
-   - resources\assets\sass\inicio.scss
+   - resources\assets\sass\turnos.scss <-- Not Found
 
 
 Saving To...
-   - public\css\inicio.css
+   - public\css\turnos.css
 
-[18:08:17] gulp-notify: [Laravel Elixir] Sass Compiled!
-[18:08:17] Finished 'sass' after 71 ms
+[22:36:18] Finished 'sass' after 11 ms
+[22:36:18] Starting 'sass'...
 
- 
+Fetching Sass Source Files...
+   - resources\assets\sass\commons.scss <-- Not Found
+
+
+Saving To...
+   - public\css\commons.css
+
+[22:36:18] Finished 'sass' after 8.7 ms
+
