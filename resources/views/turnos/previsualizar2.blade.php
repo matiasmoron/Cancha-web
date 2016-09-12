@@ -22,7 +22,7 @@
     			<i class="fa fa-btn glyphicon glyphicon-tag color-blue"></i>{{$establecimiento->ciudad->ciudad_nombre}}
     		</div>
     		<div class="col-md-2 col-sm-2 col-xs-2" style="text-align:left;">
-    			<i class="fa fa-btn glyphicon glyphicon-flag color-blue"></i> 3 Canchas
+    			<i class="fa fa-btn glyphicon glyphicon-flag color-blue"></i>{{sizeof($establecimiento->canchas)}} Canchas
     		</div>
     		<div class="col-md-4 col-sm-4 col-xs-4">
     			<hr width="100%">
@@ -97,7 +97,7 @@
 						<p><strong>Día:</strong> {{$turnoAdmin->dia->dia}} {{date('d/m/Y', strtotime($fecha))}}</p>
 						<p><strong>Horario de Inicio:</strong> {{substr($turnoAdmin->horaInicio,0,5)}} Hs</p>
 						<p><strong>Horario de Finalización:</strong> {{substr($turnoAdmin->horaFin,0,5)}} Hs</p>
-						<p><strong>Duración del Turno:</strong> 2 Horas.</p>
+						<p><strong>Duración del Turno:</strong> {{intval(substr($turnoAdmin->horaFin,0,2)) - intval(substr($turnoAdmin->horaInicio,0,2))}} Hora/s</p>
 					</div>
 
 					<div class="col-md-2 col-sm-2 col-xs-2 contIcon postContInfo">
@@ -165,13 +165,13 @@
 				      </tr>
 				    </thead>
 				    <tbody>
-				      	<tr>
-					      	<?php 	$horaIni = explode(",", $turnosAlter[0]->horaIni);
-									$horaFin = explode(",", $turnosAlter[0]->horaFin);
-									$precios = explode(",", $turnosAlter[0]->precios);
-									$turnos = explode(",", $turnosAlter[0]->id_turnos);
-					        		$indice = 0; ?>
-					        @foreach($horaIni as $HI)
+				      	<?php 	$horaIni = explode(",", $turnosAlter[0]->horaIni);
+								$horaFin = explode(",", $turnosAlter[0]->horaFin);
+								$precios = explode(",", $turnosAlter[0]->precios);
+								$turnos = explode(",", $turnosAlter[0]->id_turnos);
+				        		$indice = 0; ?>
+				        @foreach($horaIni as $HI)
+				        	<tr>
 					        	@if(strcmp(substr($HI,0,8), $turnoAdmin->horaInicio) !== 0)
 							        <td class="t-center">{{substr($HI,0,5)}} Hs</td>
 							        <td class="t-center">{{substr($horaFin[$indice],0,5)}} Hs</td>
@@ -188,8 +188,8 @@
 							        </td>
 							    @endif
 								<?php $indice++; ?>
-					        @endforeach
-				    	</tr>
+							</tr>
+				        @endforeach
 				    </tbody>
 				</table>
 	    	</div>
@@ -256,7 +256,7 @@
 			    				@if($indice === 0)
 				    				<div class="item active">
 			    						<div class="col-md-4 col-sm-4 col-xs-4">
-			    							<a href="/" class="linkCancha">
+			    							<a href={{url("/")}} class="linkCancha">
 					    					<div class="col-md-12 col-sm-12 col-xs-12" style="text-align:center">
 					    						<img src={{asset('/fotos/futbol.jpg')}} class="foto" width="100" height="100">
 					    					</div>

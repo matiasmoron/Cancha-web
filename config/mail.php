@@ -55,7 +55,7 @@ return [
     |
     */
 
-    'from' => ['address' => null, 'name' => null],
+    'from' => ['address' => 'ticket@sandbox92029776938a4fc8ba3e4629c458b07a.mailgun.org', 'name' => 'TuCancha'],
 
     /*
     |--------------------------------------------------------------------------

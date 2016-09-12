@@ -2,8 +2,10 @@
 
 body
 {
-	//background: url("../../fotos/img/deporte2.png") center center no-repeat; 
-	background-attachment:fixed; 
+	background: url("../../fotos/campo.jpg") center no-repeat;
+	background-size:cover;
+	background-attachment:fixed;
+	font-family: 'Lato';
 }
 
 .foto
@@ -194,4 +196,10 @@ a:-webkit-any-link
 	padding: 3%;
 	background-color:rgba(63, 92, 154, 0.79); 
 	//opacity: 0.94;
+}
+
+.filter_top
+{
+  width:25%; 
+  float:right;
 }

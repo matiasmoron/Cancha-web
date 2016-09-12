@@ -15,19 +15,18 @@ use App\TurnoAdmin;
 use App\Dia;
 use Carbon\Carbon;
 use DB;
-use Alert;
 
 class TurnoUsuarioController extends Controller
 {
     public function misturnos()
     {
-
         $turnosUser = DB::select("select 
                 c.id_establecimiento as id_estab,
                 c.id as id_canc,
                 d.dia as dia,
                 d.dia_ingles as dia_ingles,
                 tu.fecha as fecha,
+                GROUP_CONCAT(ta.id SEPARATOR ',') as id_turnos,
                 GROUP_CONCAT(ta.precio_cancha SEPARATOR ',') as precios,
                 GROUP_CONCAT(tu.confirmado SEPARATOR ',') as confirmados,
                 GROUP_CONCAT(ta.horaInicio SEPARATOR ',') as horaIni,
@@ -61,10 +60,10 @@ class TurnoUsuarioController extends Controller
 
     public function previsualizarTurno(Request $request)
     {
-        
+
         $turno = TurnoUsuario::where("id_turnoAdmin", "=", $request->get('id_turnoAdmin'))->where("fecha", "=", $request->get('fecha'))->get();
 
-        if($turno->isEmpty())
+        if($turno->isEmpty() || strcmp($request->get('flag'),"1") === 0)
         {
 
             $establecimiento = Establecimiento::find($request->get('id_establecimiento'));
@@ -102,7 +101,7 @@ class TurnoUsuarioController extends Controller
 
     public function reservarTurno(Request $request)
     {
-        //alert('Hello World!')->persistent("Close this");      
+              
 
         $turno = TurnoUsuario::where("id_turnoAdmin", "=", $request->get('id_turnoAdmin'))->where("fecha", "=", $request->get('fecha'))->get();
 

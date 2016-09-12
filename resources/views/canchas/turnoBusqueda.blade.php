@@ -28,10 +28,10 @@
     <!--                               BUSCADOR                             -->
 
     	<div class="col-md-12 col-sm-12 col-xs-12 acomodar buscadorTop">
-    		<div class="col-md-9 col-sm-9 col-xs-9">
-	        	{!! Form::select('id_rank', $rank , '0' , ['class' => 'form-control', 'style' => 'width:25%; float:right;']) !!}
+    		<div class="col-md-9 col-sm-6 col-xs-9">
+	        	{!! Form::select('id_rank', $rank , '0' , ['class' => 'form-control filter_top']) !!}
 	        </div>
-    		<div class="col-md-3 col-sm-3 col-xs-3">
+    		<div class="col-md-3 col-sm-6 col-xs-3">
     			{!!Form::open(['url' => 'turnos/todos', 'method' => 'GET', 'class' => 'navbar-form', 'style' => 'margin:0', 'role' => 'search'])!!}
 			        <div class="input-group" style="float:right;">
 			        	{!!Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Establecimiento'])!!}
@@ -47,7 +47,7 @@
     <!--                               CANCHAS Y MENU                             -->
 
     	<div class="col-md-12 col-sm-12 col-xs-12">
-	    	<div class="col-md-2 col-sm-2 col-xs-2 menuIzq no-margin">
+	    	<div class="col-md-2 col-sm-3 col-xs-3 menuIzq no-margin">
 	    		<div class="col-md-12 col-sm-12 col-xs-12">
 	    			<h4 class="texto_menuIzq">Filtrar Por:</h4>
 	    		</div>
@@ -98,7 +98,7 @@
 		    	{!!Form::close()!!}
 	    	</div>
 	    	@if(!$estab->isEmpty())
-		        <div class="col-md-10 col-sm-10 col-xs-10" style="margin:0;">
+		        <div class="col-md-10 col-sm-9 col-xs-9" style="margin:0;">
 					<ol class="lista col-md-12 col-sm-12 col-xs-12">
 						<?php $panel = 1 ?>
 						@foreach($estab as $est)

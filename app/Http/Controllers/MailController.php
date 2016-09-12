@@ -9,23 +9,24 @@ use Auth;
 
 class MailController extends Controller
 {
-	public function send(Request $request)
+	public function send()
 	{
 
-      $data = $request->all();
-
       $user = Auth::user();
- 
+
+      $data = ["email" => $user->email, "subject" => "Reserva Exitosa", "name" => $user->name, "body" =>"Se registro tu reserva."];
+
+      
       //se envia el array y la vista lo recibe en llaves individuales {{ $email }} , {{ $subject }}...
-      \Mail::send('emails.message', $data,  function($message) use ($request)
+      \Mail::send('emails.message', $data,  function($message) use ($user)
       {
-          $message->from($request->email, $request->name);
+          $message->from($user->email, $user->name);
 
           //asunto
-          $message->subject($request->subject);
+          $message->subject("Reserva Exitosa");
  
           //receptor
-          $message->to($user->email, $user->name);
+          $message->to("tucancha@noreplay.com", "Tu Cancha");
  
       });
       return redirect("usuarios/turno");

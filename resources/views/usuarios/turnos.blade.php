@@ -37,6 +37,7 @@
                     @foreach($turnosUser as $TU)
                         <?php   $horaIni = explode(",", $TU->horaIni);
                                 $horaFin = explode(",", $TU->horaFin);
+                                $turnos = explode(",", $TU->id_turnos);
                                 $indice = 0; ?>
                         @foreach($horaIni as $HI)
                             <tr>
@@ -50,10 +51,9 @@
                                         {!!Form::hidden('horaInicio', $HI)!!}
                                         {!!Form::hidden('horaFin', $horaFin[$indice])!!}
                                         {!!Form::hidden('dia', $TU->dia_ingles)!!}
-                                        {!!Form::hidden('arrayHoraIni', $TU->horaIni)!!}
-                                        {!!Form::hidden('arrayHoraFin', $TU->horaFin)!!}
                                         {!!Form::hidden('fecha', $TU->fecha)!!}
-                                        {!!Form::hidden('arrayPrecios', $TU->precios)!!}
+                                        {!!Form::hidden('id_turnoAdmin', $turnos[$indice])!!}
+                                        {!!Form::hidden('flag', 1)!!}
                                         {!!Form::submit('Ir', ['class' => 'btn btn-default boton btn-reserva']) !!}
                                     {!! Form::close() !!}
                                 </td>
