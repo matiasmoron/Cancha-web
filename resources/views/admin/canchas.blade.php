@@ -78,8 +78,9 @@
                                                    <td class="t-center">{{$cancha->superficie->superficie}}</td>
                                                    <td class="t-center">
                                                     {!! Form::open(['route' => ['admin.cancha.editar' , $cancha->id], 'method' => 'GET'])!!}
-                                                   <button class="btn2" style="width:100%;">Editar cancha</button>
+                                                   <button class="btn2" style="width:100%;">Editar </button>
                                                    {!!Form::close()!!}
+                                                   {{-- <button class="btn2">Eliminar</button> --}}
                                                    </td>
                                                  </tr>
                                                 @endforeach

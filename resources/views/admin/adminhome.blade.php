@@ -83,7 +83,7 @@
         <div class="col-md-6 bloque-exterior">
             <div class="bloque tipo-1">
                 <div class="col-md-10 update-left">
-                    <h4>Turnos libres para el día de hoy</h4>
+                    <h4>Turnos activos</h4>
                 </div>
                 <div class="col-md-2 update-right">
                     <i class="fa fa-calendar"> </i>

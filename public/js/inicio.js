@@ -21,7 +21,9 @@ function oyentes(){
 
     });
 
-    //sweetAlert("Pato..", "Aprendé a importar y a usar una librería!", "error");
+
+    // losweetAlert("Pato..", "Aprendé a importar y a usar una librería!", "error");
+
      
 
     $("#deportes").append('<option value=1>Fútbol</option>')

@@ -1,2 +1,141 @@
-body{font-family:'Roboto', sans-serif;font-size:16px}body{background:url("../../fotos/campo.jpg") center no-repeat;background-size:cover;background-attachment:fixed;font-family:'Lato'}.foto{width:125px;height:125px;border-radius:70%}.TurnoData{width:80%;float:right;position:relative;padding-left:.6em}.lista{display:block;list-style-type:none;margin:0;padding:0}.listaTurnos{list-style-type:none}.recuadro{padding-top:1%;padding-bottom:1%}.cont{width:100%;height:100%;background-color:white;padding:1%;border:1px solid #E5E5E5}.info1{font-size:15px;display:inline}.info2{font-size:16px}.datosFila1{padding:0%}.datosDesap2{width:100%;padding-top:4%}.dato{position:relative;float:left;padding-right:3%}.nombreEstabl{font-size:23px;float:left}.nombreCancha{font-size:17px;text-align:center}.acomodar{margin-top:3%}.boton{position:relative;float:right}.decorar{text-decoration:none}.acomodarTitulo{font-size:30px;text-align:center;padding-bottom:2%;position:relative;top:-10px}.menuIzq{background-color:rgba(63,92,154,0.79);opacity:0.94}.linkEstabl{color:black}.linkEstabl:hover{color:#9A9A9A;text-decoration:none}.linkTurno{color:#FEFEFE;padding-left:2%}.linkTurno:hover,.linkTurno:focus{color:black}a:-webkit-any-link{text-decoration:none}.no-margin{padding:1% 0%}.elem-menu{padding:5% 0%}.buscadorTop{padding:0%;margin:5% 1% 1% 1%;float:right}.establec{background-color:rgba(0,0,0,0.08);margin-bottom:15px;padding-bottom:2%;opacity:0.97}.texto_menuIzq{color:white}.text-cente{text-align:center}.cont_empty{padding:3%;background-color:rgba(63,92,154,0.79)}.filter_top{width:25%;float:right}
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px; }
+
+body {
+  background: url("../../fotos/campo.jpg") center no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  font-family: 'Lato'; }
+
+.foto {
+  width: 125px;
+  height: 125px;
+  border-radius: 70%; }
+
+.TurnoData {
+  width: 80%;
+  float: right;
+  position: relative;
+  padding-left: .6em; }
+
+.lista {
+  display: block;
+  list-style-type: none;
+  margin: 0;
+  padding: 0; }
+
+.listaTurnos {
+  list-style-type: none; }
+
+.recuadro {
+  padding-top: 1%;
+  padding-bottom: 1%; }
+
+.cont {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  padding: 1%;
+  border: 1px solid #E5E5E5;
+  /*box-shadow: 0px 10px 10px #202020;
+   -webkit-box-shadow: 0px 10px 10px #202020;
+   -moz-box-shadow: 0px 10px 10px #202020;*/ }
+
+.info1 {
+  font-size: 15px;
+  display: inline; }
+
+.info2 {
+  font-size: 16px; }
+
+.datosFila1 {
+  padding: 0%; }
+
+.datosDesap2 {
+  width: 100%;
+  padding-top: 4%; }
+
+.dato {
+  position: relative;
+  float: left;
+  padding-right: 3%; }
+
+.nombreEstabl {
+  font-size: 23px;
+  float: left; }
+
+.nombreCancha {
+  font-size: 17px;
+  text-align: center; }
+
+.acomodar {
+  margin-top: 3%; }
+
+.boton {
+  position: relative;
+  float: right; }
+
+.decorar {
+  text-decoration: none; }
+
+.acomodarTitulo {
+  font-size: 30px;
+  text-align: center;
+  padding-bottom: 2%;
+  position: relative;
+  top: -10px; }
+
+.menuIzq {
+  background-color: rgba(63, 92, 154, 0.79);
+  opacity: 0.94; }
+
+.linkEstabl {
+  color: black; }
+
+.linkEstabl:hover {
+  color: #9A9A9A;
+  text-decoration: none; }
+
+.linkTurno {
+  color: #FEFEFE;
+  padding-left: 2%; }
+
+.linkTurno:hover, .linkTurno:focus {
+  color: black; }
+
+a:-webkit-any-link {
+  text-decoration: none; }
+
+.no-margin {
+  padding: 1% 0%; }
+
+.elem-menu {
+  padding: 5% 0%; }
+
+.buscadorTop {
+  padding: 0%;
+  margin: 5% 1% 1% 1%;
+  float: right; }
+
+.establec {
+  background-color: rgba(0, 0, 0, 0.08);
+  margin-bottom: 15px;
+  padding-bottom: 2%;
+  opacity: 0.97; }
+
+.texto_menuIzq {
+  color: white; }
+
+.text-cente {
+  text-align: center; }
+
+.cont_empty {
+  padding: 3%;
+  background-color: rgba(63, 92, 154, 0.79); }
+
+.filter_top {
+  width: 25%;
+  float: right; }
+
 /*# sourceMappingURL=todas.css.map */

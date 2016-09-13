@@ -1,7 +1,6 @@
-@import "../variables";
+@import "../variables.scss";
 
-body{
-   
+body{ 
     // background-image: url('../../fotos/img/back-office.jpg');
    font-family: 'Roboto', sans-serif;
 }
@@ -152,7 +151,7 @@ body{
 }
 
 .btn2-big{
-    @btn2;
+   
      width: 100%;
 }
 

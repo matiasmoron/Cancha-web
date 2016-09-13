@@ -1,35 +1,92 @@
- gu█ [ C:\xampp\htdocs\Cancha-web ] gulp
-[22:36:16] Using gulpfile C:\xampp\htdocs\Cancha-web\gulpfile.js
-[22:36:16] Starting 'default'...
-[22:36:16] Starting 'sass'...
+█ [ C:\xampp\htdocs\Cancha-web ] gulp
+[16:36:36] Using gulpfile C:\xampp\htdocs\Cancha-web\gulpfile.js
+[16:36:36] Starting 'default'...
+[16:36:36] Starting 'sass'...
 
 Fetching Sass Source Files...
-   - resources\assets\sass\todas.scss <-- Not Found
+   - public\css\admin\admin.scss
 
 
 Saving To...
-   - public\css\todas.css
+   - public\css\admin\admin.css
 
-[22:36:18] Finished 'default' after 2.21 s
-[22:36:18] Finished 'sass' after 2.22 s
-[22:36:18] Starting 'sass'...
+[16:36:37] Finished 'default' after 989 ms
+[16:36:37] gulp-notify: [Laravel Elixir] Sass Compiled!
+[16:36:37] Finished 'sass' after 1.12 s
+[16:36:37] Starting 'sass'...
 
 Fetching Sass Source Files...
-   - resources\assets\sass\turnos.scss <-- Not Found
+   - public\css\canchas\todas.scss
 
 
 Saving To...
-   - public\css\turnos.css
+   - public\css\canchas\todas.css
 
-[22:36:18] Finished 'sass' after 11 ms
-[22:36:18] Starting 'sass'...
+[16:36:37] gulp-notify: [Laravel Elixir] Sass Compiled!
+[16:36:37] Finished 'sass' after 82 ms
+[16:36:37] Starting 'sass'...
 
 Fetching Sass Source Files...
-   - resources\assets\sass\commons.scss <-- Not Found
+   - public\css\commons\commons.scss
 
 
 Saving To...
-   - public\css\commons.css
+   - public\css\commons\commons.css
 
-[22:36:18] Finished 'sass' after 8.7 ms
+[16:36:37] gulp-notify: [Laravel Elixir] Sass Compiled!
+[16:36:37] Finished 'sass' after 125 ms
+[16:36:37] Starting 'sass'...
+
+Fetching Sass Source Files...
+   - public\css\inicio\form-elements.scss
+
+
+Saving To...
+   - public\css\inicio\form-elements.css
+
+[16:36:38] gulp-notify: [Laravel Elixir] Sass Compiled!
+[16:36:38] Finished 'sass' after 85 ms
+[16:36:38] Starting 'sass'...
+
+Fetching Sass Source Files...
+   - public\css\inicio\inicio.scss
+
+
+Saving To...
+   - public\css\inicio\inicio.css
+
+[16:36:38] gulp-notify: [Laravel Elixir] Sass Compiled!
+[16:36:38] Finished 'sass' after 74 ms
+[16:36:38] Starting 'sass'...
+
+Fetching Sass Source Files...
+   - public\css\login\login.scss
+
+
+Saving To...
+   - public\css\login\login.css
+
+[16:36:38] gulp-notify: [Laravel Elixir] Sass Compiled!
+[16:36:38] Finished 'sass' after 94 ms
+[16:36:38] Starting 'sass'...
+
+Fetching Sass Source Files...
+   - public\css\turnos\turnos.scss
+
+
+Saving To...
+   - public\css\turnos\turnos.css
+
+[16:36:38] gulp-notify: [Laravel Elixir] Sass Compiled!
+[16:36:38] Finished 'sass' after 52 ms
+[16:36:38] Starting 'sass'...
+
+Fetching Sass Source Files...
+   - public\css\_variables.scss
+
+
+Saving To...
+   - public\css\_variables.css
+
+[16:36:38] Finished 'sass' after 11 ms
 
