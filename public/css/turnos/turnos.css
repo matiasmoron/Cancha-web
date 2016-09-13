@@ -1,6 +1,7 @@
 body {
   font-family: 'Roboto', sans-serif;
-  font-size: 14px; }
+  font-size: 14px;
+  height: 100%; }
 
 .acomodar-submenu {
   padding-bottom: 3%;
@@ -56,7 +57,7 @@ body {
   background-color: grey; }
 
 .color-blue {
-  color: #dd0360; }
+  color: #3b5998; }
 
 .encabTabla {
   font-size: 18px; }

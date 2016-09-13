@@ -1,6 +1,7 @@
 body {
   font-family: 'Roboto', sans-serif;
-  font-size: 14px; }
+  font-size: 14px;
+  height: 100%; }
 
 ol, ul {
   list-style: none;
@@ -111,7 +112,7 @@ a {
   position: relative; }
 
 .top-login span {
-  border: 2px solid #dd0360;
+  border: 2px solid #3b5998;
   width: 105px;
   height: 105px;
   display: block;
@@ -169,11 +170,11 @@ a {
   font-weight: 700;
   color: #fff;
   padding: 13px 0;
-  background: #dd0360;
+  background: #3b5998;
   display: inline-block;
   width: 100%;
   outline: none;
-  border: 2px solid #dd0360;
+  border: 2px solid #3b5998;
   cursor: pointer;
   text-transform: uppercase; }
 

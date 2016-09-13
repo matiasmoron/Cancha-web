@@ -1,12 +1,12 @@
 body {
   font-family: 'Roboto', sans-serif;
-  font-size: 14px; }
+  font-size: 14px;
+  height: 100%; }
 
 body {
   background: url("../../fotos/campo.jpg") center no-repeat;
   background-size: cover;
-  background-attachment: fixed;
-  font-family: 'Lato'; }
+  background-attachment: fixed; }
 
 .foto {
   width: 125px;

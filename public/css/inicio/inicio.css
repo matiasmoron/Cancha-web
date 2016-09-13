@@ -1,6 +1,7 @@
 body {
   font-family: 'Roboto', sans-serif;
-  font-size: 14px; }
+  font-size: 14px;
+  height: 100%; }
 
 body {
   font-family: 'Roboto', sans-serif;
@@ -19,7 +20,7 @@ strong {
   font-weight: 500; }
 
 a, a:hover, a:focus {
-  color: #dd0360;
+  color: #3b5998;
   text-decoration: none;
   transition: all .3s; }
 
@@ -40,12 +41,12 @@ img {
   max-width: 100%; }
 
 ::-moz-selection {
-  background: #dd0360;
+  background: #3b5998;
   color: #fff;
   text-shadow: none; }
 
 ::selection {
-  background: #dd0360;
+  background: #3b5998;
   color: #fff;
   text-shadow: none; }
 
@@ -161,7 +162,7 @@ img {
   width: 100%; }
 
 .form-bottom form .input-error {
-  border-color: #dd0360; }
+  border-color: #3b5998; }
 
 .social-login {
   margin-top: 35px; }

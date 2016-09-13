@@ -11,7 +11,7 @@
 
     <!-- Fonts -->
     <link rel="stylesheet" href="{{asset('css/font-awesome-4.6.3/css/font-awesome.min.css')}}" >
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700">
+    {{-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700"> --}}
 	{{-- <link rel="stylesheet" href="{{asset('fonts/glyphico|ns-halflings-regular.eot')}}"> --}}
 
     <!-- Styles -->
@@ -32,10 +32,6 @@
     @include('sweet::alert')
 
     <style>
-        body {
-            font-family: 'Lato';
-        }
-
         .fa-btn {
             margin-right: 6px;
         }
