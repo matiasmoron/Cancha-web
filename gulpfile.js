@@ -22,4 +22,6 @@ elixir(function(mix) {
     mix.sass('../../../public/css/turnos/turnos.scss','public/css/turnos');
     mix.sass('../../../public/css/_variables.scss','public/css');
 
+     // mix.webpack('../../../public/js/inicio.js','public/js');
+
 });
