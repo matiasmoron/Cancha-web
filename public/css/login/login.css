@@ -104,7 +104,6 @@ a {
   width: 130px;
   height: 130px;
   display: block;
-  -webkit-transform: rotate(45deg) translate3d(0, 0, 0);
   transform: rotate(45deg) translate3d(0, 0, 0);
   margin: 0 auto 4em;
   background: #fff;
@@ -121,7 +120,6 @@ a {
   left: 11px; }
 
 .top-login span img {
-  -webkit-transform: rotate(-45deg) translate3d(0, 0, 0);
   transform: rotate(-45deg) translate3d(0, 0, 0);
   margin: 20px 0 0 20px; }
 

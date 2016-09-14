@@ -8,6 +8,10 @@
     text-align: center;
 }
 
+.centrarTituloAdmin {
+  text-align: center; 
+}
+
 .subtitulo
 {
     text-align: center;
@@ -269,4 +273,11 @@ hr
 
 .volver{
     padding-top: 5%;
+}
+
+.cont_empty
+{
+    padding: 3%;
+    background-color:rgba(63, 92, 154, 0.79); 
+    //opacity: 0.94;
 }

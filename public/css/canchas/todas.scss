@@ -3,7 +3,7 @@
 body
 {
 	background: url("../../fotos/campo.jpg") center no-repeat;
-	background-size:cover;
+	//background-size:cover;
 	background-attachment:fixed;
 }
 
@@ -188,13 +188,6 @@ a:-webkit-any-link
 
 .text-cente{
 	text-align:center;
-}
-
-.cont_empty
-{
-	padding: 3%;
-	background-color:rgba(63, 92, 154, 0.79); 
-	//opacity: 0.94;
 }
 
 .filter_top
