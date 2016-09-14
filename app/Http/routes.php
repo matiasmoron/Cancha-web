@@ -59,6 +59,11 @@ Route::post('turno/reservar/previsualizar',
     'uses' => 'TurnoUsuarioController@previsualizarTurno']
     );
 
+Route::delete('turno/eliminar', 
+    ['as' => 'turno.eliminar',
+    'uses' => 'TurnoUsuarioController@eliminarTurno']
+    );
+
 //Ruta de admin
 Route::get('admin/home', 
 	'UserController@adminhome');
@@ -80,11 +85,10 @@ Route::get('admin/home',
         'uses' => 'UserController@editarEstablecimiento']       
         );
 
-    Route::post('admin/establecimiento/{id}',
-        ['as' => 'admin.establecimiento.modificar', 
-        'uses' => 'UserController@modificarEstablecimiento']       
+    Route::delete('admin/establecimiento',
+        ['as' => 'admin.establecimiento.eliminar', 
+        'uses' => 'UserController@eliminarEstablecimiento']       
         );
-
 
 
     //Rutas Admin/Cancha
@@ -109,6 +113,11 @@ Route::get('admin/home',
         'uses' => 'UserController@modificarCancha']       
         );
 
+    Route::delete('admin/cancha',
+        ['as' => 'admin.cancha.eliminar', 
+        'uses' => 'UserController@eliminarCancha']       
+        );
+
     //Rutas Admin/Turnos
     Route::get('admin/turnos', 
         'UserController@verTurnosAdmin');
@@ -127,6 +136,11 @@ Route::get('admin/home',
     Route::post('admin/turno/{id}',
     ['as' => 'admin.turno', 
      'uses' => 'UserController@modificarTurnoAdmin']       
+    );
+
+    Route::delete('admin/turno',
+    ['as' => 'admin.turno', 
+     'uses' => 'UserController@eliminarTurnoAdmin']       
     );
 
 

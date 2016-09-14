@@ -23,9 +23,11 @@ class TurnoUsuarioController extends Controller
         $turnosUser = DB::select("select 
                 c.id_establecimiento as id_estab,
                 c.id as id_canc,
+                c.nombre_cancha as nombreCancha,
                 d.dia as dia,
                 d.dia_ingles as dia_ingles,
                 tu.fecha as fecha,
+                tu.id as id_turnoUser,
                 GROUP_CONCAT(ta.id SEPARATOR ',') as id_turnos,
                 GROUP_CONCAT(ta.precio_cancha SEPARATOR ',') as precios,
                 GROUP_CONCAT(tu.confirmado SEPARATOR ',') as confirmados,
@@ -35,7 +37,7 @@ class TurnoUsuarioController extends Controller
                 LEFT JOIN turnousuario as tu ON tu.id_turnoAdmin = ta.id
                 LEFT JOIN dia as d ON ta.id_dia = d.id 
                 LEFT JOIN cancha as c ON ta.id_cancha = c.id 
-                WHERE tu.id_usuario = ".Auth::user()->id."
+                WHERE tu.id_usuario = ".Auth::user()->id." AND tu.fecha >= CURDATE() 
                 GROUP BY (ta.id_dia)
                 ORDER BY ta.id_dia ASC");
 
@@ -117,5 +119,20 @@ class TurnoUsuarioController extends Controller
             return redirect('/'); 
         }
         
+    }
+
+    public function eliminarTurno(Request $request)
+    {
+        $turnoUser = TurnoUsuario::find($request->get('id_turnoUser'));
+
+        try
+        {
+            $turnoUser->delete();
+            return redirect('usuarios/turnos');
+        }
+        catch(\Exception $e)
+        {
+            return redirect('/');
+        }
     }
 }

@@ -27,7 +27,9 @@
             <table class="table table-striped">
                 <thead>
                   <tr>
+                    <th class="t-center">Cancha</th>
                     <th class="t-center">Dia</th>
+                    <th class="t-center">Fecha</th>
                     <th class="t-center">Hora de Inicio</th>
                     <th class="t-center">Hora de Fin</th>
                     <th class="t-center"><i class="fa fa-btn glyphicon glyphicon-share-alt encabTabla"></i></th>
@@ -41,21 +43,31 @@
                                 $indice = 0; ?>
                         @foreach($horaIni as $HI)
                             <tr>
+                                <td class="t-center">{{$TU->nombreCancha}}</td>
                                 <td class="t-center">{{$TU->dia}}</td>
+                                <td class="t-center">{{date('d/m/Y', strtotime($TU->fecha))}}</td>
                                 <td class="t-center">{{substr($HI,0,5)}} Hs</td>
                                 <td class="t-center">{{substr($horaFin[$indice],0,5)}} Hs</td>
-                                <td class="t-center"> 
-                                    {!! Form::open(['url' => 'turno/reservar/previsualizar' , 'method' => 'post']) !!}
-                                        {!!Form::hidden('id_establecimiento', $TU->id_estab)!!}
-                                        {!!Form::hidden('id_cancha', $TU->id_canc)!!}
-                                        {!!Form::hidden('horaInicio', $HI)!!}
-                                        {!!Form::hidden('horaFin', $horaFin[$indice])!!}
-                                        {!!Form::hidden('dia', $TU->dia_ingles)!!}
-                                        {!!Form::hidden('fecha', $TU->fecha)!!}
-                                        {!!Form::hidden('id_turnoAdmin', $turnos[$indice])!!}
-                                        {!!Form::hidden('flag', 1)!!}
-                                        {!!Form::submit('Ir', ['class' => 'btn btn-default boton btn-reserva']) !!}
-                                    {!! Form::close() !!}
+                                <td class="t-center col-md-3 col-sm-12 col-xs-12">
+                                    <div class="col-md-6 col-sm-12 col-xs-12">
+                                        {!! Form::open(['url' => 'turno/reservar/previsualizar' , 'method' => 'post']) !!}
+                                            {!!Form::hidden('id_establecimiento', $TU->id_estab)!!}
+                                            {!!Form::hidden('id_cancha', $TU->id_canc)!!}
+                                            {!!Form::hidden('horaInicio', $HI)!!}
+                                            {!!Form::hidden('horaFin', $horaFin[$indice])!!}
+                                            {!!Form::hidden('dia', $TU->dia_ingles)!!}
+                                            {!!Form::hidden('fecha', $TU->fecha)!!}
+                                            {!!Form::hidden('id_turnoAdmin', $turnos[$indice])!!}
+                                            {!!Form::hidden('flag', 1)!!}
+                                            {!!Form::submit('Ir', ['class' => 'btn btn-default boton btn-reserva']) !!}
+                                        {!! Form::close() !!}
+                                    </div>
+                                    <div class="col-md-6 col-sm-12 col-xs-12">
+                                        {!! Form::open(['url' => 'turno/eliminar' , 'method' => 'DELETE']) !!}
+                                            {!!Form::hidden('id_turnoUser', $TU->id_turnoUser)!!}
+                                            {!!Form::submit('Dar Baja', ['class' => 'btn btn-default boton btn-reserva']) !!}
+                                        {!! Form::close() !!}
+                                    </div>
                                 </td>
                                 <?php $indice++; ?>
                             </tr>

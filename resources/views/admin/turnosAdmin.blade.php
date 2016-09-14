@@ -72,11 +72,20 @@
                                                    @else
                                                        <td class="t-center">-</td>
                                                    @endif
-                                                   <td class="t-center">
-                                                    {!! Form::open(['route' => ['admin.turno' , $turno->id], 'method' => 'GET'])!!}
-                                                   <button class="btn2" style="width:100%;">Editar turno</button>
-                                                   {!!Form::close()!!}
-                                                   </td>
+                                                    <td class="t-center col-md-3 col-sm-12 col-xs-12">
+                                                      <div class="col-md-6 col-sm-12 col-xs-12">
+                                                        {!! Form::open(['route' => ['admin.turno' , $turno->id], 'method' => 'GET'])!!}
+                                                          <button class="btn2" style="width:100%;">Editar</button>
+                                                        {!!Form::close()!!}
+                                                      </div>
+                                                      <div class="col-md-6 col-sm-12 col-xs-12">
+                                                        {!! Form::open(['route' => ['admin.turno'], 'method' => 'DELETE'])!!}
+                                                          {{Form::hidden('id_turnoAdmin', $turno->id)}}
+                                                          <button class="btn2" style="width:100%;">Eliminar</button>
+                                                        {!!Form::close()!!}
+                                                      </div>
+                                                      
+                                                    </td>
                                                  </tr>
                                                 @endforeach
                                                </tbody>

@@ -78,10 +78,21 @@ class UserController extends Controller
 
         return redirect('admin/establecimiento');
     }
-    
-    
 
+    public function eliminarEstablecimiento(Request $request)
+    {
+        $establ = Establecimiento::find($request->get('id_establecimiento'));
 
+        try
+        {
+            $establ->delete();
+            return redirect('admin/establecimiento');
+        }
+        catch(\Exception $e)
+        {
+            return redirect('/');
+        }
+    }
 
 
 
@@ -139,7 +150,20 @@ class UserController extends Controller
         return redirect('admin/cancha');
     }
 
+    public function eliminarCancha(Request $request)
+    {
+        $cancha = Cancha::find($request->get('id_cancha'));
 
+        try
+        {
+            $cancha->delete();
+            return redirect('admin/cancha');
+        }
+        catch(\Exception $e)
+        {
+            return redirect('/');
+        }
+    }
 
 
 
@@ -198,6 +222,21 @@ class UserController extends Controller
         $turnoAdmin->save();     
 
         return redirect('admin/turnos');
+    }
+
+    public function eliminarTurnoAdmin(Request $request)
+    {
+        $turnoAdmin = TurnoAdmin::find($request->get('id_turnoAdmin'));
+
+        try
+        {
+            $turnoAdmin->delete();
+            return redirect('admin/turnos');
+        }
+        catch(\Exception $e)
+        {
+            return redirect('/');
+        }
     }
 
     //Seccion Datos Personales

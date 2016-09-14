@@ -50,10 +50,18 @@
                 @endif
                 <td class="t-left">{{$establec->ciudad->ciudad_nombre}}</td>
                 <td class="t-left">{{$establec->ciudad->provincia->provincia_nombre}}</td>
-                <td class="t-center">
-                 {!! Form::open(['route' => ['admin.establecimiento.editar' , $establec->id], 'method' => 'GET'])!!}
-                <button class="btn2" style="width:100%;">Editar establecimiento</button>
-                {!!Form::close()!!}
+                <td class="t-center col-md-3 col-sm-12 col-xs-12">
+                 <div class="col-md-6 col-sm-12 col-xs-12">
+                     {!! Form::open(['route' => ['admin.establecimiento.editar' , $establec->id], 'method' => 'GET'])!!}
+                        <button class="btn2" style="width:100%;">Editar</button>
+                    {!!Form::close()!!}
+                 </div>
+                 <div class="col-md-6 col-sm-12 col-xs-12">
+                     {!! Form::open(['route' => ['admin.establecimiento.eliminar'], 'method' => 'DELETE'])!!}
+                        <button class="btn2" style="width:100%;">Eliminar</button>
+                        {!!Form::hidden('id_establecimiento', $establec->id)!!}
+                    {!!Form::close()!!}
+                 </div>
                 </td>
               </tr>
              @endforeach
