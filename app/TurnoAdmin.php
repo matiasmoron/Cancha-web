@@ -8,7 +8,7 @@ class TurnoAdmin extends Model
 {
     protected $table = 'turnoadmin';
     public $timestamps = false;
-    protected $fillable = ['id_cancha','id_dia', 'horaInicio', 'horaFin', 'id_usuario_admin'];
+    protected $fillable = ['id_cancha','id_dia', 'horaInicio', 'horaFin', 'id_usuario_admin', 'precio_cancha', 'adic_luz', 'precio_adicional'];
     
     
     public function cancha()

@@ -12,7 +12,7 @@
 </div>
 <div class="container">
   <div class="row">
-      <div class="col-md-12 col-sm-12 col-xs-12 centrarTitulo">
+      <div class="col-md-12 col-sm-12 col-xs-12 centrarTituloAdmin">
           <h2>Edición de tu cancha</h2>
       </div>
       <div class="col-md-12 col-sm-12 col-xs-12 subtitulo" style="padding-bottom:2%;">
@@ -45,11 +45,15 @@
                     </div>
                   </div>
                   <div class="form-group col-md-12">
-                    <div class="col-md-6 ">
+                    <div class="col-md-4 ">
+                      <label>Cantidad de jugadores</label>
+                      {!! Form::select('cant_jugadores', $arrCantJugad, $cancha->cant_jugadores, ['class' => 'form-control']) !!}
+                    </div>
+                    <div class="col-md-4 ">
                         <label>¿ Tiene luz ?</label>
                         {!! Form::select('tiene_luz', ['0' => 'No', '1' => 'Si'], $cancha->tiene_luz , ['class' => 'form-control']) !!}
                     </div>
-                    <div class="col-md-6 ">
+                    <div class="col-md-4 ">
                         <label>¿ Es techada ?</label>
                         {!! Form::select('techada', ['0' => 'No', '1' => 'Si'], $cancha->techada , ['class' => 'form-control']) !!}
                     </div>
@@ -69,7 +73,6 @@
                     <button class="btn2">Modificar</button>
                   </div>
                 {!! Form::close() !!}
-                  
               </form>
             </div>
         </div>   

@@ -1,8 +1,10 @@
 @import "../variables.scss";
 
 body{ 
-    // background-image: url('../../fotos/img/back-office.jpg');
-   // font-family: 'Roboto', sans-serif;
+     background-image: url('../../fotos/img/pelota.jpg');
+     background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .panel-heading{

@@ -1,6 +1,13 @@
 @import "../variables.scss";
 
 
+body
+{
+  background: url("../../fotos/red.jpg") center no-repeat;
+  background-size:cover;
+  background-attachment:fixed;
+}
+
 .acomodar-submenu
 {
 	padding-bottom: 3%;

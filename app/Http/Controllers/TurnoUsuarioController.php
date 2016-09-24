@@ -89,13 +89,13 @@ class TurnoUsuarioController extends Controller
                     FROM turnoadmin as ta 
                     LEFT JOIN turnousuario as tu ON tu.id_turnoAdmin = ta.id 
                     INNER JOIN cancha as c ON ta.id_cancha = c.id
-                    WHERE ta.id_dia = '".$id_dia[0]->id."' AND  (tu.id_turnoAdmin IS NULL OR tu.fecha != '".$request->get('fecha')."') AND c.id = '".$request->get('id_cancha')."' AND ta.horaInicio != '".$turnoAdmin->horaInicio."' AND ta.horaFin != '".$turnoAdmin->horaFin."'");
+                    WHERE ta.id_dia = '".$id_dia[0]->id."' AND (ta.id NOT IN (SELECT ta2.id FROM turnousuario as tu2 INNER JOIN turnoadmin as ta2 WHERE ta2.id = tu2.id_turnoAdmin AND tu2.fecha = '".$request->get('fecha')."')) AND c.id = '".$request->get('id_cancha')."' AND ta.horaInicio != '".$turnoAdmin->horaInicio."' AND ta.horaFin != '".$turnoAdmin->horaFin."'");
 
             return view('turnos.previsualizar2', ['cancha' => $cancha, 'establecimiento' => $establecimiento, 'turnoAdmin' => $turnoAdmin, 'fecha' => $request->get('fecha'), 'establecUser' => $establecimientosUser, 'coord' => $coord, 'dia' => $request->get('dia'), 'turnoUser' => $turnoUser, 'turnosAlter' => $turnosAlter]);
         }
         else
         {
-            echo '<script language="javascript">alert("Lo Sentimos. El turno se ha reservado anteriormente.");</script>';
+            notify()->flash('Lo sentimos! El turno fue reservado por otro usuario anteriormente. Busca un nuevo turno :D','error');
             return redirect('/');
         }
 
@@ -111,11 +111,14 @@ class TurnoUsuarioController extends Controller
         {
             $fecha = Carbon::createFromFormat('Y-m-d', $request->get('fecha'))->toDateString();
             $turno = TurnoUsuario::create(['id_turnoAdmin' => $request->get('id_turnoAdmin'), 'fecha' => $fecha, 'confirmado' => '0', 'pagado' => '0', 'estado' => '0', 'id_usuario' =>  Auth::user()->id]);
-            return redirect('send');
+           
+            notify()->flash('Tu turno ha sido reservado exitosamente! Yeep!','success');
+            return redirect('usuarios/turnos');
+            //return redirect('send');
         }
         else
         {
-            echo '<script language="javascript">alert("Lo Sentimos. El turno se ha reservado anteriormente.");</script>';
+            notify()->flash('Lo sentimos! El turno fue reservado por otro usuario anteriormente :(','error');
             return redirect('/'); 
         }
         
@@ -128,11 +131,13 @@ class TurnoUsuarioController extends Controller
         try
         {
             $turnoUser->delete();
+            notify()->flash('Tu reserva ha sido eliminada exitosamente! Yeep!','success');
             return redirect('usuarios/turnos');
         }
         catch(\Exception $e)
         {
-            return redirect('/');
+            notify()->flash('Lo sentimos! Se produjo un error al eliminar tu reserva.','error');
+            return redirect('usuarios/turnos');
         }
     }
 }

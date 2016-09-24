@@ -171,6 +171,8 @@ return [
         * Email
         */
 		UxWeb\SweetAlert\SweetAlertServiceProvider::class,
+		
+		Codecourse\Notify\NotifyServiceProvider::class,
     ],
 
     /*
@@ -220,6 +222,7 @@ return [
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
 		'Alert' => UxWeb\SweetAlert\SweetAlert::class,
+		'Notify' => Codecourse\Notify\Facades\Notify::class,
 
     ],
 

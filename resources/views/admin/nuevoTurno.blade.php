@@ -14,7 +14,7 @@
 
 <div class="container"> 
     <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12 centrarTitulo">
+        <div class="col-md-12 col-sm-12 col-xs-12 centrarTituloAdmin">
             <h2>Creación de un nuevo turno</h2>
         </div>
         <div class="col-md-12 col-sm-12 col-xs-12 subtitulo" style="padding-bottom:2%;">
@@ -59,15 +59,15 @@
                         <div class="form-group col-md-12">
                             <div class="col-md-4">
                                 <label>Precio del turno</label>
-                               {!!Form::number('precio_cancha', null , ['class' => 'form-control','required']) !!}
+                               {!!Form::number('precio_cancha', 0 , ['class' => 'form-control','required']) !!}
                             </div>
                             <div class="col-md-4">
                                 <label>¿Precio adicional por luz?</label>
-                                {!! Form::select('adic_luz', ['0' => 'No', '1' => 'Si'] , null , ['class' => 'form-control','id'=>'adic_luz']) !!}
+                                {!! Form::select('adic_luz', ['0' => 'No', '1' => 'Si'] , 0 , ['class' => 'form-control','id'=>'adic_luz']) !!}
                             </div>
                             <div class="col-md-4" >
                                 <label>Precio adicional</label>
-                                {!!Form::number('precio_adicional', null , ['class' => 'form-control','disabled','id'=>'precio_adic']) !!}
+                                {!!Form::number('precio_adicional', 0 , ['class' => 'form-control','disabled','id'=>'precio_adic']) !!}
                             </div>
                         </div>
                         {!! Form::hidden('id_usuario_admin', Auth::user()->id) !!}

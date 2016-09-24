@@ -2,6 +2,7 @@
 
 @section('content')
 <link rel="stylesheet" href="{{ URL::asset('css/admin/admin.css') }}">
+<script type="text/javascript" src="{{ URL::asset('js/admin/canchas.js') }}"></script>
 
 <div class="col-md-2 volver" >
     <button class="btn2" onclick="go_back()">Volver&nbsp;
@@ -10,7 +11,7 @@
 </div>
 <div class="container">
       <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12 centrarTitulo">
+        <div class="col-md-12 col-sm-12 col-xs-12 centrarTituloAdmin">
             <h2>Administración de tus canchas</h2>
         </div>
         <div class="col-md-12 col-sm-12 col-xs-12 subtitulo" style="padding-bottom:2%;">
@@ -83,10 +84,10 @@
                                                       {!!Form::close()!!}
                                                     </div>
                                                     <div class="col-md-6 col-sm-12 col-xs-12">
-                                                      {!! Form::open(['route' => ['admin.cancha.eliminar'], 'method' => 'DELETE'])!!}
-                                                        <button class="btn2" style="width:100%;">Eliminar</button>
+                                                      {!! Form::open(['route' => ['admin.cancha.eliminar'], 'method' => 'DELETE', 'id'=>'form_'.$panel])!!}
                                                         {!!Form::hidden('id_cancha', $cancha->id)!!}
                                                       {!!Form::close()!!}
+                                                      <button class="btn2 eliminar" data-id={{"form_".$panel}} style="width:100%;">Eliminar</button>
                                                     </div>
 
                                                    </td>
@@ -106,5 +107,38 @@
         </div>
     </div>
 </div>
+
+<script>
+  $(".eliminar").on('click',function(e){
+      console.log("pasa");
+      var id = $(this).data('id');
+      e.preventDefault();
+      swal({   
+          title: "¿Estas seguro?",   
+          text: "¡Recuerda que no se podrá recuperar la cancha posteriormente!",   
+          type: "warning",   
+          showCancelButton: true,   
+          confirmButtonColor: "#DD6B55",  
+          confirmButtonText: "Si, Eliminar",   
+          cancelButtonText: "¡No, Cancelar!",   
+          closeOnConfirm: false,   
+          closeOnCancel: false },
+       function(isConfirm){
+          if (isConfirm) {
+            $("#"+id).submit();   
+          } 
+          else {     
+            swal("cancelado", "Tu cancha no ha sido borrada ;)", "error");   
+          } 
+      });
+  });
+
+  @if(notify()->ready())
+    swal({
+        title: "{{notify()->message()}}",
+        type: "{{notify()->type()}}",
+    });
+  @endif
+</script>
 
 @endsection

@@ -3,6 +3,7 @@
 
 @section('content')
 <link rel="stylesheet" href="{{ URL::asset('css/admin/admin.css') }}">
+<script type="text/javascript" src="{{ URL::asset('js/admin/turnosAdmin.js') }}"></script>
 
 
 
@@ -13,7 +14,7 @@
 </div>
 <div class="container" style="padding-top: 10%;">
      <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12 centrarTitulo">
+        <div class="col-md-12 col-sm-12 col-xs-12 centrarTituloAdmin">
             <h2>Administración de tus turnos</h2>
         </div>
         <div class="col-md-12 col-sm-12 col-xs-12 subtitulo" style="padding-bottom:2%;">
@@ -74,17 +75,17 @@
                                                    @endif
                                                     <td class="t-center col-md-3 col-sm-12 col-xs-12">
                                                       <div class="col-md-6 col-sm-12 col-xs-12">
-                                                        {!! Form::open(['route' => ['admin.turno' , $turno->id], 'method' => 'GET'])!!}
+                                                        {!! Form::open(['route' => ['admin.turno'] ,'method' => 'get'])!!}
+                                                          {{Form::hidden('id_turnoAdmin', $turno->id)}}
                                                           <button class="btn2" style="width:100%;">Editar</button>
                                                         {!!Form::close()!!}
                                                       </div>
                                                       <div class="col-md-6 col-sm-12 col-xs-12">
-                                                        {!! Form::open(['route' => ['admin.turno'], 'method' => 'DELETE'])!!}
+                                                        {!! Form::open(['route' => ['admin.turno'], 'method' => 'DELETE','id'=>'form_'.$panel])!!}
                                                           {{Form::hidden('id_turnoAdmin', $turno->id)}}
-                                                          <button class="btn2" style="width:100%;">Eliminar</button>
                                                         {!!Form::close()!!}
+                                                          <button class="btn2 eliminar" data-id={{"form_".$panel}} style="width:100%;">Eliminar</button>
                                                       </div>
-                                                      
                                                     </td>
                                                  </tr>
                                                 @endforeach
@@ -101,5 +102,38 @@
         </div>
     </div>
 </div>
+
+<script>
+  $(".eliminar").on('click',function(e){
+      console.log("pasa");
+      var id = $(this).data('id');
+      e.preventDefault();
+      swal({   
+          title: "¿Estas seguro?",   
+          text: "¡Recuerda que no se podrá recuperar el turno posteriormente!",   
+          type: "warning",   
+          showCancelButton: true,   
+          confirmButtonColor: "#DD6B55",  
+          confirmButtonText: "Si, Eliminar",   
+          cancelButtonText: "¡No, Cancelar!",   
+          closeOnConfirm: false,   
+          closeOnCancel: false },
+       function(isConfirm){
+          if (isConfirm) {
+            $("#"+id).submit();   
+          } 
+          else {     
+            swal("Cancelado", "Tu turno no ha sido borrado ;)", "error");   
+          } 
+      });
+  });
+
+  @if(notify()->ready())
+    swal({
+        title: "{{notify()->message()}}",
+        type: "{{notify()->type()}}",
+    });
+  @endif
+</script>
 
 @endsection 

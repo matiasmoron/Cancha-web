@@ -35,7 +35,7 @@
     	<div class="col-md-12 col-sm-12 col-xs-12">
 
     	<!--                                  SLIDER                                  -->
-    		<div id="carousel-example-generic" class="col-md-7 col-sm-7 col-xs-7 carousel slide posContSlide" data-ride="carousel">
+    		<div id="carousel-example-generic" class="col-md-7 col-sm-7 col-xs-7 carousel slide" data-ride="carousel">
 			  <!-- Indicators 
 			  <ol class="carousel-indicators">
 			    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>

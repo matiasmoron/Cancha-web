@@ -85,6 +85,11 @@ Route::get('admin/home',
         'uses' => 'UserController@editarEstablecimiento']       
         );
 
+    Route::post('admin/establecimiento',
+        ['as' => 'admin.establecimiento.modificar', 
+        'uses' => 'UserController@modificarEstablecimiento']       
+        );
+
     Route::delete('admin/establecimiento',
         ['as' => 'admin.establecimiento.eliminar', 
         'uses' => 'UserController@eliminarEstablecimiento']       
@@ -128,12 +133,12 @@ Route::get('admin/home',
     Route::post('admin/turno/nuevo',
         'UserController@turnoAdminAlmacenar');
 
-    Route::get('admin/turno/{id}',
+    Route::get('admin/turno',
     ['as' => 'admin.turno', 
      'uses' => 'UserController@editarTurnoAdmin']       
     );
 
-    Route::post('admin/turno/{id}',
+    Route::post('admin/turno',
     ['as' => 'admin.turno', 
      'uses' => 'UserController@modificarTurnoAdmin']       
     );
@@ -154,8 +159,12 @@ Route::get('usuario/datos',
     'UserController@verDatos');
 
 Route::get('usuario/editarDatos',
-    'UserController@editarDatos');
+    ['as' => 'usuario.editarDatos',
+    'uses' => 'UserController@editarDatos']
+    );
 
-Route::post('usuario/guardarDatos', 
-    'UserController@guardarDatos');
+Route::post('usuario/guardarDatos',
+    ['as' => 'usuario.guardarDatos',
+    'uses' => 'UserController@guardarDatos']
+    );
 

@@ -11,7 +11,7 @@
 </div>
 <div class="container">
   <div class="row">
-      <div class="col-md-12 col-sm-12 col-xs-12 centrarTitulo">
+      <div class="col-md-12 col-sm-12 col-xs-12 centrarTituloAdmin">
           <h2>Creá un nuevo establecimiento</h2>
       </div>
       <div class="col-md-12 col-sm-12 col-xs-12 subtitulo" style="padding-bottom:2%;">

@@ -2,6 +2,12 @@ body {
   font-family: 'Roboto', sans-serif;
   font-size: 14px; }
 
+body {
+  background-image: url("../../fotos/img/pelota.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat; }
+
 .panel-heading {
   padding-left: 0px;
   background-color: #3b5998; }

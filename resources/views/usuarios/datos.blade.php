@@ -17,7 +17,7 @@
             </div>
             <h1 id="titulo">Datos de tu cuenta</h1>
             <div class="login-top" >
-                <form  id="form_ingresar" role="form" method="POST" action="{{ url('usuario/editarDatos') }}">
+                {!! Form::open(['route' => 'usuario.editarDatos' , 'id'=> "form_ingresar", 'role' => 'form','method' => 'get']) !!}
                     <div class="login-ic" style="background:black;">
                         <i></i>
                          <input type="text" value={{$usuario->name}}  readonly />
@@ -33,10 +33,20 @@
                           <input type="text" value={{date("d/m/Y", strtotime($usuario->created_at))}} readonly />
                          <div class="clear"></div>
                     </div>
-                    <div class="log-bwn">
-                        <input type="submit"  value="Editar cuenta" >
+                    <div class="log-bwn"> 
+                      {!!Form::submit('Editar Datos', ['class' => 'btn btn-default boton btn-reserva'])!!}  
                     </div>
-                </form>
+                {!!Form::close()!!}
             </div>
-        </div> 
+        </div>
+
+<script>
+  @if(notify()->ready())
+    swal({
+        title: "{{notify()->message()}}",
+        type: "{{notify()->type()}}",
+    });
+    @endif
+</script>
+
 @endsection

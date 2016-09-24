@@ -11,7 +11,7 @@
 </div>
 <div class="container">
   <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12 centrarTitulo">
+        <div class="col-md-12 col-sm-12 col-xs-12 centrarTituloAdmin">
             <h2>Panel de administración</h2>
         </div>
         <div class="col-md-12 col-sm-12 col-xs-12 subtitulo" style="padding-bottom:2%;">
@@ -32,7 +32,6 @@
             <div class="panel-heading">&nbsp;Editar Turno</div>
             <div class="panel-body">
                 {!! Form::open(['route' => ['admin.turno' , $turnoAdmin->id] ,'method' => 'post']) !!}  
-                <form>
                     <div class="form-group col-md-12">
                         <div class="col-md-6 ">
                             <label>Cancha</label>
@@ -67,12 +66,12 @@
                             {!!Form::number('precio_adicional', null , ['class' => 'form-control','disabled','id'=>'precio_adic']) !!}
                         </div>
                     </div>
+                    {!! Form::hidden('id_turnoAdmin', $turnoAdmin->id) !!}
                     {!! Form::hidden('id_usuario_admin', Auth::user()->id) !!}
                     <div style="text-align: center;">
                     <button class="btn2">Modificar</button>
                     </div>
                 {!! Form::close() !!}
-                </form>
             </div>
         </div>   
     </div>

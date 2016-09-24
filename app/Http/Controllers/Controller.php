@@ -14,6 +14,7 @@ use App\Superficie;
 use App\Establecimiento;
 use App\Cancha;
 use App\Dia;
+use Auth;
 
 class Controller extends BaseController
 {

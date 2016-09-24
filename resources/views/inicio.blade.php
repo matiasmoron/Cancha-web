@@ -71,8 +71,12 @@
     </div>
 
 
-
-<script type="text/javascript">
-   
-</script> 
+<script>
+@if(notify()->ready())
+    swal({
+        title: "{{notify()->message()}}",
+        type: "{{notify()->type()}}",
+    });
+  @endif
+</script>
 @endsection

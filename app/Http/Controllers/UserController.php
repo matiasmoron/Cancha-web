@@ -15,6 +15,7 @@ use App\Dia;
 use App\Ciudad;
 use App\Deporte;
 use App\Superficie;
+use Alert;
 
 
 class UserController extends Controller
@@ -86,11 +87,13 @@ class UserController extends Controller
         try
         {
             $establ->delete();
+            notify()->flash('Tu Establecimiento ha sido eliminado con exito! Yeep!','success');
             return redirect('admin/establecimiento');
         }
         catch(\Exception $e)
         {
-            return redirect('/');
+            notify()->flash('No hemos podido eliminar tu establecimiento! :( \n Recuerda que no puedes eliminar un establecimiento si tiene canchas asociadas!','error');
+            return redirect('admin/establecimiento');
         }
     }
 
@@ -157,11 +160,13 @@ class UserController extends Controller
         try
         {
             $cancha->delete();
+            notify()->flash('Tu cancha ha sido eliminado con exito! Yeep!','success');
             return redirect('admin/cancha');
         }
         catch(\Exception $e)
         {
-            return redirect('/');
+            notify()->flash('No hemos podido eliminar tu cancha! :( \n Recuerda que no puedes eliminar una cancha si tiene turnos asociada!','error');
+            return redirect('admin/cancha');
         }
     }
 
@@ -192,24 +197,36 @@ class UserController extends Controller
         'id_dia' => 'required',
         'horaInicio' => 'required',
         'horaFin' => 'required',
-        'id_usuario_admin' => 'required'
+        'id_usuario_admin' => 'required',
+        'precio_cancha' => 'required',
         ]);
         
-        TurnoAdmin::create($request->all());
+        //dd($request->all());
+
+        TurnoAdmin::create([
+            'id_cancha' => $request->get('id_cancha'),
+            'id_dia' => $request->get('id_dia'),
+            'horaInicio' => $request->get('horaInicio'),
+            'horaFin' => $request->get('horaFin'),
+            'precio_cancha' => $request->get('precio_cancha'),
+            'adic_luz' => $request->get('adic_luz'),
+            'precio_adicional' => $request->get('precio_adicional'),
+            'id_usuario_admin' => $request->get('id_usuario_admin'),
+            ]);
          
         return redirect('admin/turnos');
     }
 
-    public function editarTurnoAdmin($id)
+    public function editarTurnoAdmin(Request $request)
     {
-        $turnoAdmin = TurnoAdmin::find($id);
+        $turnoAdmin = TurnoAdmin::find($request->get('id_turnoAdmin'));
 
         return view('admin.editarTurno', ['turnoAdmin' => $turnoAdmin, 'arrCanchas' => $this->getCanchas(), 'arrDias' => $this->getDias()]);
     }
 
-    public function modificarTurnoAdmin(Request $request, $id)
+    public function modificarTurnoAdmin(Request $request)
     {
-        $turnoAdmin = TurnoAdmin::find($id);
+        $turnoAdmin = TurnoAdmin::find($request->get('id_turnoAdmin'));
 
         $turnoAdmin->id_cancha = $request->get('id_cancha');
         $turnoAdmin->id_dia = $request->get('id_dia');
@@ -231,11 +248,13 @@ class UserController extends Controller
         try
         {
             $turnoAdmin->delete();
+            notify()->flash('¡Tu turno ha sido eliminado con exito! Yeep!','success');
             return redirect('admin/turnos');
         }
         catch(\Exception $e)
         {
-            return redirect('/');
+            notify()->flash('No hemos podido eliminar tu turno! :( \n Comprueba que no existan turnos reservados','error');
+            return redirect('admin/turnos');
         }
     }
 
@@ -254,14 +273,24 @@ class UserController extends Controller
 
     public function guardarDatos(Request $request)
     {
-        $usuario = Auth::user();
+        if(strcmp($request->get('password'), $request->get('passwordConf')) === 0)
+        {
+            $usuario = Auth::user();
 
-        $usuario->nombre = $request->get('nombre');
-        $usuario->nombre = $request->get('email');
-        $usuario->nombre = $request->get('password');
-        
-        $usuario->save();
+            $usuario->name = $request->get('name');
+            $usuario->email = $request->get('email');
+            $usuario->password = bcrypt($request->get('password'));
+            
+            $usuario->save();
 
-        return redirect("usuario/datos");
+            notify()->flash('Sus datos han sido guardados exitosamente!','success');
+
+            return redirect("usuario/datos");  
+        }
+        else
+        {
+            notify()->flash('Las contrasenias no coinciden, por favor intente nuevamente!','error');
+            return redirect("usuario/editarDatos");
+        }
     }
 }
