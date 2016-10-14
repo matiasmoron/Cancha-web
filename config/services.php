@@ -36,9 +36,9 @@ return [
     ],
 	
 	'facebook' => [
-        'client_id' => env('589645084535774'),
-        'client_secret' => env('d0886c06e742c2a86e71b438e9612639'),
-        'redirect' => 'http://localhost/public/auth/facebook/callback',
+        'client_id' => '589645084535774',
+        'client_secret' => 'd0886c06e742c2a86e71b438e9612639',
+        'redirect' => 'http://localhost/Cancha-web/public/callback',
     ],
 
 ];

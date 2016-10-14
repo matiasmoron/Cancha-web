@@ -2,16 +2,16 @@
 
 body
 {
-	background: url("../../fotos/campo.jpg") center no-repeat;
+	//background: url("../../fotos/campo.jpg") center no-repeat;
 	//background-size:cover;
-	background-attachment:fixed;
+	//background-attachment:fixed;
 }
 
 .foto
 {
-	width: 125px;
-	height: 125px;
-	border-radius: 70%;
+	width: 100% !important;
+	height: 50% !important;
+	//border-radius: 70%;
 }
 
 .TurnoData
@@ -47,7 +47,6 @@ body
 .cont
 {
 	width: 100%;
-	height: 100%;
 	background-color: white;
 	padding: 1%;
 	border: 1px solid #E5E5E5;
@@ -164,7 +163,7 @@ a:-webkit-any-link
 
 .elem-menu
 {
-	padding: 5% 0%;
+	padding: 2% 0%;
 }
 
 .buscadorTop
@@ -175,7 +174,7 @@ a:-webkit-any-link
 }
 
 .establec{
-	background-color:rgba(0,0,0,0.08); 
+	//background-color:rgba(0,0,0,0.08); 
 	margin-bottom:15px;
 	padding-bottom: 2%;
 	opacity: 0.97;
@@ -194,4 +193,93 @@ a:-webkit-any-link
 {
   width:25%; 
   float:right;
+}
+
+//Nuevos Class
+
+.page-wrapper, html, body {
+    width:100%;
+    height:100%;
+    margin:0;
+    padding:0;
+}
+
+.left-column {
+    position:fixed !important;
+    top:0;
+    left:0;
+    z-index:1000;
+    //width:250px;
+    height:100%;
+    background:rgba(9, 9, 9, 0.66);
+}
+
+.top-bar {
+    position:fixed !important;
+    top:0;
+    right:0;
+    width:100%;
+    //height:54px;
+    z-index:1000;
+}
+
+.nav > li > a{
+	color:white;
+}
+
+.nav > li > a:hover, .nav > li > a:focus{
+	color: white;
+	text-decoration: none;
+	background-color: $color-gral !important;
+}
+
+.nav .open > a, .nav .open > a:hover, .nav .open > a:focus{
+	color: white;
+	background-color:$color-gral !important;
+	border-color:$color-gral !important;
+}
+
+.dropdown-menu>li>a {
+    color:black !important;
+}
+
+.elem-boton{
+	padding: 2% 0%;
+}
+
+.result{
+	position: fixed !important;
+	right: 0;
+	top:20%;
+	overflow-y: scroll;
+	height: 80% !important;
+}
+
+.tituloResult{
+	text-align: center;
+}
+
+//ScrollBar
+
+/* Let's get this party started */
+::-webkit-scrollbar {
+    width: 12px;
+}
+ 
+/* Track */
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: $color-gral; 
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+::-webkit-scrollbar-thumb:window-inactive {
+	background: $color-gral; 
 }

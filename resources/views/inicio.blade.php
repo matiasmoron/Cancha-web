@@ -54,7 +54,7 @@
                     <div class="col-sm-6 col-sm-offset-3 social-login">
                         <h3>Ingresá por..</h3>
                         <div class="social-login-buttons">
-                            <a class="btn btn-link-1" href="#">
+                            <a class="btn btn-link-1" href="redirect">
                                 <i class="fa fa-facebook"></i> Facebook
                             </a>
                             <a class="btn btn-link-2" href="#">

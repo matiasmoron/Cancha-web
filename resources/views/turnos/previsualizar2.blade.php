@@ -44,20 +44,26 @@
 
 			  <!-- Wrapper for slides -->
 			  <div class="carousel-inner" role="listbox">
-			    <div class="item active">
-			      <img src={{asset('/fotos/futbol.jpg')}} alt="">
-			      <div class="carousel-caption">
-			        
-			      </div>
-			    </div>
-			    
-			    <div class="item">
-			      <img src={{asset('/fotos/futbol.jpg')}} alt="">
-			      <div class="carousel-caption">
-			        
-			      </div>
-			    </div>
-			    
+				    <div class="item active">
+				      <img src={{asset('/img/'.$establecimiento->nombre.'/'.$cancha->nombre_cancha.'/'.$cancha->nombre_cancha.'1.jpg')}} alt="">
+				      <div class="carousel-caption">
+				        
+				      </div>
+				    </div>
+				    
+				    @if(file_exists($_SERVER['DOCUMENT_ROOT']."/Cancha-web/public/img/".$establecimiento->nombre."/".$cancha->nombre_cancha."/".$cancha->nombre_cancha."2.jpg"))
+					    <div class="item">
+						    <img src={{asset('/img/'.$establecimiento->nombre.'/'.$cancha->nombre_cancha.'/'.$cancha->nombre_cancha.'2.jpg')}} alt="">
+						    <div class="carousel-caption"></div>
+					    </div>
+				    @endif
+
+				    @if(file_exists($_SERVER['DOCUMENT_ROOT']."/Cancha-web/public/img/".$establecimiento->nombre."/".$cancha->nombre_cancha."/".$cancha->nombre_cancha."3.jpg"))
+					    <div class="item">
+						    <img src={{asset('/img/'.$establecimiento->nombre.'/'.$cancha->nombre_cancha.'/'.$cancha->nombre_cancha.'3.jpg')}} alt="">
+						    <div class="carousel-caption"></div>
+					    </div>
+				    @endif
 			  </div>
 
 			  <!-- Controls -->

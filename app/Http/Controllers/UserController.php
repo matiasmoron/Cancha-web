@@ -52,8 +52,6 @@ class UserController extends Controller
         'id_usuario' => 'required'
         ]);
          
-
-         
         Establecimiento::create($request->all());
          
         return redirect('admin/establecimiento');
@@ -66,9 +64,14 @@ class UserController extends Controller
         return view('admin.editarEstablecimiento', ['establecimiento' => $establecimiento, 'arrCiudades' => $this->getCiudades(1)]);
     }
 
-    public function modificarEstablecimiento(Request $request, $id)
+    public function modificarEstablecimiento(Request $request)
     {
-        $establecimiento = Establecimiento::find($id);
+        $establecimiento = Establecimiento::find($request->get("id"));
+
+        if(strcmp($establecimiento->nombre , $request->get('nombre')) !== 0)
+        {
+            rename($_SERVER['DOCUMENT_ROOT']."/Cancha-web/public/img/".$establecimiento->nombre, $_SERVER['DOCUMENT_ROOT']."/Cancha-web/public/img/".$request->get('nombre'));
+        }
 
         $establecimiento->nombre = $request->get('nombre');
         $establecimiento->direccion = $request->get('direccion');
@@ -113,7 +116,6 @@ class UserController extends Controller
     
     public function canchaAlmacenar(Request $request)
     {
-         
         $this->validate($request, [
         'id_establecimiento' => 'required',
         'nombre_cancha' => 'required',
@@ -121,9 +123,21 @@ class UserController extends Controller
         'tiene_luz' => 'required',
         'techada' => 'required',
         'id_deporte' => 'required',
-        'id_superficie' => 'required'
+        'id_superficie' => 'required',
+        'imgCancha1' => 'required'
         ]);
-        
+
+        $nombre_estab = Establecimiento::find($request->get("id_establecimiento"))->nombre;
+
+        $path = $_SERVER['DOCUMENT_ROOT']."/Cancha-web/public/img/".$nombre_estab."/".$request->get("nombre_cancha");
+
+        if(!file_exists($path))
+        {
+            mkdir($path, 0777, true);
+        }
+
+        $this->addFiles($request, $nombre_estab, $request->get("nombre_cancha"));
+
         Cancha::create($request->all());
          
         return redirect('admin/cancha');
@@ -139,6 +153,43 @@ class UserController extends Controller
     public function modificarCancha(Request $request, $id)
     {
         $cancha = Cancha::find($id);
+        $nombre_estab_nuevo = Establecimiento::find($request->get("id_establecimiento"))->nombre;
+        $nombre_estab_viejo = Establecimiento::find($cancha->id_establecimiento)->nombre;
+
+        if(strcmp($cancha->nombre_cancha,$request->get('nombre_cancha')) !== 0 && strcmp($nombre_estab_nuevo , $nombre_estab_viejo) !== 0)
+        {
+            rename($_SERVER['DOCUMENT_ROOT']."/Cancha-web/public/img/".$nombre_estab_viejo."/".$cancha->nombre_cancha, $_SERVER['DOCUMENT_ROOT']."/Cancha-web/public/img/".$nombre_estab_nuevo."/".$request->get("nombre_cancha"));
+            $this->addFiles($resquest, $nombre_estab_nuevo, $request->get("nombre_cancha"));
+        }
+        else
+        {
+            if(strcmp($cancha->nombre_cancha,$request->get('nombre_cancha')) !== 0)
+            {
+                rename($_SERVER['DOCUMENT_ROOT']."/Cancha-web/public/img/".$nombre_estab_nuevo."/".$cancha->nombre_cancha, $_SERVER['DOCUMENT_ROOT']."/Cancha-web/public/img/".$nombre_estab_nuevo."/".$request->get("nombre_cancha"));
+
+                if(!is_null($request->file("imgCancha1")))
+                {
+                    unlink($_SERVER['DOCUMENT_ROOT']."/Cancha-web/public/img/".$nombre_estab_nuevo."/".$request->get("nombre_cancha")."/".$cancha->nombre_cancha."1.jpg");
+                }
+
+                if(!is_null($request->file("imgCancha2")))
+                {
+                    unlink($_SERVER['DOCUMENT_ROOT']."/Cancha-web/public/img/".$nombre_estab_nuevo."/".$request->get("nombre_cancha")."/".$cancha->nombre_cancha."2.jpg");
+                }
+
+                if(!is_null($request->file("imgCancha3")))
+                {
+                    unlink($_SERVER['DOCUMENT_ROOT']."/Cancha-web/public/img/".$nombre_estab_nuevo."/".$request->get("nombre_cancha")."/".$cancha->nombre_cancha."3.jpg");
+                }
+
+                $this->addFiles($request, $nombre_estab_nuevo, $request->get("nombre_cancha"));
+            }
+            else
+            { 
+                rename($_SERVER['DOCUMENT_ROOT']."/Cancha-web/public/img/".$nombre_estab_viejo, $_SERVER['DOCUMENT_ROOT']."/Cancha-web/public/img/".$nombre_estab_nuevo);
+                $this->addFiles($request, $nombre_estab_nuevo, $request->get("nombre_cancha"));  
+            }   
+        }
 
         $cancha->nombre_cancha = $request->get('nombre_cancha');
         $cancha->id_establecimiento = $request->get('id_establecimiento');
@@ -291,6 +342,31 @@ class UserController extends Controller
         {
             notify()->flash('Las contrasenias no coinciden, por favor intente nuevamente!','error');
             return redirect("usuario/editarDatos");
+        }
+    }
+
+    private function addFiles(Request $request, $nombre_estab, $nombre_cancha)
+    {
+        //obtenemos el campo file definido en el formulario
+        $file = $request->file('imgCancha1');
+        //indicamos que queremos guardar un nuevo archivo en el disco local
+        if(!is_null($file))
+        {
+            \Storage::disk('local')->put($nombre_estab."/".$nombre_cancha."/".$nombre_cancha.'1.jpg',  \File::get($file));
+        }
+
+        $file = $request->file('imgCancha2');
+        if(!is_null($file))
+        {
+            //indicamos que queremos guardar un nuevo archivo en el disco local
+            \Storage::disk('local')->put($nombre_estab."/".$nombre_cancha."/".$nombre_cancha.'2.jpg',  \File::get($file));
+        }
+
+        $file = $request->file('imgCancha3');
+        if(!is_null($file))
+        {
+            //indicamos que queremos guardar un nuevo archivo en el disco local
+            \Storage::disk('local')->put($nombre_estab."/".$nombre_cancha."/".$nombre_cancha.'3.jpg',  \File::get($file));
         }
     }
 }

@@ -29,11 +29,8 @@ Route::get('turnos/todos',
 	);
 	
 //Rutas para Facebook
-Route::get('auth/facebook', 
-	'Auth\AuthController@redirectToProvider');
-
-Route::get('auth/facebook/callback', 
-	'Auth\AuthController@handleProviderCallback');
+Route::get('/redirect', 'SocialAuthController@redirect');
+Route::get('/callback', 'SocialAuthController@callback');
 
 //Rutas para Turnos
 Route::get('usuarios/turnos', 

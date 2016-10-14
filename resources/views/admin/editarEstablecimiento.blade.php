@@ -31,8 +31,7 @@
         <div class="panel panel-default">
             <div class="panel-heading">&nbsp;Editar establecimiento</div>
             <div class="panel-body">
-                {!! Form::open(['route' => ['admin.establecimiento.modificar' , $establecimiento->id] ,'method' => 'post']) !!} 
-              <form>
+                {!! Form::open(['route' => ['admin.establecimiento.modificar'] ,'method' => 'post']) !!} 
                   <div class="form-group col-md-12">
                     <div class="col-md-6 ">
                         <label>Nombre del establecimiento</label>
@@ -52,14 +51,13 @@
                         <label>Dirección</label>
                         {!! Form::text('direccion', $establecimiento->direccion, ['class' => 'form-control']) !!}
                     </div>
+                    {!! Form::hidden('id', $establecimiento->id) !!}
                   </div>
                   <div style="text-align: center;">
                     {{-- {!! Form::submit('Modificar') !!} --}}
                     <button class="btn2">Modificar</button>
                   </div>
                 {!! Form::close() !!}
-                  
-              </form>
             </div>
         </div>   
     </div>

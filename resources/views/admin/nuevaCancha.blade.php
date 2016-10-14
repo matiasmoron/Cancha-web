@@ -31,7 +31,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">&nbsp;Nueva cancha</div>
                 <div class="panel-body">
-                    {!! Form::open(['url' => 'admin/cancha/nueva' , 'method' => 'post']) !!}
+                    {!! Form::open(['url' => 'admin/cancha/nueva' , 'method' => 'post', 'files'=>true]) !!}
                             
                             <?php 
                                 $deportes = DB::table('deporte')->get();
@@ -57,7 +57,6 @@
                                     $arr4[$establecimiento->id] = $establecimiento->nombre;
                                 }
                             ?>                    
-                  <form>
                       <div class="form-group col-md-12">
                         <div class="col-md-6 ">
                             <label>Nombre del establecimiento</label>
@@ -92,11 +91,22 @@
                                 {!! Form::select('id_superficie', $arr2 , null, ['class' => 'form-control']) !!}
                             </div>
                         </div>
+                        <div class="form-group col-md-12">
+                            <label>Imagen 1</label>
+                            {!!Form::file('imgCancha1',['class' => 'form-control'])!!}
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label>Imagen 2</label>
+                            {!!Form::file('imgCancha2',['class' => 'form-control'])!!}
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label>Imagen 3</label>
+                            {!!Form::file('imgCancha3',['class' => 'form-control'])!!}
+                        </div>
                       <div style="text-align: center;">
                         <button class="btn2">Agregar</button>
                       </div>
                     {!! Form::close() !!}
-                  </form>
                 </div>
             </div>   
         </div>
