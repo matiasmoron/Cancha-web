@@ -27,6 +27,7 @@
         </div>
   </div>
   <div class="row">
+    @include('partials/errors')
     <div class="col-md-8 col-md-offset-2">
         <div class="panel panel-default">
             <div class="panel-heading">&nbsp;Editar establecimiento</div>

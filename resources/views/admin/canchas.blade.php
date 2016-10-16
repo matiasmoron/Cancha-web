@@ -13,7 +13,7 @@
       <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12 centrarTituloAdmin">
             <h2>Administración de tus canchas</h2>
-        </div>
+         </div>
         <div class="col-md-12 col-sm-12 col-xs-12 subtitulo" style="padding-bottom:2%;">
             <div class="col-md-4 col-sm-4 col-xs-4">
                 <hr width="100%">

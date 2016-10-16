@@ -23,11 +23,12 @@
              Cambía las características de tu cancha&nbsp;&nbsp; <i class="fa fa-pencil"></i>
           </div>
           <div class="col-md-4 col-sm-4 col-xs-4">
-              <hr width="100%">
+               <hr width="100%">
           </div>
       </div>
     </div>
   <div class="row">   
+    @include('partials/errors')
     <div class="col-md-8 col-md-offset-2">
         <div class="panel panel-default">
             <div class="panel-heading">Editar cancha</div>

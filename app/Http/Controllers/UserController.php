@@ -45,11 +45,11 @@ class UserController extends Controller
     {
          
         $this->validate($request, [
-        'nombre' => 'required',
-        'direccion' => 'required',
-        'tienevestuario' => 'required',
-        'id_ciudad' => 'required',
-        'id_usuario' => 'required'
+        'nombre' => 'required|max:50',
+        'direccion' => 'required|max:100',
+        'tienevestuario' => 'required|boolean',
+        'id_ciudad' => 'required|exists:Ciudad,id',
+        'id_usuario' => 'required|exists:Users,id'
         ]);
          
         Establecimiento::create($request->all());
@@ -67,7 +67,14 @@ class UserController extends Controller
     public function modificarEstablecimiento(Request $request)
     {
         $establecimiento = Establecimiento::find($request->get("id"));
-
+       
+        $this->validate($request, [
+        'nombre' => 'required|max:50',
+        'direccion' => 'required|max:100',
+        'tienevestuario' => 'required|boolean',
+        'id_ciudad' => 'required|exists:Ciudad,id'       
+        ]);
+         
         if(strcmp($establecimiento->nombre , $request->get('nombre')) !== 0)
         {
             rename($_SERVER['DOCUMENT_ROOT']."/Cancha-web/public/img/".$establecimiento->nombre, $_SERVER['DOCUMENT_ROOT']."/Cancha-web/public/img/".$request->get('nombre'));
@@ -117,14 +124,14 @@ class UserController extends Controller
     public function canchaAlmacenar(Request $request)
     {
         $this->validate($request, [
-        'id_establecimiento' => 'required',
-        'nombre_cancha' => 'required',
-        'cant_jugadores' => 'required',
-        'tiene_luz' => 'required',
-        'techada' => 'required',
-        'id_deporte' => 'required',
-        'id_superficie' => 'required',
-        'imgCancha1' => 'required'
+        'id_establecimiento' => 'required|exists:Establecimiento,id',
+        'nombre_cancha' => 'required|max:50',
+        'cant_jugadores' => 'required|min:1',
+        'tiene_luz' => 'required|boolean',
+        'techada' => 'required|boolean',
+        'id_deporte' => 'required|exists:Deporte,id',
+        'id_superficie' => 'required|exists:Superficie,id',
+        'imgCancha1' => 'required|image'
         ]);
 
         $nombre_estab = Establecimiento::find($request->get("id_establecimiento"))->nombre;
@@ -153,6 +160,18 @@ class UserController extends Controller
     public function modificarCancha(Request $request, $id)
     {
         $cancha = Cancha::find($id);
+
+        $this->validate($request, [
+        'id_establecimiento' => 'required|exists:Establecimiento,id',
+        'nombre_cancha' => 'required|max:50',
+        'cant_jugadores' => 'required|min:1',
+        'tiene_luz' => 'required|boolean',
+        'techada' => 'required|boolean',
+        'id_deporte' => 'required|exists:Deporte,id',
+        'id_superficie' => 'required|exists:Superficie,id',
+        'imgCancha1' => 'required|image'
+        ]);
+
         $nombre_estab_nuevo = Establecimiento::find($request->get("id_establecimiento"))->nombre;
         $nombre_estab_viejo = Establecimiento::find($cancha->id_establecimiento)->nombre;
 
@@ -244,12 +263,12 @@ class UserController extends Controller
     {
          
         $this->validate($request, [
-        'id_cancha' => 'required',
-        'id_dia' => 'required',
+        'id_cancha' => 'required|exists:Cancha,id',
+        'id_dia' => 'required|exists:Dia,id',
         'horaInicio' => 'required',
         'horaFin' => 'required',
-        'id_usuario_admin' => 'required',
-        'precio_cancha' => 'required',
+        'id_usuario_admin' => 'required|exists:Users,id',
+        'precio_cancha' => 'required|numeric',
         ]);
         
         //dd($request->all());
@@ -277,6 +296,14 @@ class UserController extends Controller
 
     public function modificarTurnoAdmin(Request $request)
     {
+         $this->validate($request, [
+        'id_cancha' => 'required|exists:Cancha,id',
+        'id_dia' => 'required|exists:Dia,id',
+        'horaInicio' => 'required',
+        'horaFin' => 'required',
+        'id_usuario_admin' => 'required|exists:Users,id',
+        'precio_cancha' => 'required|numeric',
+        ]);
         $turnoAdmin = TurnoAdmin::find($request->get('id_turnoAdmin'));
 
         $turnoAdmin->id_cancha = $request->get('id_cancha');
@@ -327,7 +354,11 @@ class UserController extends Controller
         if(strcmp($request->get('password'), $request->get('passwordConf')) === 0)
         {
             $usuario = Auth::user();
-
+            $this->validate($request, [
+                    'name' => 'required|max:50',
+                    'email' => 'required|Email',
+                    'password'=>'required'
+                    ]);
             $usuario->name = $request->get('name');
             $usuario->email = $request->get('email');
             $usuario->password = bcrypt($request->get('password'));
