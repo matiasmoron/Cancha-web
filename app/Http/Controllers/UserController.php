@@ -336,6 +336,63 @@ class UserController extends Controller
         }
     }
 
+    public function fijarTurnoAdmin(Request $request)
+    {
+        $turnoAdmin = TurnoAdmin::find($request->get('id_turnoAdmin'));
+
+        try
+        {
+            if($turnoAdmin->fijo === 0)
+            {
+                $turnoAdmin->fijo = 1;
+                $turnoAdmin->habilitado = 0;
+                $turnoAdmin->save();
+                notify()->flash('La reserva del turno se ha fijado con exito!','success');
+            }
+            else
+            {
+                $turnoAdmin->fijo = 0;
+                $turnoAdmin->habilitado = 1;
+                $turnoAdmin->save();
+                notify()->flash('El turno ya se libero con exito!','success');
+            }
+        }
+        catch(\Exception $e)
+        {
+            notify()->flash('No hemos podido eliminar tu turno! :( \n Comprueba que no existan turnos reservados','error');
+        }
+
+        return redirect('admin/turnos');
+    }
+
+    public function habilitarTurnoAdmin(Request $request)
+    {
+        $turnoAdmin = TurnoAdmin::find($request->get('id_turnoAdmin'));
+
+        try
+        {
+            if($turnoAdmin->habilitado === 0)
+            {
+                $turnoAdmin->habilitado = 1;
+                $turnoAdmin->save();
+                notify()->flash('La reserva del turno se ha habilitado con exito!','success');
+            }
+            else
+            {
+                $turnoAdmin->habilitado = 0;
+                $turnoAdmin->save();
+                notify()->flash('El turno ya se deshabilito con exito!','success');
+            }
+        }
+        catch(\Exception $e)
+        {
+            notify()->flash('No hemos podido eliminar tu turno! :( \n Comprueba que no existan turnos reservados','error');
+        }
+
+        return redirect('admin/turnos');
+    }
+
+
     //Seccion Datos Personales
     public function verDatos()
     {

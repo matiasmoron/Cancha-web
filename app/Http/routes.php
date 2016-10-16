@@ -145,6 +145,16 @@ Route::get('admin/home',
      'uses' => 'UserController@eliminarTurnoAdmin']       
     );
 
+    Route::post('admin/fijarTurno',
+    ['as' => 'admin.fijarTurno', 
+     'uses' => 'UserController@fijarTurnoAdmin']       
+    );
+
+    Route::post('admin/habilitarTurno',
+    ['as' => 'admin.habilitarTurno', 
+     'uses' => 'UserController@habilitarTurnoAdmin']       
+    );
+
 
 Route::get('inicio','InicioController@inicio');
 

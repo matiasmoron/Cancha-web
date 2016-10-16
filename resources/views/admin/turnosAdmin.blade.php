@@ -43,13 +43,13 @@
                             <div class="col-md-12 col-sm-12 col-xs-12" style="float:right; ">
                                 <div class="panel-group col-md-12 col-sm-12 col-xs-12" id="accordion" role="tablist" aria-multiselectable="true">
                                     <div class="panel">
-                                        <div class="panel-heading" role="tab" id=<?php echo $panel?> style="padding-left:0px; background-color: #3b5998;">
+                                        <div class="panel-heading" role="tab" id={{$panel}} style="padding-left:0px; background-color: #3b5998;">
                                           <h4 class="panel-title">
-                                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href=<?php echo "#collapse".$panel?> aria-expanded="false" aria-controls=<?php echo "collapse".$panel?>><span class="linkTurno">Ver turnos</span>
+                                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href={{"#collapse".$panel}} aria-expanded="false" aria-controls={{"collapse".$panel}}><span class="linkTurno">Ver turnos</span>
                                             <i class="fa fa-btn glyphicon glyphicon-chevron-down" style="float: right;"></i></a>
                                           </h4>
                                         </div>
-                                        <div id=<?php echo "collapse".$panel?> class="panel-collapse collapse" role="tabpanel" aria-labelledby=<?php echo $panel?> style="background-color: #F3F3F3;">
+                                        <div id={{"collapse".$panel}} class="panel-collapse collapse" role="tabpanel" aria-labelledby={{$panel}} style="background-color: #F3F3F3;">
                                            <table class="table table-striped" class="t-center">
                                                <thead>
                                                  <tr>
@@ -58,6 +58,8 @@
                                                    <th class="t-center">Hora fin</th>
                                                    <th class="t-right">Precio</th>
                                                    <th class="t-right">Precio adic luz</th>
+                                                   <th class="t-right">Fijo</th>
+                                                   <th class="t-right">Habilitado</th>
                                                    <th class="t-center"><i class="fa fa-btn glyphicon glyphicon-share-alt"></i></th>
                                                  </tr>
                                                </thead>
@@ -73,6 +75,19 @@
                                                    @else
                                                        <td class="t-center">-</td>
                                                    @endif
+
+                                                   @if($turno->fijo == 1)
+                                                       <td class="t-right">Si</td>
+                                                   @else
+                                                       <td class="t-center">No</td>
+                                                   @endif
+
+                                                   @if($turno->habilitado == 1)
+                                                       <td class="t-right">Si</td>
+                                                   @else
+                                                       <td class="t-center">No</td>
+                                                   @endif
+
                                                     <td class="t-center col-md-3 col-sm-12 col-xs-12">
                                                       <div class="col-md-6 col-sm-12 col-xs-12">
                                                         {!! Form::open(['route' => ['admin.turno'] ,'method' => 'get'])!!}
@@ -86,6 +101,31 @@
                                                         {!!Form::close()!!}
                                                           <button class="btn2 eliminar" data-id={{"form_".$panel}} style="width:100%;">Eliminar</button>
                                                       </div>
+
+                                                      <div class="col-md-6 col-sm-12 col-xs-12">
+                                                        {!! Form::open(['route' => ['admin.fijarTurno'], 'method' => 'POST', 'id'=>'formFijar_'.$panel])!!}
+                                                          {{Form::hidden('id_turnoAdmin', $turno->id)}}
+                                                        {!!Form::close()!!}
+                                                        @if($turno->fijo === 0)
+                                                          <button class="btn2 fijar" data-id={{"formFijar_".$panel}} style="width:100%;">Fijar</button>
+                                                        @else
+                                                          <button class="btn2 desfijar" data-id={{"formFijar_".$panel}} style="width:100%;">Sacar Fijo</button>
+                                                        @endif
+                                                      </div>
+
+                                                      @if($turno->fijo === 0)
+                                                        <div class="col-md-6 col-sm-12 col-xs-12">
+                                                          {!! Form::open(['route' => ['admin.habilitarTurno'], 'method' => 'POST', 'id'=>'formInhabil_'.$panel])!!}
+                                                            {{Form::hidden('id_turnoAdmin', $turno->id)}}
+                                                          {!!Form::close()!!}
+                                                          @if($turno->habilitado === 1)
+                                                            <button class="btn2 inhabilitar" data-id={{"formInhabil_".$panel}} style="width:100%;">Inhabilitar</button>
+                                                          @else
+                                                            <button class="btn2 habilitar" data-id={{"formInhabil_".$panel}} style="width:100%;">Habilitar</button>
+                                                          @endif
+                                                        </div>
+                                                      @endif
+
                                                     </td>
                                                  </tr>
                                                 @endforeach
@@ -105,7 +145,6 @@
 
 <script>
   $(".eliminar").on('click',function(e){
-      console.log("pasa");
       var id = $(this).data('id');
       e.preventDefault();
       swal({   
@@ -124,6 +163,98 @@
           } 
           else {     
             swal("Cancelado", "Tu turno no ha sido borrado ;)", "error");   
+          } 
+      });
+  });
+
+  $(".fijar").on('click',function(e){
+      var id = $(this).data('id');
+      e.preventDefault();
+      swal({   
+          title: "¿Estas seguro?",   
+          text: "¡Se establecerá que el turno como fijo!",   
+          type: "warning",   
+          showCancelButton: true,   
+          confirmButtonColor: "#DD6B55",  
+          confirmButtonText: "Si, Fijar",   
+          cancelButtonText: "¡No, Cancelar!",   
+          closeOnConfirm: false,   
+          closeOnCancel: false },
+       function(isConfirm){
+          if (isConfirm) {
+            $("#"+id).submit();   
+          } 
+          else {     
+            swal("Cancelado", "Tu turno no ha fijado ;)", "error");   
+          } 
+      });
+  });
+
+  $(".desfijar").on('click',function(e){
+      var id = $(this).data('id');
+      e.preventDefault();
+      swal({   
+          title: "¿Estas seguro?",   
+          text: "¡Se establecerá que el turno quede libre!",   
+          type: "warning",   
+          showCancelButton: true,   
+          confirmButtonColor: "#DD6B55",  
+          confirmButtonText: "Si, Liberar",   
+          cancelButtonText: "¡No, Cancelar!",   
+          closeOnConfirm: false,   
+          closeOnCancel: false },
+       function(isConfirm){
+          if (isConfirm) {
+            $("#"+id).submit();   
+          } 
+          else {     
+            swal("Cancelado", "Tu turno no se ha liberado ;)", "error");   
+          } 
+      });
+  });
+
+  $(".inhabilitar").on('click',function(e){
+      var id = $(this).data('id');
+      e.preventDefault();
+      swal({   
+          title: "¿Estas seguro?",   
+          text: "¡Se establecerá que el turno como inhabilitado!",   
+          type: "warning",   
+          showCancelButton: true,   
+          confirmButtonColor: "#DD6B55",  
+          confirmButtonText: "Si, Deshabilitar",   
+          cancelButtonText: "¡No, Cancelar!",   
+          closeOnConfirm: false,   
+          closeOnCancel: false },
+       function(isConfirm){
+          if (isConfirm) {
+            $("#"+id).submit();   
+          } 
+          else {     
+            swal("Cancelado", "Tu turno no ha sido inhabilitado ;)", "error");   
+          } 
+      });
+  });
+
+  $(".habilitar").on('click',function(e){
+      var id = $(this).data('id');
+      e.preventDefault();
+      swal({   
+          title: "¿Estas seguro?",   
+          text: "¡Se establecerá que el turno como habilitado!",   
+          type: "warning",   
+          showCancelButton: true,   
+          confirmButtonColor: "#DD6B55",  
+          confirmButtonText: "Si, Habilitar",   
+          cancelButtonText: "¡No, Cancelar!",   
+          closeOnConfirm: false,   
+          closeOnCancel: false },
+       function(isConfirm){
+          if (isConfirm) {
+            $("#"+id).submit();   
+          } 
+          else {     
+            swal("Cancelado", "Tu turno no ha sido habilitado ;)", "error");   
           } 
       });
   });
