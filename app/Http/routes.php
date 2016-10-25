@@ -155,6 +155,10 @@ Route::get('admin/home',
      'uses' => 'UserController@habilitarTurnoAdmin']       
     );
 
+    //Turnos libres
+    Route::get('admin/turnos_libres','UserController@ver_turnos_libres');
+
+
 
 Route::get('inicio','InicioController@inicio');
 

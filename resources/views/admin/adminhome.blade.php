@@ -89,17 +89,23 @@
                     <i class="fa fa-calendar"> </i>
                 </div>
                 <div>
-                    <div class="col-md-6 cont-btn">
+                    <div class="col-md-4 cont-btn">
                         <a href="{{ url('admin/turnos') }}" class="btn">
                             Administrar
                             <i class="fa fa-pencil"></i>
                         </a>
                     </div>
-                    <div class="col-md-6 cont-btn">
-                            <a href="{{ url('admin/turno/nuevo') }}" class="btn">
+                    <div class="col-md-4 cont-btn">
+                        <a href="{{ url('admin/turno/nuevo') }}" class="btn">
                             Nuevo turno
                             <i class="fa fa-plus-circle"></i>
-                            </a>
+                        </a>
+                    </div>
+                    <div class="col-md-4 cont-btn">
+                        <a href="{{ url('admin/turnos_libres') }}" class="btn">
+                            Turnos libres
+                            <i class="fa fa-eye"></i>
+                        </a>
                     </div>
                 </div>
                 <div class="clearfix"> 

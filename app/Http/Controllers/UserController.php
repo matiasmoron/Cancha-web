@@ -336,6 +336,7 @@ class UserController extends Controller
         }
     }
 
+
     public function fijarTurnoAdmin(Request $request)
     {
         $turnoAdmin = TurnoAdmin::find($request->get('id_turnoAdmin'));
@@ -390,6 +391,16 @@ class UserController extends Controller
         }
 
         return redirect('admin/turnos');
+
+    public function ver_turnos_libres(){
+    
+        $turnosAdmin = TurnoAdmin::where('id_usuario_admin', Auth::user()->id)->get();
+
+        $turnosAdmin = collect($turnosAdmin);
+        $turnosAdmin = $turnosAdmin->groupBy('id_cancha');
+
+        die(var_dump($turnosAdmin));
+        return view('admin.turnos_libres', ['turnosAdmin' => $turnosAdmin]);
     }
 
 

@@ -10,7 +10,7 @@
     <!--                               TITULO                             -->
 
     	<div class="col-md-12 col-sm-12 col-xs-12 centrarTitulo">
-    		<h3>Nuestras Canchas Disponibles</h3>
+    		<h3>Nuestras Canchaaassss Disponibles</h3>
     	</div>
     	<div class="col-md-12 col-sm-12 col-xs-12 subtitulo">
     			<div class="col-md-3 col-sm-3 col-xs-3">
@@ -97,6 +97,8 @@
 		    		</div>
 		    	{!!Form::close()!!}
 	    	</div>
+
+	    	
 	    	@if(!$estab->isEmpty())
 		        <div class="col-md-10 col-sm-9 col-xs-9" style="margin:0;">
 					<ol class="lista col-md-12 col-sm-12 col-xs-12">
