@@ -399,7 +399,6 @@ class UserController extends Controller
         $turnosAdmin = collect($turnosAdmin);
         $turnosAdmin = $turnosAdmin->groupBy('id_cancha');
 
-        die(var_dump($turnosAdmin));
         return view('admin.turnos_libres', ['turnosAdmin' => $turnosAdmin]);
     }
 

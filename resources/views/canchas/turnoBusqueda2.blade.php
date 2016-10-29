@@ -31,7 +31,7 @@
 	    	</div>
     	</div> --}}
 
-    	<div class="left-column">
+    	{{-- <div class="left-column">
     		<div class="col-md-12 t-center" style=" padding: 3% 0%;">
     			<a href="{{ url('/') }}">
     				<img src="{{ url('/fotos/img/canchaYa.png') }}" style="border-radius: 25%;">
@@ -60,12 +60,12 @@
 						<span class="texto_menuIzq">Fecha</span>
 		    			{!! Form::date('fecha_turno', $fecha, ['class' => 'form-control']) !!}
 		    		</div>
-		    		<div class="col-md-12 col-sm-12 col-xs-12 elem-boton">
-		    			{!!Form::submit('Filtrar', ['class' => 'btn btn-default boton btn-reserva']) !!}
+		    		<div class="col-md-12 col-sm-12 col-xs-12">
+		    			{!!Form::submit('Filtrar', ['class' => 'btn']) !!}
 		    		</div>
 		    	{!!Form::close()!!}
 	    	</div>
-    	</div>
+    	</div> --}}
 
 {{-- HASTA ACA --}}
 
@@ -77,57 +77,94 @@
                     <?php $panel = 1 ?>
                     @foreach($estab as $nro_es =>$est)
                         
-                        <li class="col-md-11 establecimiento">
+                        <li class="col-md-11 col-xs-12 establecimiento">
                             {{-- Foto establec --}}
-                            <a class="col-md-4" href="#" style="background-image: url('../img/prueba-turnos/2.jpg')"></a>
+                            <a class="col-md-4 col-xs-6" style="background-image: url('../img/prueba-turnos/2.jpg')"></a>
                             {{-- info_estab --}}
-                            <div class="info_estab col-md-8">
-                                <h2><a href="#" class="nombre_est">{{$est[0]->nombre}}</a></h2>
+                            <div class="info_estab col-md-8 col-xs-6">
+                                <h2><a  class="nombre_est">{{$est[0]->nombre}}</a></h2>
                                 <span class="rating">
                                     <span class="puntaje">
                                         <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i>
                                     </span> 
-                                    <span>20 opiniones</span>
+                                    <span class="celu_ocu">20 opiniones</span>
                                 </span>
                                 <p><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;{{$est[0]->direccion}}</p>
-                                <p><i class="fa fa-check" aria-hidden="true"></i>&nbsp;&nbsp;8 turnos disponibles para hoy!</p>
+                                <p><i class="fa fa-check" aria-hidden="true"></i>&nbsp;&nbsp;8 turnos disponibles!</p>
                             </div>
-                            <label class="menor-precio" title="Hoy 20% de descuento">
+                            <label class="menor-precio" title="Menor precio para la fecha seleccionada!">
                                 <b>Desde</b>
                                 <b>$500</b>
                             </label>
                             <div class="ver_canchas">
                                 <button class="btn" data-id="{{$nro_es}}" title="Ver canchas con turnos disponibles">
-                                    Ver canchas&nbsp;&nbsp;
+                                    <span class="celu_ocu">Ver turnos&nbsp;&nbsp;</span>
+                                    <span class="celu">Ver&nbsp;&nbsp;</span>
                                     <i class="fa fa-arrow-circle-down" aria-hidden="true"></i>
                                 </button>
                             </div>
                         </li>
 
-                        <div id={{"canchas_estab_".$nro_es}} hidden>
+                        <div class="canchas_estab" id={{"canchas_estab_".$nro_es}} hidden>
                             @foreach($est as $nro_ca=>$cancha)
-                                <ul  class="row listado">
-                                    <li class="col-md-5 canchas">
-                                        <a href="#" style="background-image: url('../img/prueba-turnos/1.jpg')"></a>
-                                        <div class="info_estab">
-                                            <h2><a href="#" class="nombre_est">{{$cancha->nombre_cancha}}</a></h2>
-                                            <span class="stars" style="width: 80px" >
-                                                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                                <ul  class="col-md-12 col-xs-12 listado">
+                                    <li class="col-md-7 col-xs-12 canchas">
+                                        <a class="col-md-7 col-xs-6" style="background-image: url('../img/prueba-turnos/1.jpg')"></a>
+                                        <div class="info_cancha col-md-5 col-xs-6">
+                                            <h2><a class="nombre_est">{{$cancha->nombre_cancha}}</a></h2>
+                                            <span class="rating">
+                                               <span class="puntaje">
+                                                   <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i>
+                                               </span> 
+                                               <span class="celu_ocu">20 opiniones</span>
                                             </span>
-                                            <p>
-                                                <i class="fa fa-child" aria-hidden="true"></i>
-                                                &nbsp;&nbsp;{{$cancha->cant_jugadores}} <span>jugadores por equipo</span>
-                                            </p>
-                                            <p>
-                                                <i class="fa fa-globe" aria-hidden="true"></i>
-                                                &nbsp;&nbsp; Tipo de suelo : {{$cancha->superficie}}
-                                            </p>
+                                            <div class="canchas_caract">
+                                                <p>
+                                                    <i class="fa fa-child" aria-hidden="true"></i>
+                                                    &nbsp;&nbsp;{{$cancha->cant_jugadores}} <span>jugadores por equipo</span>
+                                                </p>
+                                                <p>
+                                                    <i class="fa fa-check" aria-hidden="true"></i>
+                                                    &nbsp;&nbsp; Techada 
+                                                </p>
+                                                <p>
+                                                    <i class="fa fa-globe" aria-hidden="true"></i>
+                                                    &nbsp;&nbsp; Tipo de suelo : {{$cancha->superficie}}
+                                                </p>
+                                            </div>
                                         </div> 
                                     </li>
-                                    <li id={{"turnos_cancha".$nro_ca}} class="col-md-7 ">
-                                       
+
+                                    <li class="col-md-4 turnos_cancha" id={{"turnos_cancha".$nro_ca}} >
+                                        <?php                                
+                                            $hora_ini = explode(",", $cancha->horaIni);
+                                            $hora_fin = explode(",", $cancha->horaFin);
+                                            $precios = explode(",", $cancha->precios);
+                                            $turnos = explode(",", $cancha->id_turnos);
+                                            $indice = 0;   
+                                        ?>
+                                        <table class="tabla-turnos">
+                                            <tbody class="table-hover">
+                                            @foreach($hora_ini as $hi)
+                                                <tr class="t-center">
+                                                    <td class="t-center" title="">{{substr($hi,0,5)}} Hs</td>
+                                                    <td class="t-center">${{$precios[$indice]}}</td>
+                                                    <td class="t-center">
+                                                        {!! Form::open(['url' => 'turno/reservar/previsualizar' , 'method' => 'post','class'=>'no_padding']) !!}
+                                                            {!!Form::hidden('id_establecimiento', $cancha->id_est)!!}
+                                                            {!!Form::hidden('id_cancha', $cancha->id_can)!!}
+                                                            {!!Form::hidden('dia', $dia)!!}
+                                                            {!!Form::hidden('fecha', $fecha)!!}
+                                                            {!!Form::hidden('id_turnoAdmin', $turnos[$indice])!!}
+                                                            {!!Form::submit('Reservar', ['class' => 't.center btn_reserva']) !!}
+                                                        {!! Form::close() !!}
+                                                    </td>
+                                                </tr>
+                                                <?php $indice++;?>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
                                     </li>
-                                    
                                 </ul>
                             @endforeach
                         </div>
