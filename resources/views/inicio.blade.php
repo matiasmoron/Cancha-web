@@ -8,8 +8,6 @@
 
 
 
-
-
     <div class="top-content">
         <div class="inner-bg">
             <div class="container">
@@ -42,7 +40,8 @@
                                     </div>
                                     <div class='col-md-6'>
                                            
-                                        {!!Form::date('fecha_turno', \Carbon\Carbon::now(), ['class' => 'form-control','id'=>'fecha']) !!}
+                                        {!!Form::text('fecha_turno', \Carbon\Carbon::now()->format('d-m-Y'), ['class' => 'form-control datepicker','id'=>'fecha']) !!}
+
                                     </div>
                                 </div>
                                 <button type="submit" class="btn">Conseguir turno</button>
@@ -78,5 +77,24 @@
         type: "{{notify()->type()}}",
     });
   @endif
+
+
+jQuery(function() {
+  var datepicker = $('input.datepicker');
+
+
+
+  if (datepicker.length > 0) {
+    datepicker.datepicker({
+        autoclose: true,
+        format: "dd-mm-yyyy",
+        startDate: new Date(),
+        language: 'es-ES'
+    });
+
+  datepicker.datepicker('update');
+  }
+   
+});
 </script>
 @endsection

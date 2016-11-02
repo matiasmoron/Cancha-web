@@ -22,11 +22,10 @@
                 <hr width="100%">
             </div>
             <div class="col-md-4 col-sm-4 col-xs-4">
-               Agregá nuevos turnos a tu cancha&nbsp;&nbsp; <i class="fa fa-pencil"></i>
-            </div>
-            <div class="col-md-4 col-sm-4 col-xs-4">
-                <hr width="100%">
-            </div>
+             Agregá nuevos turnos a tu cancha&nbsp;&nbsp; <i class="fa fa-pencil"></i>
+         </div>
+         <div class="col-md-4 col-sm-4 col-xs-4">
+            <hr width="100%">
         </div>
     </div>
     <div class="row">
@@ -78,9 +77,11 @@
                     {!! Form::close() !!}
                   </form>
                 </div>
-            </div>   
+            </div>
         </div>
-    </div>
+    </div>   
+</div>
+</div>
 </div>
 
 <script type="text/javascript">

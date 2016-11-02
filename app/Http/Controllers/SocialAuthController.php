@@ -16,7 +16,9 @@ class SocialAuthController extends Controller
 {
     public function redirect()
     {
-        return Socialite::driver('facebook')->redirect();
+        return Socialite::driver('facebook')
+            ->fields(['first_name','last_name','email','gender','birthday'])
+            ->redirect();
     }
 
     public function callback(FacebookAccountService $service)

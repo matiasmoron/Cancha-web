@@ -26,6 +26,14 @@
     <script type="text/javascript" src="{{asset('js/commons.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/bootstrap-datetimepicker.min.js')}}"></script>
 
+    <!-- Datepicker Files -->
+    <link rel="stylesheet" href="{{asset('css/datepicker/bootstrap-datepicker3.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/datepicker/bootstrap-datepicker3.standalone.min.css')}}">
+    <script src="{{asset('js/bootstrap-datepicker.min.js')}}"></script>
+
+    <!-- Languaje -->
+    <script src="{{asset('js/bootstrap-datepicker.es.min.js')}}"></script>
+
     <!-- Include this after the sweet alert js file -->
     @include('sweet::alert')
 

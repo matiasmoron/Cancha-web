@@ -18,9 +18,12 @@ class TurnoAdminController extends Controller
     
     public function turnosBusqueda(Request $request)
     {
-        $fechaR = $request->get('fecha_turno');
 
-        $dia = Carbon::createFromDate(substr($fechaR,0,4),substr($fechaR,5,2),substr($fechaR,8,10));
+
+
+        $fechaR = $request->get('fecha_turno');
+        //dd($fechaR, substr($fechaR,3,2));
+        $dia = Carbon::createFromDate(substr($fechaR,6,10),substr($fechaR,3,2),substr($fechaR,0,2));
 
         $dia = $dia->format('l');
 

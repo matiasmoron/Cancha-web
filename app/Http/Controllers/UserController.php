@@ -391,6 +391,7 @@ class UserController extends Controller
         }
 
         return redirect('admin/turnos');
+    }
 
     public function ver_turnos_libres(){
     
@@ -428,6 +429,8 @@ class UserController extends Controller
                     ]);
             $usuario->name = $request->get('name');
             $usuario->email = $request->get('email');
+            /*$usuario->fechaNac = $request->get('fechaNac');
+            $usuario->sexo = $request->get('sexo');*/
             $usuario->password = bcrypt($request->get('password'));
             
             $usuario->save();

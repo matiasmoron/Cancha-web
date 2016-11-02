@@ -172,6 +172,10 @@ img {
 .social-login-buttons {
   margin-top: 25px; }
 
+div.ui-datepicker {
+    font-size: 62.5%;
+}
+
 /***** Media queries *****/
 @media (max-width: 767px) {
   .inner-bg {
