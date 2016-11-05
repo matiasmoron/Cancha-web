@@ -1,0 +1,30 @@
+<md-dialog aria-label="Informacion del Turno">
+  <form ng-cloak>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Informacion del Turno</h2>
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content>
+      <div class="md-dialog-content">
+        <h2>Hora Inicio:{{turno.horaInicio}}</h2>
+        <h2>Hora Inicio:{{turno.horaFin}}</h2>
+        <h2>Precio del alquiler:{{turno.precio_cancha}}</h2>
+        <h2 ng-if="turno.adic_luz == 1">Precio por adicional:{{turno.precio_adicional}}</h2>
+      </div>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+      <md-button class="md-primary md-raised" ng-click="reservar()" md-autofocus>
+        Reservar
+      </md-button>
+      <md-button class="md-primary md-raised" ng-click="fijar()">
+       Fijar
+      </md-button>
+      <md-button class="md-primary md-raised" ng-click="habilitar()">
+        Habilitar
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

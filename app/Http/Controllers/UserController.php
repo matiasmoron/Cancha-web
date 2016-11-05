@@ -21,6 +21,12 @@ use Alert;
 class UserController extends Controller
 {
 
+    private $path;
+
+    function __construct() {
+       $this->path = $_SERVER['DOCUMENT_ROOT']."/Cancha-web/public/img/";
+   }
+
     //Seccion HOME
     public function adminhome()
     
@@ -43,6 +49,8 @@ class UserController extends Controller
     
     public function establecimientoalmacenar(Request $request)
     {
+
+        $estab_path = $this->path.preg_replace('[\s+]','',$request->get("nombre"));
          
         $this->validate($request, [
         'nombre' => 'required|max:50',
@@ -52,6 +60,11 @@ class UserController extends Controller
         'id_usuario' => 'required|exists:Users,id'
         ]);
          
+        if(!file_exists($estab_path))
+        {
+            mkdir($estab_path, 0777, true);
+        }
+
         Establecimiento::create($request->all());
          
         return redirect('admin/establecimiento');
@@ -66,7 +79,8 @@ class UserController extends Controller
 
     public function modificarEstablecimiento(Request $request)
     {
-        $establecimiento = Establecimiento::find($request->get("id"));
+        $estab = Establecimiento::find($request->get("id"));
+        $req_nombre = $request->get('nombre');
        
         $this->validate($request, [
         'nombre' => 'required|max:50',
@@ -75,16 +89,16 @@ class UserController extends Controller
         'id_ciudad' => 'required|exists:Ciudad,id'       
         ]);
          
-        if(strcmp($establecimiento->nombre , $request->get('nombre')) !== 0)
+        if(strcmp($estab->nombre , $req_nombre) !== 0)
         {
-            rename($_SERVER['DOCUMENT_ROOT']."/Cancha-web/public/img/".$establecimiento->nombre, $_SERVER['DOCUMENT_ROOT']."/Cancha-web/public/img/".$request->get('nombre'));
+            rename($this->path.preg_replace('[\s+]','', $estab->nombre), 
+                    $this->path.preg_replace('[\s+]','', $req_nombre));
         }
 
-        $establecimiento->nombre = $request->get('nombre');
+        $establecimiento->nombre = $req_nombre;
         $establecimiento->direccion = $request->get('direccion');
         $establecimiento->tienevestuario = $request->get('tienevestuario'); 
         $establecimiento->id_ciudad = $request->get('id_ciudad');
-
         $establecimiento->save();     
 
         return redirect('admin/establecimiento');
@@ -92,11 +106,18 @@ class UserController extends Controller
 
     public function eliminarEstablecimiento(Request $request)
     {
-        $establ = Establecimiento::find($request->get('id_establecimiento'));
+        $estab = Establecimiento::find($request->get('id_establecimiento'));
 
         try
         {
-            $establ->delete();
+            $estab->delete();
+
+            $estab_path = $this->path.preg_replace('[\s+]','', $estab->nombre);
+            if(file_exists($estab_path))
+            {
+                rmdir($estab_path);
+            }
+
             notify()->flash('Tu Establecimiento ha sido eliminado con exito! Yeep!','success');
             return redirect('admin/establecimiento');
         }
@@ -123,6 +144,10 @@ class UserController extends Controller
     
     public function canchaAlmacenar(Request $request)
     {
+        $estab_nombre = preg_replace('[\s+]','', Establecimiento::find($request->get("id_establecimiento"))->nombre);
+        $req_nombre_cancha = preg_replace('[\s+]','', $request->get("nombre_cancha"));
+        $cancha_path = $this->path.$estab_nombre."/".$req_nombre_cancha;
+
         $this->validate($request, [
         'id_establecimiento' => 'required|exists:Establecimiento,id',
         'nombre_cancha' => 'required|max:50',
@@ -134,16 +159,12 @@ class UserController extends Controller
         'imgCancha1' => 'required|image'
         ]);
 
-        $nombre_estab = Establecimiento::find($request->get("id_establecimiento"))->nombre;
-
-        $path = $_SERVER['DOCUMENT_ROOT']."/Cancha-web/public/img/".$nombre_estab."/".$request->get("nombre_cancha");
-
-        if(!file_exists($path))
+        if(!file_exists($cancha_path))
         {
-            mkdir($path, 0777, true);
+            mkdir($cancha_path, 0777, true);
         }
 
-        $this->addFiles($request, $nombre_estab, $request->get("nombre_cancha"));
+        $this->addFiles($request, $estab_nombre, $req_nombre_cancha);
 
         Cancha::create($request->all());
          
@@ -161,6 +182,15 @@ class UserController extends Controller
     {
         $cancha = Cancha::find($id);
 
+        $estab_nombre_nuevo = preg_replace('[\s+]','', 
+                                    Establecimiento::find($request->get("id_establecimiento"))->nombre);
+        $estab_nombre_viejo = preg_replace('[\s+]','', 
+                                    Establecimiento::find($cancha->id_establecimiento)->nombre);
+        $req_nombre_cancha = preg_replace('[\s+]','', 
+                                    $request->get('nombre_cancha'));
+        $cancha_nombre = preg_replace('[\s+]','', 
+                                    $cancha->nombre_cancha);
+
         $this->validate($request, [
         'id_establecimiento' => 'required|exists:Establecimiento,id',
         'nombre_cancha' => 'required|max:50',
@@ -172,41 +202,27 @@ class UserController extends Controller
         'imgCancha1' => 'required|image'
         ]);
 
-        $nombre_estab_nuevo = Establecimiento::find($request->get("id_establecimiento"))->nombre;
-        $nombre_estab_viejo = Establecimiento::find($cancha->id_establecimiento)->nombre;
-
-        if(strcmp($cancha->nombre_cancha,$request->get('nombre_cancha')) !== 0 && strcmp($nombre_estab_nuevo , $nombre_estab_viejo) !== 0)
+        if(strcmp($cancha_nombre, $req_nombre_cancha) !== 0 
+            && strcmp($estab_nombre_nuevo, $estab_nombre_viejo) !== 0)
         {
-            rename($_SERVER['DOCUMENT_ROOT']."/Cancha-web/public/img/".$nombre_estab_viejo."/".$cancha->nombre_cancha, $_SERVER['DOCUMENT_ROOT']."/Cancha-web/public/img/".$nombre_estab_nuevo."/".$request->get("nombre_cancha"));
-            $this->addFiles($resquest, $nombre_estab_nuevo, $request->get("nombre_cancha"));
+            rename($this->path.$estab_nombre_viejo."/".$cancha->nombre_cancha, 
+                    $this->path.$estab_nombre_nuevo."/".$req_nombre_cancha);
+            $this->addFiles($resquest, $estab_nombre_nuevo, $req_nombre_cancha);
         }
         else
         {
-            if(strcmp($cancha->nombre_cancha,$request->get('nombre_cancha')) !== 0)
+            if(strcmp($cancha_nombre, $req_nombre_cancha) !== 0)
             {
-                rename($_SERVER['DOCUMENT_ROOT']."/Cancha-web/public/img/".$nombre_estab_nuevo."/".$cancha->nombre_cancha, $_SERVER['DOCUMENT_ROOT']."/Cancha-web/public/img/".$nombre_estab_nuevo."/".$request->get("nombre_cancha"));
-
-                if(!is_null($request->file("imgCancha1")))
-                {
-                    unlink($_SERVER['DOCUMENT_ROOT']."/Cancha-web/public/img/".$nombre_estab_nuevo."/".$request->get("nombre_cancha")."/".$cancha->nombre_cancha."1.jpg");
-                }
-
-                if(!is_null($request->file("imgCancha2")))
-                {
-                    unlink($_SERVER['DOCUMENT_ROOT']."/Cancha-web/public/img/".$nombre_estab_nuevo."/".$request->get("nombre_cancha")."/".$cancha->nombre_cancha."2.jpg");
-                }
-
-                if(!is_null($request->file("imgCancha3")))
-                {
-                    unlink($_SERVER['DOCUMENT_ROOT']."/Cancha-web/public/img/".$nombre_estab_nuevo."/".$request->get("nombre_cancha")."/".$cancha->nombre_cancha."3.jpg");
-                }
-
-                $this->addFiles($request, $nombre_estab_nuevo, $request->get("nombre_cancha"));
+                $this->deleteFiles($request, $estab_nombre_nuevo, $cancha_nombre, $cancha_nombre);
+                rename($this->path.$estab_nombre_nuevo."/".$cancha_nombre, 
+                        $this->path.$estab_nombre_nuevo."/".$req_nombre_cancha);
+                $this->addFiles($request, $estab_nombre_nuevo, $req_nombre_cancha);
             }
             else
             { 
-                rename($_SERVER['DOCUMENT_ROOT']."/Cancha-web/public/img/".$nombre_estab_viejo, $_SERVER['DOCUMENT_ROOT']."/Cancha-web/public/img/".$nombre_estab_nuevo);
-                $this->addFiles($request, $nombre_estab_nuevo, $request->get("nombre_cancha"));  
+                rename($this->path.$estab_nombre_viejo, 
+                        $this->path.$estab_nombre_nuevo);
+                $this->addFiles($request, $estab_nombre_nuevo, $req_nombre_cancha);  
             }   
         }
 
@@ -226,20 +242,22 @@ class UserController extends Controller
     public function eliminarCancha(Request $request)
     {
         $cancha = Cancha::find($request->get('id_cancha'));
+        $cancha_nombre = preg_replace('[\s+]','', $cancha->nombre_cancha);
+        $estab_nombre = preg_replace('[\s+]','', Establecimiento::find($cancha->id_establecimiento)->nombre);
 
         try
         {
             $cancha->delete();
+            $this->deleteAllFiles($estab_nombre, $cancha_nombre, $cancha_nombre);
+            rmdir($this->path.$estab_nombre."/".$cancha_nombre);
             notify()->flash('Tu cancha ha sido eliminado con exito! Yeep!','success');
-            return redirect('admin/cancha');
         }
         catch(\Exception $e)
         {
             notify()->flash('No hemos podido eliminar tu cancha! :( \n Recuerda que no puedes eliminar una cancha si tiene turnos asociada!','error');
-            return redirect('admin/cancha');
         }
+        return redirect('admin/cancha');
     }
-
 
 
 
@@ -270,19 +288,8 @@ class UserController extends Controller
         'id_usuario_admin' => 'required|exists:Users,id',
         'precio_cancha' => 'required|numeric',
         ]);
-        
-        //dd($request->all());
 
-        TurnoAdmin::create([
-            'id_cancha' => $request->get('id_cancha'),
-            'id_dia' => $request->get('id_dia'),
-            'horaInicio' => $request->get('horaInicio'),
-            'horaFin' => $request->get('horaFin'),
-            'precio_cancha' => $request->get('precio_cancha'),
-            'adic_luz' => $request->get('adic_luz'),
-            'precio_adicional' => $request->get('precio_adicional'),
-            'id_usuario_admin' => $request->get('id_usuario_admin'),
-            ]);
+        TurnoAdmin::create($request->all());
          
         return redirect('admin/turnos');
     }
@@ -455,21 +462,21 @@ class UserController extends Controller
         if(strcmp($request->get('password'), $request->get('passwordConf')) === 0)
         {
             $usuario = Auth::user();
+
             $this->validate($request, [
-                    'name' => 'required|max:50',
-                    'email' => 'required|Email',
-                    'password'=>'required'
-                    ]);
+                'name' => 'required|max:50',
+                'email' => 'required|Email',
+                'password'=>'required'
+                ]);
+
             $usuario->name = $request->get('name');
             $usuario->email = $request->get('email');
             /*$usuario->fechaNac = $request->get('fechaNac');
             $usuario->sexo = $request->get('sexo');*/
             $usuario->password = bcrypt($request->get('password'));
-            
             $usuario->save();
-
+            
             notify()->flash('Sus datos han sido guardados exitosamente!','success');
-
             return redirect("usuario/datos");  
         }
         else
@@ -479,28 +486,53 @@ class UserController extends Controller
         }
     }
 
+    public function getUsuario()
+    {
+        return response()->json(Auth::user());
+    }
+
+
+    //Sección de metodos privados
+
     private function addFiles(Request $request, $nombre_estab, $nombre_cancha)
     {
-        //obtenemos el campo file definido en el formulario
-        $file = $request->file('imgCancha1');
-        //indicamos que queremos guardar un nuevo archivo en el disco local
-        if(!is_null($file))
-        {
-            \Storage::disk('local')->put($nombre_estab."/".$nombre_cancha."/".$nombre_cancha.'1.jpg',  \File::get($file));
+        if(!is_null($request->file('imgCancha1'))) {
+            \Storage::disk('local')
+                ->put($nombre_estab."/".$nombre_cancha."/".$nombre_cancha.'1.jpg', \File::get($request->file('imgCancha1')));
         }
+        if(!is_null($request->file('imgCancha2'))) {
+            \Storage::disk('local')
+                ->put($nombre_estab."/".$nombre_cancha."/".$nombre_cancha.'2.jpg', \File::get($request->file('imgCancha2')));
+        }
+        if(!is_null($request->file('imgCancha3'))) {
+            \Storage::disk('local')
+                ->put($nombre_estab."/".$nombre_cancha."/".$nombre_cancha.'3.jpg', \File::get($request->file('imgCancha3')));
+        }
+    }
 
-        $file = $request->file('imgCancha2');
-        if(!is_null($file))
-        {
-            //indicamos que queremos guardar un nuevo archivo en el disco local
-            \Storage::disk('local')->put($nombre_estab."/".$nombre_cancha."/".$nombre_cancha.'2.jpg',  \File::get($file));
+    private function deleteFiles(Request $request, $estab_nombre, $cancha_nombre, $file_name)
+    {
+        if(!is_null($request->file("imgCancha1"))) {
+            unlink($this->path.$estab_nombre."/".$cancha_nombre."/".$file_name."1.jpg");
         }
+        if(!is_null($request->file("imgCancha2"))) {
+            unlink($this->path.$estab_nombre."/".$cancha_nombre."/".$file_name."2.jpg");
+        }
+        if(!is_null($request->file("imgCancha3"))) {
+            unlink($this->path.$estab_nombre."/".$cancha_nombre."/".$file_name."3.jpg");
+        }
+    }
 
-        $file = $request->file('imgCancha3');
-        if(!is_null($file))
-        {
-            //indicamos que queremos guardar un nuevo archivo en el disco local
-            \Storage::disk('local')->put($nombre_estab."/".$nombre_cancha."/".$nombre_cancha.'3.jpg',  \File::get($file));
+    private function deleteAllFiles($estab_nombre, $cancha_nombre, $file_name)
+    {
+        if(file_exists($this->path.$estab_nombre."/".$cancha_nombre."/".$file_name."1.jpg")) {
+            unlink($this->path.$estab_nombre."/".$cancha_nombre."/".$file_name."1.jpg");
         }
+        if (file_exists($this->path.$estab_nombre."/".$cancha_nombre."/".$file_name."2.jpg")) {
+            unlink($this->path.$estab_nombre."/".$cancha_nombre."/".$file_name."2.jpg");
+        }
+        if (file_exists($this->path.$estab_nombre."/".$cancha_nombre."/".$file_name."3.jpg")) {
+            unlink($this->path.$estab_nombre."/".$cancha_nombre."/".$file_name."3.jpg");
+        }     
     }
 }

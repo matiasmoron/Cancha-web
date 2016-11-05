@@ -1,0 +1,21 @@
+<div layout="column">
+    <div layout="row">
+        <div class="weekheader blue-grey-text"> Lun</div>
+        <div class="weekheader blue-grey-text"> Mar</div>
+        <div class="weekheader blue-grey-text"> Mier</div>
+        <div class="weekheader blue-grey-text"> Jue</div>
+        <div class="weekheader blue-grey-text"> Vie</div>
+        <div class="weekheader blue-grey-text"> Sab</div>
+        <div class="weekheader blue-grey-text">Dom</div>
+
+    </div>
+
+    <div layout="row" ng-repeat="week in weeks">
+        <div ng-repeat="day in week.days" ng-class="{'datecell  grey lighten-5 blue-grey-text' : !day.isCurrentMonth,
+                'datecell' : day.isCurrentMonth, 'todaycell':day.isToday,'lastDayOfWeek':day.lastDayOfWeek}">
+            {{day.number}}
+        </div>
+
+    </div>
+</div>
+

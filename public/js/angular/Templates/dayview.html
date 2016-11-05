@@ -1,0 +1,29 @@
+<div layout="column">
+
+    <div ng-show="turnosAdmin != null" class="dayHeader blue-grey-text">{{selectedDate.date.format("dddd DD/MM")}}</div>
+
+    <div ng-show="turnosAdmin != null" layout-md="row" layout-padding>
+        <div layout="row">
+            <div class="hourColumnBox">
+                <div flex ng-repeat="turnoAdmin in turnosAdmin | dayfilter:this" class="hourcell centrarHora">{{turnoAdmin.horaInicio}}</div>
+            </div>
+            <div ng-show="turnosUser.length != 0" class="dayColumnBox" ng-class="{'todaycell':selectedDate.isToday}" ng-controller="modalCtrl as mat" ng-cloak>
+                <div ng-repeat="turnoUser in turnosUser" ng-value="turnoUser">
+                    <div flex ng-if="turnoUser.id != null" class="day-data-cell centrarDispo" ng-click="showAdvanced($event,turnoUser.id)">
+                        Disponible
+                    </div>
+                    <div flex ng-if="turnoUser.id == null" class="day-data-cell centrarNoDispo" >
+                        No Disponible
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div ng-show="turnosUser.length == 0" layout-md="row" layout-padding layout-margin class="centrarHora" style="height: 300px; color: white;">
+                No hay turnos para el dia seleccionado.
+            </div>
+    </div>
+
+    <div ng-show="turnosAdmin == null" layout-md="row" layout-padding layout-margin class="centrarHora" style="height: 300px; color: white;">
+        No se han encontrado turnos. Por favor seleccione un establecimiento y una cancha del menu izquierdo.
+    </div>
+</div>

@@ -1,0 +1,69 @@
+@import "../variables.scss";
+
+.padding-2p{
+	padding: 2% 0% !important;
+}
+
+.blockquote-custom{
+	border-left: 5px solid #1565c0 !important;
+	padding: 1%;
+}
+
+.padding-menu-buttom{
+	padding: 0% 2%;
+}
+
+.side-nav a:hover {
+  background-color: #bbdefb;
+}
+
+@media(max-width:900px)
+{
+	.center-mobile{
+		text-align: center;
+	}
+}
+
+.userView {
+	background: url('../../fotos/fondoUser2.jpg');
+}
+
+@media(min-width:900px)
+{
+	.positionBoton
+	{
+		position: absolute; 
+		right: 0;
+	}
+}
+
+.centrarDispo{
+	display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    background-color: rgba(2, 136, 209, 0.4); 
+    color:white;
+    text-align: center;
+}
+
+.centrarNoDispo
+{
+	display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+	background-color:rgba(211, 47, 47, 0.4); 
+	color:white; 
+	text-align: center;
+}
+
+.centrarHora{
+	display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+	background-color:rgba(102, 147, 169, 0.48); 
+	color:black; 
+	text-align: center;
+}

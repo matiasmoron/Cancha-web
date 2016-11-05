@@ -1,0 +1,34 @@
+<div layout="column">
+ 
+    <div layout="row" layout-xs="column" layout-padding>
+        <div layout="column">
+            <h2>Calendario de Turnos</h2>
+            <p>¡Administra y visualiza los turnos de tus establecimientos!</p>
+        </div>
+        
+        <div layout-xs="row" class="center-mobile positionBoton">
+            <md-button class="md-primary md-raised" ng-click="previous()">
+               <md-icon md-font-library="material-icons">keyboard_arrow_left</md-icon>
+            </md-button>
+            <md-button class="md-primary md-raised" ng-click="gotoToday()">
+                Hoy
+            </md-button>
+            <md-button class="md-primary md-raised" ng-click="next()">
+                <md-icon md-font-library="material-icons">keyboard_arrow_right</md-icon>
+            </md-button>
+        </div>
+    </div>
+
+    <div>
+        <!-- Teal page content  -->
+
+        <!-- Month View -->
+        <month-view ng-if="selectedView == 'month'"></month-view>
+        <!-- Week View -->
+        <week-view ng-if="selectedView == 'week'"></week-view>
+        <!--Day View-->
+        <day-view ng-if="selectedView == 'day'"></day-view>
+
+    </div>
+
+</div>

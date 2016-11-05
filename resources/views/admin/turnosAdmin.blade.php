@@ -60,7 +60,7 @@
                                                    <th class="t-right">Precio adic luz</th>
                                                    <th class="t-right">Fijo</th>
                                                    <th class="t-right">Habilitado</th>
-                                                   <th class="t-center"><i class="fa fa-btn glyphicon glyphicon-share-alt"></i></th>
+                                                   <th class="t-center">Acciones</th>
                                                  </tr>
                                                </thead>
                                                <tbody>
@@ -102,16 +102,25 @@
                                                           <button class="btn2 eliminar" data-id={{"form_".$panel}} style="width:100%;">Eliminar</button>
                                                       </div>
 
-                                                      <div class="col-md-6 col-sm-12 col-xs-12">
-                                                        {!! Form::open(['route' => ['admin.fijarTurno'], 'method' => 'POST', 'id'=>'formFijar_'.$panel])!!}
-                                                          {{Form::hidden('id_turnoAdmin', $turno->id)}}
-                                                        {!!Form::close()!!}
-                                                        @if($turno->fijo === 0)
-                                                          <button class="btn2 fijar" data-id={{"formFijar_".$panel}} style="width:100%;">Fijar</button>
-                                                        @else
-                                                          <button class="btn2 desfijar" data-id={{"formFijar_".$panel}} style="width:100%;">Sacar Fijo</button>
-                                                        @endif
-                                                      </div>
+                                                      @if($turno->habilitado === 1)
+                                                        <div class="col-md-6 col-sm-12 col-xs-12">
+                                                          {!! Form::open(['route' => ['admin.fijarTurno'], 'method' => 'POST', 'id'=>'formFijar_'.$panel])!!}
+                                                            {{Form::hidden('id_turnoAdmin', $turno->id)}}
+                                                          {!!Form::close()!!}
+                                                          @if($turno->fijo === 0)
+                                                            <button class="btn2 fijar" data-id={{"formFijar_".$panel}} style="width:100%;">Fijar</button>
+                                                          @else
+                                                            <button class="btn2 desfijar" data-id={{"formFijar_".$panel}} style="width:100%;">Sacar Fijo</button>
+                                                          @endif
+                                                        </div>
+                                                      @elseif($turno->fijo === 1)
+                                                        <div class="col-md-6 col-sm-12 col-xs-12">
+                                                          {!! Form::open(['route' => ['admin.fijarTurno'], 'method' => 'POST', 'id'=>'formFijar_'.$panel])!!}
+                                                            {{Form::hidden('id_turnoAdmin', $turno->id)}}
+                                                          {!!Form::close()!!}
+                                                            <button class="btn2 desfijar" data-id={{"formFijar_".$panel}} style="width:100%;">Sacar Fijo</button>
+                                                        </div>
+                                                      @endif
 
                                                       @if($turno->fijo === 0)
                                                         <div class="col-md-6 col-sm-12 col-xs-12">

@@ -89,7 +89,7 @@ class TurnoUsuarioController extends Controller
                     FROM turnoadmin as ta 
                     LEFT JOIN turnousuario as tu ON tu.id_turnoAdmin = ta.id 
                     INNER JOIN cancha as c ON ta.id_cancha = c.id
-                    WHERE ta.id_dia = '".$id_dia[0]->id."' AND (ta.id NOT IN (SELECT ta2.id FROM turnousuario as tu2 INNER JOIN turnoadmin as ta2 WHERE ta2.id = tu2.id_turnoAdmin AND tu2.fecha = '".$request->get('fecha')."')) AND c.id = '".$request->get('id_cancha')."' AND ta.horaInicio != '".$turnoAdmin->horaInicio."' AND ta.horaFin != '".$turnoAdmin->horaFin."'");
+                    WHERE ta.id_dia = '".$id_dia[0]->id."' AND ta.habilitado = 1 AND (ta.id NOT IN (SELECT ta2.id FROM turnousuario as tu2 INNER JOIN turnoadmin as ta2 WHERE ta2.id = tu2.id_turnoAdmin AND tu2.fecha = '".$request->get('fecha')."')) AND c.id = '".$request->get('id_cancha')."' AND ta.horaInicio != '".$turnoAdmin->horaInicio."' AND ta.horaFin != '".$turnoAdmin->horaFin."'");
 
             return view('turnos.previsualizar3', ['cancha' => $cancha, 'establecimiento' => $establecimiento, 'turnoAdmin' => $turnoAdmin, 'fecha' => $request->get('fecha'), 'establecUser' => $establecimientosUser, 'coord' => $coord, 'dia' => $request->get('dia'), 'turnoUser' => $turnoUser, 'turnosAlter' => $turnosAlter]);
         }

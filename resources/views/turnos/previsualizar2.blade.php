@@ -45,22 +45,22 @@
 			  <!-- Wrapper for slides -->
 			  <div class="carousel-inner" role="listbox">
 				    <div class="item active">
-				      <img src={{asset('/img/'.$establecimiento->nombre.'/'.$cancha->nombre_cancha.'/'.$cancha->nombre_cancha.'1.jpg')}} alt="">
+				      <img src={{asset("/img/".preg_replace('[\s+]','', $establecimiento->nombre)."/".preg_replace('[\s+]','',$cancha->nombre_cancha)."/".preg_replace('[\s+]','',$cancha->nombre_cancha)."1.jpg")}} alt={{$cancha->nombre_cancha}}>
 				      <div class="carousel-caption">
 				        
 				      </div>
 				    </div>
 				    
-				    @if(file_exists($_SERVER['DOCUMENT_ROOT']."/Cancha-web/public/img/".$establecimiento->nombre."/".$cancha->nombre_cancha."/".$cancha->nombre_cancha."2.jpg"))
+				    @if(file_exists($_SERVER['DOCUMENT_ROOT']."/Cancha-web/public/img/".preg_replace('[\s+]','', $establecimiento->nombre)."/".preg_replace('[\s+]','',$cancha->nombre_cancha)."/".preg_replace('[\s+]','',$cancha->nombre_cancha)."2.jpg"))
 					    <div class="item">
-						    <img src={{asset('/img/'.$establecimiento->nombre.'/'.$cancha->nombre_cancha.'/'.$cancha->nombre_cancha.'2.jpg')}} alt="">
+						    <img src={{asset("/img/".preg_replace('[\s+]','', $establecimiento->nombre)."/".preg_replace('[\s+]','',$cancha->nombre_cancha)."/".preg_replace('[\s+]','',$cancha->nombre_cancha)."2.jpg")}} alt={{$cancha->nombre_cancha}}>
 						    <div class="carousel-caption"></div>
 					    </div>
 				    @endif
 
-				    @if(file_exists($_SERVER['DOCUMENT_ROOT']."/Cancha-web/public/img/".$establecimiento->nombre."/".$cancha->nombre_cancha."/".$cancha->nombre_cancha."3.jpg"))
+				    @if(file_exists($_SERVER['DOCUMENT_ROOT']."/Cancha-web/public/img/".preg_replace('[\s+]','', $establecimiento->nombre)."/".preg_replace('[\s+]','',$cancha->nombre_cancha)."/".preg_replace('[\s+]','',$cancha->nombre_cancha)."3.jpg"))
 					    <div class="item">
-						    <img src={{asset('/img/'.$establecimiento->nombre.'/'.$cancha->nombre_cancha.'/'.$cancha->nombre_cancha.'3.jpg')}} alt="">
+						    <img src={{asset("/img/".preg_replace('[\s+]','', $establecimiento->nombre)."/".preg_replace('[\s+]','',$cancha->nombre_cancha)."/".preg_replace('[\s+]','',$cancha->nombre_cancha)."3.jpg")}} alt={{$cancha->nombre_cancha}}>
 						    <div class="carousel-caption"></div>
 					    </div>
 				    @endif

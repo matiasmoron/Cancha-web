@@ -165,6 +165,19 @@ Route::get('admin/home',
     Route::get('admin/turnos_libres','UserController@ver_turnos_libres');
 
 
+    //Ruta de Usuario
+    Route::get('admin/user', 
+        'UserController@getUsuario');
+
+    //Ruta Adminstracion Turnos
+    Route::get('admin/administrar', 
+        [
+            'middleware' => 'auth',
+            'uses' => function()
+                        {
+                            return view('admin.administracion');
+                        }
+        ]);
 
 Route::get('inicio','InicioController@inicio');
 
