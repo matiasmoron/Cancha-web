@@ -287,6 +287,39 @@ class UserController extends Controller
         return redirect('admin/turnos');
     }
 
+    public function turnoEspecialCrear()
+    {
+        return view('admin.nuevoTurnoEspecial', ['arrCanchas' => $this->getCanchas(), 'arrDias' => $this->getDias()]);
+    }
+
+    public function turnoEspecialAlmacenar(Request $request)
+    {
+         
+        $this->validate($request, [
+        'id_cancha' => 'required|exists:Cancha,id',
+        'id_dia' => 'required|exists:Dia,id',
+        'horaInicio' => 'required',
+        'horaFin' => 'required',
+        'id_usuario_admin' => 'required|exists:Users,id',
+        'precio_cancha' => 'required|numeric',
+        ]);
+        
+        dd($request->all());
+
+        TurnoAdmin::create([
+            'id_cancha' => $request->get('id_cancha'),
+            'id_dia' => $request->get('id_dia'),
+            'horaInicio' => $request->get('horaInicio'),
+            'horaFin' => $request->get('horaFin'),
+            'precio_cancha' => $request->get('precio_cancha'),
+            'adic_luz' => $request->get('adic_luz'),
+            'precio_adicional' => $request->get('precio_adicional'),
+            'id_usuario_admin' => $request->get('id_usuario_admin'),
+            ]);
+         
+        return redirect('admin/turnos');
+    }
+
     public function editarTurnoAdmin(Request $request)
     {
         $turnoAdmin = TurnoAdmin::find($request->get('id_turnoAdmin'));

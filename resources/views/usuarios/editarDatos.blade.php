@@ -46,9 +46,9 @@
             {!!Form::label('labelPasswordConf', 'Confirmar Contraseña')!!}
             {!!Form::text('passwordConf',"******",['class' => 'form-control'])!!}
           </div>
-          <div class="col-md-8">
+          <div style="padding-top:13px;" class="col-md-8">
             {!!Form::submit('Guardar Cambios', ['class' => 'btn btn-success'])!!}
-            {!!Form::submit('Cancelar', ['class' => 'btn btn-info'])!!}
+            {!!Form::submit('Cancelar', ['class' => 'btn btn-danger'])!!}
           </div>
         {!!Form::close()!!}
       </div>

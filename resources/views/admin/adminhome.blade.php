@@ -4,11 +4,11 @@
 
 <link rel="stylesheet" href="{{ URL::asset('css/admin/admin.css') }}">
 
-<div class="col-md-2 volver">
+{{-- <div class="col-md-2 volver">
     <button class="btn2" onclick="go_back()">Volver&nbsp;
         <i class="fa fa-undo" aria-hidden="true"></i>
     </button>
-</div>
+</div> --}}
 <div class="container">
     <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12 centrarTituloAdmin">
@@ -101,10 +101,16 @@
                             <i class="fa fa-plus-circle"></i>
                         </a>
                     </div>
-                    <div class="col-md-4 cont-btn">
+                    {{-- <div class="col-md-5 cont-btn">
                         <a href="{{ url('admin/turnos_libres') }}" class="btn">
                             Turnos libres
                             <i class="fa fa-eye"></i>
+                        </a>
+                    </div> --}}
+                    <div class="col-md-4 cont-btn">
+                        <a href="{{ url('admin/turnoEspecial/nuevo') }}" class="btn">
+                            Turno especial
+                            <i class="fa fa-plus-circle"></i>
                         </a>
                     </div>
                 </div>

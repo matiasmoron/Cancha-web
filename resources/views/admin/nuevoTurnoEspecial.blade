@@ -6,16 +6,16 @@
 <link rel="stylesheet" href="{{ URL::asset('css/admin/admin.css') }}">
 
 
-{{-- <div class="col-md-2 volver">
+<div class="col-md-2 volver">
     <button class="btn2" onclick="go_back()">Volver&nbsp;
         <i class="fa fa-undo" aria-hidden="true"></i>
     </button>
-</div> --}}
+</div>
 
 <div class="container"> 
     <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12 centrarTituloAdmin">
-            <h2>Creación de un nuevo turno</h2>
+            <h2>Creación de un nuevo turno especial</h2>
         </div>
         <div class="col-md-12 col-sm-12 col-xs-12 subtitulo" style="padding-bottom:2%;">
             <div class="col-md-4 col-sm-4 col-xs-4">
@@ -32,11 +32,10 @@
        @include('partials/errors')
        <div class="col-md-8 col-md-offset-2">
         <div class="panel panel-default">
-            <div class="panel-heading">Nueva turno</div>
+            <div class="panel-heading">Nuevo turno</div>
             <div class="panel-body">
-                {!! Form::open(['url' => 'admin/turno/nuevo' , 'method' => 'post']) !!}    
-                <form>
-                  <div class="form-group col-md-12">
+                {!! Form::open(['url' => 'admin/turnoEspecial/nuevo' , 'method' => 'post']) !!}    
+                <div class="form-group col-md-12">
                     <div class="col-md-6 ">
                         <label>Cancha</label>
                         {!! Form::select('id_cancha', $arrCanchas , null, ['class' => 'form-control']) !!}
@@ -75,7 +74,6 @@
                     <button class="btn2">Agregar</button>
                 </div>
                 {!! Form::close() !!}
-            </form>
         </div>
     </div>
 </div>

@@ -31,13 +31,13 @@
         <li style= "background:white;" type="button" class="list-group-item">{{$usuario->email}}</li>
         <h4 style="color:black">Fecha Nacimiento</h4>
         <li style= "background:white;" type="button" class="list-group-item">{{date("d/m/Y", strtotime($usuario->created_at))}}</li>  
-        <h4 style="color:black">Sexo</h4>
+        {{-- <h4 style="color:black">Sexo</h4> --}}
         {{-- <li style= "background:white;" type="button" class="list-group-item">
           @if($usuario->"male")
           {{"Hombre"}}</li> --}}  
         </ul>
         @if(is_null(\Auth::user()->facebook()->first()))
-        <a href="{{ url('usuario/editarDatos') }}"> <button  style= "float:right;" type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#favoritesModal">Editar o Cambiar Contraseña</button></a>
+        <a href="{{ url('usuario/editarDatos') }}"> <button  style= "float:right;" type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#favoritesModal">Editar </button></a>
         @endif
       </div>
       <div id="fotoPelota" style="top:40px;" class="col-md-3 col-sm-2 col-xs-12 ">

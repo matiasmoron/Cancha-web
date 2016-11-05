@@ -4,6 +4,16 @@
 @section('content')
 
 <link rel="stylesheet" href="{{ URL::asset('css/admin/admin.css') }}">
+<!-- Datepicker Files -->
+<link rel="stylesheet" href="{{asset('css/datepicker/bootstrap-datepicker3.min.css')}}">
+<link rel="stylesheet" href="{{asset('css/datepicker/bootstrap-datepicker3.standalone.min.css')}}">
+<link rel="stylesheet" href="{{asset('css/datepicker/bootstrap-datetimepicker.min.css')}}">
+
+<script src="{{asset('js/bootstrap-datepicker.min.js')}}"></script>
+<script src="{{asset('js/bootstrap-datetimepicker.min.js')}}"></script>
+
+<!-- Languaje -->
+<script src="{{asset('js/bootstrap-datepicker.es.min.js')}}"></script>
 
 
 {{-- <div class="col-md-2 volver">
@@ -15,14 +25,14 @@
 <div class="container"> 
     <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12 centrarTituloAdmin">
-            <h2>Creación de un nuevo turno</h2>
+            <h2>Turno especial</h2>
         </div>
         <div class="col-md-12 col-sm-12 col-xs-12 subtitulo" style="padding-bottom:2%;">
             <div class="col-md-4 col-sm-4 col-xs-4">
                 <hr width="100%">
             </div>
             <div class="col-md-4 col-sm-4 col-xs-4">
-               Agregá nuevos turnos a tu cancha&nbsp;&nbsp; <i class="fa fa-pencil"></i>
+               Agregá un nuevo turno especial a la cancha&nbsp;&nbsp; <i class="fa fa-pencil"></i>
            </div>
            <div class="col-md-4 col-sm-4 col-xs-4">
             <hr width="100%">
@@ -32,18 +42,17 @@
        @include('partials/errors')
        <div class="col-md-8 col-md-offset-2">
         <div class="panel panel-default">
-            <div class="panel-heading">Nueva turno</div>
+            <div style="text-align:center;" class="panel-heading">NUEVO TURNO</div>
             <div class="panel-body">
-                {!! Form::open(['url' => 'admin/turno/nuevo' , 'method' => 'post']) !!}    
-                <form>
-                  <div class="form-group col-md-12">
+                {!! Form::open(['url' => 'admin/turnoEspecial/nuevo' , 'method' => 'post']) !!}    
+                <div class="form-group col-md-12">
                     <div class="col-md-6 ">
                         <label>Cancha</label>
                         {!! Form::select('id_cancha', $arrCanchas , null, ['class' => 'form-control']) !!}
                     </div>
                     <div class="col-md-6 ">
                         <label>Día</label>
-                        {!! Form::select('id_dia', $arrDias , null, ['class' => 'form-control']) !!}
+                        {!! Form::text('id_dia', \Carbon\Carbon::now()->format('d-m-Y'), ['class' => 'form-control','id'=>'datetimepicker']) !!}
                     </div>
                 </div>
                 <div class="form-group col-md-12">
@@ -75,10 +84,9 @@
                     <button class="btn2">Agregar</button>
                 </div>
                 {!! Form::close() !!}
-            </form>
+            </div>
         </div>
     </div>
-</div>
 </div>   
 </div>
 </div>
@@ -96,5 +104,17 @@
         }
     });
 
+    jQuery(function() {
+      var datetimepicker = $('input.datetimepicker');
+      $('#datetimepicker').datetimepicker({
+        autoclose: true,
+        format: "dd-mm-yyyy hh:ii",
+        startDate: new Date(),
+        language: 'es',
+        startView: 1
+    });
+      datetimepicker.datetimepicker('update');
+}); 
+      
 </script>
 @endsection
