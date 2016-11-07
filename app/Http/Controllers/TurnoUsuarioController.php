@@ -110,7 +110,7 @@ class TurnoUsuarioController extends Controller
 
         if($turno->isEmpty())
         {
-            $fecha = Carbon::createFromFormat('Y-m-d', $request->get('fecha'))->toDateString();
+            $fecha = Carbon::createFromFormat('d-m-Y', $request->get('fecha'))->toDateString();
             $turno = TurnoUsuario::create(['id_turnoAdmin' => $request->get('id_turnoAdmin'), 'fecha' => $fecha, 'confirmado' => '0', 'pagado' => '0', 'estado' => '0', 'id_usuario' =>  Auth::user()->id]);
            
             notify()->flash('Tu turno ha sido reservado exitosamente! Yeep!','success');

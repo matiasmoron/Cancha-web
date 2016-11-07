@@ -80,6 +80,34 @@
                     @endif
                 <div class="clear"> </div>
             </div>
+            <div class="login-ic {{ $errors->has('sexo') ? ' has-error' : '' }}">
+                <div class="col-md-1" style="padding:0"> 
+                    <i></i>
+                </div>
+                <div class="col-md-11">
+                    {!!Form::select('sexo',['Masculino' => 'Masculino', 'Femenino' => 'Femenino'],0, ['class' => 'form-control'])!!}
+                </div>
+                   @if ($errors->has('sexo'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('sexo') }}</strong>
+                        </span>
+                    @endif
+                <div class="clear"> </div>
+            </div>
+            <div class="login-ic {{ $errors->has('fecha_nac') ? ' has-error' : '' }}">
+                <div class="col-md-1" style="padding:0">
+                    <i></i>
+                </div>
+                <div class="col-md-11">
+                    {!!Form::date('fecha_nac', \Carbon\Carbon::now(), ['class' => 'form-control'])!!}
+                </div>
+                   @if ($errors->has('fecha_nac'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('fecha_nac') }}</strong>
+                        </span>
+                    @endif
+                <div class="clear"> </div>
+            </div>
             <div class="login-ic {{ $errors->has('password') ? ' has-error' : '' }}">
                 <i class="icon"></i>
                  <input type="password"  name="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'password';}"/>

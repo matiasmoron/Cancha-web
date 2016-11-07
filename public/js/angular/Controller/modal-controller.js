@@ -5,29 +5,47 @@
 		.module('adminModule')
 		.controller('modalCtrl', modalCtrl);
 
-		modalCtrl.$inject = ['$scope', '$mdDialog'];
+		modalCtrl.$inject = ['$scope', '$mdDialog', '$filter'];
 
-		function modalCtrl($scope, $mdDialog) 
+		function modalCtrl($scope, $mdDialog, $filter) 
 		{
 		  $scope.status = '  ';
 		  $scope.customFullscreen = false;
 
-		  $scope.showAdvanced = function(ev,turnoUser) {
+		  $scope.showDisponible = function(ev,idTurnoAdmin) {
 		    $mdDialog.show({
-		      controller: DialogController,
-		      templateUrl: '../js/angular/Templates/turnoDialog.tmpl.html',
+		      controller: DialogDispController,
+		      templateUrl: '../js/angular/Templates/turnoDisp.html',
 		      parent: angular.element(document.body),
 		      targetEvent: ev,
 		      clickOutsideToClose:true,
 		      fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
 		    });
-		    $mdDialog.turnoUser = turnoUser;
+		    $mdDialog.idTurnoAdmin = idTurnoAdmin;
+		  };
+
+		  $scope.showNoDisponible = function(ev,idTurnoAdmin,idTurnoUser) {
+		    $mdDialog.show({
+		      controller: DialogNoDispController,
+		      templateUrl: '../js/angular/Templates/turnoNoDisp.html',
+		      parent: angular.element(document.body),
+		      targetEvent: ev,
+		      clickOutsideToClose:true,
+		      fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+		    });
+		    $mdDialog.idTurnoAdmin = idTurnoAdmin;
+		    $mdDialog.idTurnoUser = idTurnoUser;
 		  };
 
 
-		  function DialogController($scope, $mdDialog) {
+		  function DialogDispController($scope, $mdDialog, $filter) {
 
-			$scope.turno = $scope.$$prevSibling.openOptionTurno($mdDialog.turnoUser);
+	   		angular.forEach($scope.$$prevSibling.admin.turnosAdmin, 
+	   			function(value, key)
+		   		{
+		   			if(value.id === $mdDialog.idTurnoAdmin)
+	  					$scope.turno = value;
+		   		});
 
 		    $scope.hide = function() {
 		      $mdDialog.hide();
@@ -37,13 +55,9 @@
 		      $mdDialog.cancel();
 		    };
 
-		    $scope.answer = function(answer) {
-		      $mdDialog.hide(answer);
-		    };
-
-		    $scope.reservar = function()
+		    $scope.reservar = function(idTurnoAdmin)
 		    {
-		    	console.log('reservar');
+		    	$scope.$$prevSibling.setReservaTurno(idTurnoAdmin);
 		    	$mdDialog.hide();
 		    }
 
@@ -53,11 +67,50 @@
 		    	$mdDialog.hide();
 		    }
 
-		    $scope.habilitar = function()
+		    $scope.deshabilitar = function()
 		    {
-		    	console.log('habilitar');
+		    	console.log('deshabilitar');
 		    	$mdDialog.hide();
 		    }
+
+		  }
+
+		  function DialogNoDispController($scope, $mdDialog, $filter) {
+
+		  	angular.forEach($scope.$$prevSibling.admin.turnosAdmin, 
+	   			function(value, key)
+		   		{
+		   			if(value.id === $mdDialog.idTurnoAdmin)
+	  					$scope.turno = value;
+		   		});
+
+		  	$scope.idTurnoUser = $mdDialog.idTurnoUser;
+
+		  	$scope.hide = function() {
+		  	  $mdDialog.hide();
+		  	};
+
+		  	$scope.cancel = function() {
+		  	  $mdDialog.cancel();
+		  	};
+
+		  	$scope.bajarReserva = function(idTurnoUser)
+		  	{
+		  		$scope.$$prevSibling.deleteReservaTurno(idTurnoUser);
+		  		$mdDialog.hide();
+		  	}
+
+		  	$scope.bajarFijo = function()
+		  	{
+		  		console.log('saco fijo');
+		  		$mdDialog.hide();
+		  	}
+
+		  	$scope.habilitar = function()
+		  	{
+		  		console.log('habilitar');
+		  		$mdDialog.hide();
+		  	}
 
 		  }
 		};

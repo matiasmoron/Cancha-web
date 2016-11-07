@@ -41,6 +41,16 @@
 	        return $http.get("/CanchaYa-WebAPI/public/api/turnousuario/getForDate/" + date + "/" + idDia + "/" + idCancha +"?api_token=" + api_token);
 	    }
 
+	    //Get Turnos User por Dia
+	    this.addTurnoUserForDate = function (idTurnoAdmin, date, idUser, api_token) {
+	        return $http.post("/CanchaYa-WebAPI/public/api/turnousuario/store/" + idTurnoAdmin + "/" + date + "/" + idUser +"?api_token=" + api_token);
+	    }
+
+	    //Get Turnos User por Dia
+	    this.deleteTurnoUserForId = function (idTurnoUser, api_token) {
+	        return $http.delete("/CanchaYa-WebAPI/public/api/turnousuario/" + idTurnoUser + "?api_token=" + api_token);
+	    }
+
 	}
 
 })();

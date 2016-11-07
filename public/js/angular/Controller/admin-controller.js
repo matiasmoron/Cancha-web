@@ -15,6 +15,7 @@
 		vm.currentUser;
 		vm.turnosAdmin = null;
 		vm.turnosUser = null;
+		vm.turnoUserModal;
 		vm.messageError;
 
 		vm.establUser;
@@ -34,7 +35,11 @@
 		vm.getEstablUser = getEstablUser;
 		vm.getCanchaUser = getCanchaUser;
 		vm.getTurnoUserDate = getTurnoUserDate;
+
+		//Declaración de funciones para scope de modal
 		$scope.openOptionTurno = openOptionTurno;
+		$scope.setReservaTurno = setReservaTurno;
+		$scope.deleteReservaTurno = deleteReservaTurno;
 
 		//Función inicial al crear el controller
 		active();
@@ -117,10 +122,10 @@
 
 		function getTurnoUserDate()
 		{
-			console.log($scope);
 			var momentObj = $scope.calendarCtrl.selected;
 			var date = getDate(momentObj);
 			var id_dia = (momentObj.day() == 0) ? 7 : momentObj.day();
+			console.log(date + " " + id_dia);
 
 			adminService
 			.getTurnoUserForDate(date, id_dia, vm.cancha, vm.currentUser.api_token)
@@ -136,13 +141,67 @@
 			});
 		}
 
+		function setReservaTurno(idTurnoAdmin)
+		{
+			var momentObj = $scope.calendarCtrl.selected;
+			var date = getDate(momentObj);
+
+			adminService
+			.addTurnoUserForDate(idTurnoAdmin, date, vm.currentUser.id, vm.currentUser.api_token)
+			.then(function(response)
+			{
+				getTurnoUserDate();
+				console.log(response.data);
+			})
+			.catch(function(error)
+			{
+				vm.messageError = error;
+				$log.error('Error: ' + error.data);
+			});
+		}
+
+		function setReservaTurno(idTurnoAdmin)
+		{
+			var momentObj = $scope.calendarCtrl.selected;
+			var date = getDate(momentObj);
+
+			adminService
+			.addTurnoUserForDate(idTurnoAdmin, date, vm.currentUser.id, vm.currentUser.api_token)
+			.then(function(response)
+			{
+				getTurnoUserDate();
+				console.log(response.data);
+			})
+			.catch(function(error)
+			{
+				vm.messageError = error;
+				$log.error('Error: ' + error.data);
+			});
+		}
+
+		function deleteReservaTurno(idTurnoUser)
+		{
+			adminService
+			.deleteTurnoUserForId(idTurnoUser, vm.currentUser.api_token)
+			.then(function(response)
+			{
+				getTurnoUserDate();
+				console.log(response.data);
+			})
+			.catch(function(error)
+			{
+				vm.messageError = error;
+				$log.error('Error: ' + error.data);
+			});
+		}
+
 		function openOptionTurno(idTurnoAdmin) 
 		{	
 			adminService
 			.getTurnoAdminForId(idTurnoAdmin, vm.currentUser.api_token)
 			.then(function(response)
 			{
-				return response.data;
+				vm.turnoUserModal = response.data;
 			})
 			.catch(function(error)
 			{

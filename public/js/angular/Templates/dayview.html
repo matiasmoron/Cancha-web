@@ -9,10 +9,10 @@
             </div>
             <div ng-show="turnosUser.length != 0" class="dayColumnBox" ng-class="{'todaycell':selectedDate.isToday}" ng-controller="modalCtrl as mat" ng-cloak>
                 <div ng-repeat="turnoUser in turnosUser" ng-value="turnoUser">
-                    <div flex ng-if="turnoUser.id != null" class="day-data-cell centrarDispo" ng-click="showAdvanced($event,turnoUser.id)">
+                    <div flex ng-if="turnoUser.id == null" class="day-data-cell centrarDispo" ng-click="showDisponible($event,turnoUser.id_turnoAdmin)">
                         Disponible
                     </div>
-                    <div flex ng-if="turnoUser.id == null" class="day-data-cell centrarNoDispo" >
+                    <div flex ng-if="turnoUser.id != null" class="day-data-cell centrarNoDispo" ng-click="showNoDisponible($event,turnoUser.id_turnoAdmin, turnoUser.id)" >
                         No Disponible
                     </div>
                 </div>
@@ -20,7 +20,7 @@
         </div>
         <div ng-show="turnosUser.length == 0" layout-md="row" layout-padding layout-margin class="centrarHora" style="height: 300px; color: white;">
                 No hay turnos para el dia seleccionado.
-            </div>
+        </div>
     </div>
 
     <div ng-show="turnosAdmin == null" layout-md="row" layout-padding layout-margin class="centrarHora" style="height: 300px; color: white;">
